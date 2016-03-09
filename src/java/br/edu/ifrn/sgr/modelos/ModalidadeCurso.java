@@ -20,6 +20,10 @@ public class ModalidadeCurso {
         this.nivel = nivel;
     }
 
+    public ModalidadeCurso() {
+        
+    }
+
     /**
      * @return the modalidadeID
      */
