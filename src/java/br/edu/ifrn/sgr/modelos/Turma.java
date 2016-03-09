@@ -18,6 +18,10 @@ public class Turma {
         this.curso = curso;
     }
 
+    public Turma() {
+       
+    }
+
     
     /**
      * @return the codigo
