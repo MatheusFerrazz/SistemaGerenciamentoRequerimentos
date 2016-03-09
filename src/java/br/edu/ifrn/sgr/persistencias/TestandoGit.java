@@ -12,6 +12,6 @@ package br.edu.ifrn.sgr.persistencias;
 public class TestandoGit {
     //TEstando essa boceta
     //KCTTTTT alterei carlos
-    //Carlos escreveu
+    //Carlos escreveu Testando 01
      
 }
