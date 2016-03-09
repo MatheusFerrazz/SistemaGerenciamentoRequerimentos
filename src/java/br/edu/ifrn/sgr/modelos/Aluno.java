@@ -68,5 +68,4 @@ public class Aluno extends Pessoa{
     public void setPermissao(Permissao permissao) {
         this.permissao = permissao;
     }
-    //Carlos Cavalo
 }
