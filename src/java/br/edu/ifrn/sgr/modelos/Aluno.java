@@ -23,7 +23,7 @@ public class Aluno extends Pessoa{
         this.permissao = permissao;
     }
 
-    Aluno() {
+    public Aluno() {
         
     }
 

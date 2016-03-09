@@ -39,7 +39,7 @@ public class AlunoDAO extends GeralDAO {
 //    }
     
     public Aluno popularAluno(ResultSet resultado) throws SQLException{
-       // Aluno aluno = new Aluno();
+        Aluno aluno = new Aluno();
         aluno.setNome(resultado.getString("nome"));
         aluno.setMatricula(resultado.getString("matricula"));
         aluno.setEmail(resultado.getString("email"));
