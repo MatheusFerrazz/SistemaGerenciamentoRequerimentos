@@ -54,16 +54,16 @@ public class AlunoDAO extends GeralDAO {
         java.sql.Date dataSQL = resultado.getDate("datanascimento");
         java.util.Date data = new java.util.Date(dataSQL.getTime());
         aluno.setDataNascimento(data);
-        
-         
+                 
         Curso curso = new Curso();
+        curso.setCursoID(resultado.getInt("idCurso"));
         curso.setAnos(resultado.getInt("ano"));
         curso.setNome(resultado.getString("nomeCurso"));
         curso.setPeriodo(resultado.getInt("periodo"));
         curso.setCursoAtivo(resultado.getBoolean("cursoAtivo"));
         
         ModalidadeCurso modalidadeCurso = new ModalidadeCurso();
-        modalidadeCurso.setModalidadeID(resultado.getInt("modalidadeCurso"));
+        modalidadeCurso.setModalidadeID(resultado.getInt("idModalidade"));
         modalidadeCurso.setNivel(resultado.getString("modalidadeCurso"));
         modalidadeCurso.setNome(resultado.getString("nomeModalidade"));
                 
@@ -81,7 +81,7 @@ public class AlunoDAO extends GeralDAO {
         turno.setNome(resultado.getString("nomeTurno"));
               
         Coordenador coordenador = new Coordenador();
-                 
+                         
         Turma turma = new Turma();
         turma.setCodigo(resultado.getInt("codigoTurma"));
         
