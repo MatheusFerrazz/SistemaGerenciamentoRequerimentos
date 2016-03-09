@@ -18,6 +18,10 @@ public class Turno {
         this.nome = nome;
     }
 
+    public Turno() {
+       
+    }
+
     /**
      * @return the id
      */
