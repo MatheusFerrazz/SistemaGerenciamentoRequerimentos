@@ -27,5 +27,8 @@ public class TestandoGit {
         //Testantdo 
     }
     
-     
+    public void igual()
+    {
+        
+    }
 }
