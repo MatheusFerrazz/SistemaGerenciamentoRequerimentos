@@ -33,7 +33,7 @@ public class Campus {
     }
 
     public Campus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     /**
