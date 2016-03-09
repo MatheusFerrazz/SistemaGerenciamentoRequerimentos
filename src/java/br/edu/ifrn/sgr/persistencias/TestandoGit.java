@@ -14,6 +14,9 @@ public class TestandoGit {
     //KCTTTTT alterei carlos
     //Carlos escreveu Testando 02
     //Carlos escreveu Testando 01 carlos
+    public void metodoCarlos(){
+        System.out.println("toma");
+    }
     
     
      
