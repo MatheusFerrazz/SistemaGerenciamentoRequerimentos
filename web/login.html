@@ -9,14 +9,51 @@ and open the template in the editor.
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-       <div>Login</div>
-        <form action="index.jsp" method="post">
-            Nome: <input type="text" name="nome"/>
-            Matrícula <input type="text" name="matricula"/>
-            <input type="submit" value="Cadastrar"/>
+        
+        <form action="index.jsp" method="post" class="form-horizontal">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Informe sua matrícula e senha</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Nome</label>  
+                  <div class="col-md-4">
+                  <input id="nome" name="nome" type="text" placeholder="Nome" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Matrícula</label>  
+                  <div class="col-md-4">    
+                  <input id="matricula" name="matricula" type="text" placeholder="Matrícula" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="singlebutton"></label>
+                  <div class="col-md-4">
+                        <button value="cadastrar" type="submit" class="btn btn-primary">Cadastrar</button>
+                  </div>
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="singlebutton"></label>
+                  <div class="col-md-4">
+                        <a href="listar.jsp" class="btn btn-primary">Listar</a>  
+                  </div>                  
+                </div>
+                    
+            </fieldset>
         </form>
-       <a href="listar.jsp">Listar</a>
     </body>
 </html>
