@@ -15,7 +15,7 @@ public class Coordenador extends Pessoa {
     private Permissao permissao;
 
     public Coordenador(Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
-        super(matricula, nome, email, telefone, celular, dataNascimento, senha);
+        super(matricula, nome, email, telefone, celular, dataNascimento);
         this.permissao = permissao;
     }
 

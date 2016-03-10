@@ -17,17 +17,15 @@ public abstract class Pessoa {
     private String email;
     private String telefone;
     private String celular;
-    private Date dataNascimento;
-    private String senha;
+    private Date dataNascimento;    
 
-    public Pessoa(String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
+    public Pessoa(String matricula, String nome, String email, String telefone, String celular, Date dataNascimento) {
         this.matricula = matricula;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.celular = celular;
-        this.dataNascimento = dataNascimento;
-        this.senha = senha;
+        this.dataNascimento = dataNascimento;       
     }
 
     public Pessoa() {
@@ -116,20 +114,6 @@ public abstract class Pessoa {
      */
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    /**
-     * @return the senha
-     */
-    public String getSenha() {
-        return senha;
-    }
-
-    /**
-     * @param senha the senha to set
-     */
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
       
 }

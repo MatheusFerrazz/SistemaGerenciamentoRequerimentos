@@ -49,5 +49,11 @@ public class TipoRequerimento {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "TipoRequerimento{" + "id=" + id + ", nome=" + nome + '}';
+    }
+    
     
 }

@@ -14,8 +14,8 @@ import java.util.Date;
 public class TecnicoAdministrativo extends Pessoa {
     private Permissao permissao;
 
-    public TecnicoAdministrativo(Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
-        super(matricula, nome, email, telefone, celular, dataNascimento, senha);
+    public TecnicoAdministrativo(Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento) {
+        super(matricula, nome, email, telefone, celular, dataNascimento);
         this.permissao = permissao;
     }
 

@@ -13,6 +13,7 @@ import br.edu.ifrn.sgr.modelos.Disciplina;
 import br.edu.ifrn.sgr.modelos.Ifrn;
 import br.edu.ifrn.sgr.modelos.ModalidadeCurso;
 import br.edu.ifrn.sgr.modelos.Permissao;
+import br.edu.ifrn.sgr.modelos.Professor;
 import br.edu.ifrn.sgr.modelos.Turma;
 import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import br.edu.ifrn.sgr.persistencias.EnuConsultasAluno;
  */
 public class AlunoDAO extends GeralDAO {
 
+    private final GeralDAO geralDAO = new GeralDAO();
     private final String SELECT_ALUNO_BY_MATRICULA_SENHA = "select * from aluno "
                                               + "where matricula=? and senha=?;";
 
@@ -132,6 +134,7 @@ public class AlunoDAO extends GeralDAO {
        
         turno.setId(resultado.getInt("idTurno"));
         turno.setNome(resultado.getString("nomeTurno"));
+        
         //Encapuslando objetos
         campus.setDiretor(diretor);
         curso.setTurno(turno);
@@ -141,8 +144,21 @@ public class AlunoDAO extends GeralDAO {
         turma.setCurso(curso);
         aluno.setCurso(curso);
         aluno.setTurma(turma);
-        aluno.setPermissao(permissao);
-                
+        aluno.setPermissao(permissao);      
+        
+        //Preenchendo os array dos objetos
+        ResultSet consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), aluno.getCurso().getCursoID());
+        while(consulta.next())
+        {
+            curso.getDisciplinas().add(new Disciplina(consulta.getInt("dis_id"), curso, true, consulta.getString("dis_nome")));
+        }
+        
+        consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
+        while(consulta.next())
+        {
+            java.sql.Date dataNascimento = consulta.getDate("pes_data_nascimento");
+            curso.getProfessores().add(new Professor(new Permissao(consulta.getInt("per_id_FK"), consulta.getString("per_nome")), consulta.getString("pro_id_PK"), consulta.getString("pes_nome"), consulta.getString("pes_email"), consulta.getString("pes_telefone"), consulta.getString("pes_celular"), new java.util.Date(dataNascimento.getTime())));
+        }
         
         return aluno;
     }
