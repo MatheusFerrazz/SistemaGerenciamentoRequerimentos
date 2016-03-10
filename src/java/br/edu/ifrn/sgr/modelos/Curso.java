@@ -23,6 +23,8 @@ public class Curso {
     private boolean cursoAtivo;
     private ArrayList<Disciplina> disciplinas = new ArrayList<>();
     private ArrayList<Professor> professores = new ArrayList<>();
+    private ArrayList<Turno> turnos = new ArrayList<>();
+    private ArrayList<Turma> turmas = new ArrayList<>();
 
     public Curso(ModalidadeCurso modalidade, Campus campus, Turno turno, Coordenador coordenador, int cursoID, String nome, int periodo, int anos, boolean cursoAtivo) {
         this.modalidade = modalidade;
@@ -193,6 +195,35 @@ public class Curso {
     public void setProfessores(ArrayList<Professor> professores) {
         this.professores = professores;
     }
+
+    /**
+     * @return the turnos
+     */
+    public ArrayList<Turno> getTurnos() {
+        return turnos;
+    }
+
+    /**
+     * @param turnos the turnos to set
+     */
+    public void setTurnos(ArrayList<Turno> turnos) {
+        this.turnos = turnos;
+    }
+
+    /**
+     * @return the turmas
+     */
+    public ArrayList<Turma> getTurmas() {
+        return turmas;
+    }
+
+    /**
+     * @param turmas the turmas to set
+     */
+    public void setTurmas(ArrayList<Turma> turmas) {
+        this.turmas = turmas;
+    }
+    
     
     public void inserirProfessor(Professor professor)
     {
@@ -203,8 +234,15 @@ public class Curso {
     {
         disciplinas.add(disciplina);
     }
-
-
     
+    public void inserirTurma(Turma turma)
+    {
+        turmas.add(turma);
+    }
+    
+    public void inserirTurno(Turno turno)
+    {
+        turnos.add(turno);
+    }    
     
 }
