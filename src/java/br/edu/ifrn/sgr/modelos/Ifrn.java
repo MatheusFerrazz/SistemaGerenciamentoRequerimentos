@@ -18,6 +18,10 @@ public class Ifrn {
         this.razaoSocial = razaoSocial;
     }
 
+    public Ifrn() {
+        
+    }
+
     public String getRazaoSocial() {
         return razaoSocial;
     }
