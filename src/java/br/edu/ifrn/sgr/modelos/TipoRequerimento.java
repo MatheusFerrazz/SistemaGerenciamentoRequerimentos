@@ -18,6 +18,10 @@ public class TipoRequerimento {
         this.nome = nome;
     }
 
+    public TipoRequerimento() {
+   
+    }
+
     /**
      * @return the id
      */
