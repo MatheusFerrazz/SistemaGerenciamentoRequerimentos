@@ -33,7 +33,7 @@ public class AlunoDAO extends GeralDAO {
     public Aluno alunoByMatriculaSenha(String nome, String matricula) throws SQLException, ClassNotFoundException{
         ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),nome,matricula);
         if (resultado.next())
-            return popularAluno(resultado);
+            return popularAluno(resultado); 
         else
             return null;
     }
