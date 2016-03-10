@@ -76,13 +76,13 @@ public class AlunoDAO extends GeralDAO {
         
         
         
-        campus.setCampusID(resultado.getInt("idCampus"));
-        campus.setNome(resultado.getString("nomeCampus"));
-        campus.setEndereco(resultado.getString("campusEndereco"));
-        campus.setBairro(resultado.getString("campusBairro"));
-        campus.setEstado(resultado.getString("campusEstado"));
-        campus.setCep(resultado.getString("campusCep"));
-        campus.setTelefone(resultado.getString("campusTelefone"));
+        campus.setCampusID(resultado.getInt("cam_id"));
+        campus.setNome(resultado.getString("cam_nome"));
+        campus.setEndereco(resultado.getString("cam_endereco"));
+        campus.setBairro(resultado.getString("cam-bairro"));
+        campus.setEstado(resultado.getString("cam-estado"));
+        campus.setCep(resultado.getString("cam-cep"));
+        campus.setTelefone(resultado.getString("cam-telefone"));
         
         
         coordenador.setNome(resultado.getString("nomeCoordenador"));
