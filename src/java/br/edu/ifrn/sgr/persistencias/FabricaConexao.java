@@ -18,7 +18,7 @@ public class FabricaConexao {
 
     public static Connection getConexao() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/SGR", "postgres", "r3d3s123");        
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/ifrn_requerimento", "postgres", "197352");        
     }
 
     public static void fecharConexao(Connection con) throws SQLException {

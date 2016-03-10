@@ -33,7 +33,7 @@ public class GeralDAO {
             comando.setObject(i, parametros[i-1]);
         }
         ResultSet resultado = comando.executeQuery();
-        //FabricaConexao.fecharConexao(con);
+        FabricaConexao.fecharConexao(con);
         return resultado;
     }    
 }

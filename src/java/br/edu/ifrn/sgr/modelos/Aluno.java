@@ -16,6 +16,7 @@ public class Aluno extends Pessoa{
   private Turma turma;
   private Permissao permissao;
 
+
     public Aluno(Curso curso, Turma turma, Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
         super(matricula, nome, email, telefone, celular, dataNascimento, senha);
         this.curso = curso;

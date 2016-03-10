@@ -46,5 +46,4 @@ public class TipoRequerimento {
         this.nome = nome;
     }
     
-    
 }

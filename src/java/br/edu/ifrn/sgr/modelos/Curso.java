@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author CH
+* @author CH
  */
 public class Curso {
     private ModalidadeCurso modalidade;
@@ -21,7 +21,8 @@ public class Curso {
     private int periodo;
     private int anos;
     private boolean cursoAtivo;
-    private ArrayList<Disciplina> disciplinas;
+    private ArrayList<Disciplina> disciplinas = new ArrayList<>();
+    private ArrayList<Professor> professores = new ArrayList<>();
 
     public Curso(ModalidadeCurso modalidade, Campus campus, Turno turno, Coordenador coordenador, int cursoID, String nome, int periodo, int anos, boolean cursoAtivo) {
         this.modalidade = modalidade;
@@ -178,6 +179,32 @@ public class Curso {
     public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
+    
+    /**
+     * @return the professores
+     */
+    public ArrayList<Professor> getProfessores() {
+        return professores;
+    }
+
+    /**
+     * @param professores the professores to set
+     */
+    public void setProfessores(ArrayList<Professor> professores) {
+        this.professores = professores;
+    }
+    
+    public void inserirProfessor(Professor professor)
+    {
+        professores.add(professor);
+    }
+    
+    public void inserirDisciplina(Disciplina disciplina)
+    {
+        disciplinas.add(disciplina);
+    }
+
+
     
     
 }
