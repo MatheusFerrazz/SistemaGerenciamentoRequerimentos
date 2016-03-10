@@ -65,12 +65,12 @@ public class AlunoDAO extends GeralDAO {
         
         
         
-        aluno.setNome(resultado.getString("nomeAluno"));
-        aluno.setMatricula(resultado.getString("matriculaAluno"));
-        aluno.setEmail(resultado.getString("emailAluno"));
-        aluno.setTelefone(resultado.getString("telefonealuno"));
-        aluno.setCelular(resultado.getString("celularAluno"));
-        java.sql.Date dataAlunoSQL = resultado.getDate("datanascimentoAluno");
+        aluno.setNome(resultado.getString("pes_nome"));
+        aluno.setMatricula(resultado.getString("pes_matricula"));
+        aluno.setEmail(resultado.getString("pes_email"));
+        aluno.setTelefone(resultado.getString("pes_telefone"));
+        aluno.setCelular(resultado.getString("pes_celular"));
+        java.sql.Date dataAlunoSQL = resultado.getDate("pes_data_nascimento");
         java.util.Date data = new java.util.Date(dataAlunoSQL.getTime());
         aluno.setDataNascimento(data);
         
