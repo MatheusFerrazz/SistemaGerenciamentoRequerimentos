@@ -18,6 +18,10 @@ public class TipoAtividade {
         this.nome = nome;
     }
 
+    public TipoAtividade() {
+       
+    }
+
     /**
      * @return the id
      */
