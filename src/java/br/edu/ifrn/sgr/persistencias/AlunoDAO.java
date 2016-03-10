@@ -17,6 +17,7 @@ import br.edu.ifrn.sgr.modelos.Turma;
 import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import br.edu.ifrn.sgr.persistencias.EnuConsultasAluno;
 /**
  *
  * @author João
@@ -29,7 +30,7 @@ public class AlunoDAO extends GeralDAO {
     private final String SELECT_ALUNOS = "select * from aluno;";
     
     public Aluno getAlunoByMatriculaSenha(String matricula, String senha) throws SQLException, ClassNotFoundException{
-        ResultSet resultado = executarConsulta(SELECT_ALUNO_BY_MATRICULA_SENHA,matricula,senha);
+        ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),matricula,senha);
         if (resultado.next())
             return popularAluno(resultado);
         else
