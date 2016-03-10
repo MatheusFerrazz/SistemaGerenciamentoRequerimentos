@@ -32,6 +32,10 @@ public class Campus {
         this.cep = cep;
     }
 
+    public Campus() {
+        
+    }
+
     /**
      * @return the campusID
      */
