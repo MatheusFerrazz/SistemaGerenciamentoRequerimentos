@@ -13,6 +13,11 @@ import br.edu.ifrn.sgr.modelos.Disciplina;
 import br.edu.ifrn.sgr.modelos.Ifrn;
 import br.edu.ifrn.sgr.modelos.ModalidadeCurso;
 import br.edu.ifrn.sgr.modelos.Permissao;
+import br.edu.ifrn.sgr.modelos.Professor;
+import br.edu.ifrn.sgr.modelos.TecnicoAdministrativo;
+import br.edu.ifrn.sgr.modelos.TipoAtividade;
+import br.edu.ifrn.sgr.modelos.TipoDocumento;
+import br.edu.ifrn.sgr.modelos.TipoRequerimento;
 import br.edu.ifrn.sgr.modelos.Turma;
 import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.ResultSet;
@@ -21,7 +26,7 @@ import java.sql.SQLException;
  *
  * @author João
  */
-public class AlunoDAO extends GeralDAO {
+public class RequerimentoDAO extends GeralDAO {
 
     private final String SELECT_ALUNO_BY_MATRICULA_SENHA = "select * from aluno "
                                               + "where matricula=? and senha=?;";
@@ -57,6 +62,9 @@ public class AlunoDAO extends GeralDAO {
         Ifrn ifrn = new Ifrn();
         ModalidadeCurso modalidadeCurso = new ModalidadeCurso();
         Permissao permissao = new Permissao();
+        Professor professor = new Professor();
+        TecnicoAdministrativo tecAdministrativo = new TecnicoAdministrativo();
+        TipoAtividade tipoAtividade = new TipoAtividade();
         Turma turma = new Turma();
         Turno turno = new Turno();
         
@@ -125,9 +133,42 @@ public class AlunoDAO extends GeralDAO {
        
         permissao.setPermissaoID(resultado.getInt("idPermissao"));
         permissao.setNome(resultado.getString("nomePermissao"));
-         
-        turma.setCodigo(resultado.getInt("codigoTurma"));
+               
+       
+        professor.setNome(resultado.getString("nomeProfessor"));
+        professor.setMatricula(resultado.getString("matriculaProfessor"));
+        professor.setEmail(resultado.getString("emailProfessor"));
+        professor.setTelefone(resultado.getString("telefoneProfessor"));
+        professor.setCelular(resultado.getString("celularProfessor"));
+        java.sql.Date dataProfessorSQL = resultado.getDate("datanascimentoProfessor");
+        java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
+        professor.setDataNascimento(dataDiretor);
         
+        
+        tecAdministrativo.setNome(resultado.getString("nomeTecAdministrativo"));
+        tecAdministrativo.setMatricula(resultado.getString("matriculaTecAdministrativo"));
+        tecAdministrativo.setEmail(resultado.getString("emailTecAdministrativo"));
+        tecAdministrativo.setTelefone(resultado.getString("telefoneTecAdministrativo"));
+        tecAdministrativo.setCelular(resultado.getString("celularTecAdministrativo"));
+        java.sql.Date dataTecAdministrativoSQL = resultado.getDate("datanascimentoTecAdministrativo");
+        java.util.Date dataTecAdministrativo = new java.util.Date(dataTecAdministrativoSQL.getTime());
+        tecAdministrativo.setDataNascimento(dataTecAdministrativo);
+               
+        
+        tipoAtividade.setId(resultado.getInt("idTipoAtividade"));
+        tipoAtividade.setNome(resultado.getString("nomeTipoAtividade"));
+        
+        TipoDocumento tipoDocumento = new TipoDocumento();
+        tipoDocumento.setId(resultado.getInt("idTipoDocumento"));
+        tipoDocumento.setNome(resultado.getString("nomeTipoDocumento"));
+        
+        TipoRequerimento tipoRequerimento = new TipoRequerimento();
+        tipoRequerimento.setId(resultado.getInt("idTipoRequerimento"));
+        tipoRequerimento.setNome(resultado.getString("nomeTipoRequerimento"));
+               
+        
+        turma.setCodigo(resultado.getInt("codigoTurma"));
+               
        
         turno.setId(resultado.getInt("idTurno"));
         turno.setNome(resultado.getString("nomeTurno"));
@@ -136,12 +177,9 @@ public class AlunoDAO extends GeralDAO {
         curso.setTurno(turno);
         curso.setCampus(campus);
         curso.setModalidade(modalidadeCurso);
-        curso.setCoordenador(coordenador);
-        turma.setCurso(curso);
-        aluno.setCurso(curso);
-        aluno.setTurma(turma);
-        aluno.setPermissao(permissao);
-                
+        
+        
+                                         
         
         return aluno;
     }
