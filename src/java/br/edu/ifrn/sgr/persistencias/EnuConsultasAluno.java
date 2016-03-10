@@ -68,7 +68,8 @@ public enum EnuConsultasAluno
         */        
         SELECT_TURMAS_POSSIVEIS_MUDANCA("SELECT turma.* FROM turma"
                 +" JOIN curso ON curso.cur_id=turma.\"cur_id_FK\""
-                +" WHERE turma.trm_codigo!=6 AND turma.\"cur_id_FK\"=1 AND curso.cur_ativo=true;");                   
+                +" WHERE turma.trm_codigo!=6 AND turma.\"cur_id_FK\"=? AND curso.cur_ativo=true;");
+                
     
         private String consulta; 
         private EnuConsultasAluno(String consulta) { 
