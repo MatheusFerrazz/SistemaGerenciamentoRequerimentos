@@ -48,7 +48,7 @@ public class AlunoDAO extends GeralDAO {
 //        return alunos;
 //    }
     
-    public Aluno popularAluno(ResultSet resultado) throws SQLException{
+    public Aluno popularAluno(ResultSet resultado) throws SQLException, ClassNotFoundException{
         
         
         Aluno aluno = new Aluno();
