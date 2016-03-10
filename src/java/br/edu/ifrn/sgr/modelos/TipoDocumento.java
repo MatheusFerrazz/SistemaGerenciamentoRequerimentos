@@ -18,6 +18,10 @@ public class TipoDocumento {
         this.nome = nome;
     }
 
+    public TipoDocumento() {
+     
+    }
+
     /**
      * @return the id
      */
