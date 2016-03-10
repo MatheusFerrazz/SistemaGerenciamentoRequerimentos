@@ -17,6 +17,10 @@ public class Permissao {
         this.permissaoID = permissaoID;
         this.nome = nome;
     }
+
+    public Permissao() {
+        
+    }
     
     /**
      * @return the permissaoID
