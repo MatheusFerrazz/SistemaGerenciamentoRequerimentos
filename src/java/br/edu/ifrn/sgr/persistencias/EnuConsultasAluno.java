@@ -34,7 +34,7 @@ public enum EnuConsultasAluno
                 " JOIN professor ON professor.\"pro_id_PK\"=relacao_disciplina_professor.\"pro_id_FK\""+
                 " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=professor.\"pro_id_PK\""+
                 " JOIN permissao ON professor.\"per_id_FK\"=permissao.per_id"+
-                " WHERE disciplina.\"cur_id_FK\"=?"+
+                " WHERE disciplina.\"cur_id_FK\"=? AND relacao_disciplina_professor.relacao_ativa=true"+
                 " ORDER BY pessoa.pes_nome;"),
 
         /*Seleciona todas as disciplinas ativas do curso, basta passar o id do curso*/
@@ -45,7 +45,7 @@ public enum EnuConsultasAluno
                 " JOIN relacao_disciplina_professor ON disciplina.dis_id=relacao_disciplina_professor.\"dis_id_FK\""+
                 " JOIN professor ON relacao_disciplina_professor.\"pro_id_FK\" = professor.\"pro_id_PK\""+
                 " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=professor.\"pro_id_PK\""+
-                " WHERE disciplina.dis_id=? AND disciplina.\"cur_id_FK\"=? AND disciplina.dis_ativo=true"+
+                " WHERE disciplina.dis_id=? AND disciplina.\"cur_id_FK\"=? AND disciplina.dis_ativo=true AND relacao_disciplina_professor.relacao_ativa=true"+
                 " ORDER BY pessoa.pes_nome;"),
 
         /*Seleciona cursos da mesma modalidade do atual para tranferência e também o campus do curso, basta passar o ID da modalidade
