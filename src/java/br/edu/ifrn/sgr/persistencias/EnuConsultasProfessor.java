@@ -9,6 +9,23 @@ package br.edu.ifrn.sgr.persistencias;
  *
  * @author Luan Medeiros
  */
-public enum EnuConsultasProfessor {
+public enum EnuConsultasProfessor  //Feito por Luan - Funcionando
+{       
+//Seleciona todas as informações do diretor, basta passar o ID do diretor.
+SELECT_INFORMAÇÕES_PROFESSOR("SELECT pessoa.*, professor.*, permissao.* FROM professor"
+        + " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=professor.\"pro_id_PK\""
+        + " JOIN permissao ON permissao.per_id=professor.\"per_id_FK\""
+        + " WHERE professor.\"pro_id_PK\"=?;");
+
+        private String consulta; 
+        private  EnuConsultasProfessor(String consulta) { 
+            this.consulta = consulta; 
+        } 
+        
+        @Override 
+        public String toString(){ 
+            return consulta; 
+        } 
+                
     
 }
