@@ -13,35 +13,22 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"
       prefix="c" %>
 
-<%--<jsp:useBean id="aluno" class="br.edu.ifrn.sgr.modelos.Aluno" scope="request"/>
+<jsp:useBean id="aluno" class="br.edu.ifrn.sgr.modelos.Aluno" scope="request"/>
 <jsp:useBean id="dao" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
 <jsp:setProperty name="aluno" property="*"></jsp:setProperty>
-<jsp:setProperty name="dao" property="*"></jsp:setProperty>--%>
-
-<%--
-   
-    String up = "Linhas alteradas"+ Integer.toString(dao.inserir(aluno));
-    <c:out value="${aluno.nome} Usuário já cadastrado!"/>
-    
---%>
-
-<%--<c:if test="${dao.obterAluno(aluno.matricula)== null}">
-    <c:out value="${dao.inserir(aluno)}"/>
-</c:if>
-<c:if test="${!dao.obterAluno(aluno.matricula)== null}">
-    <c:out value="${aluno.nome}"/>
-</c:if>--%>
+<jsp:setProperty name="dao" property="*"></jsp:setProperty>
 
 <c:choose>
-    <c:when test="${dao.alunoByMatriculaSenha(aluno.nome, aluno.matricula   )= null}">
-        <p><c:out value="Nome: ${aluno.nome}"/></p>
-        <p><c:out value="Matricula: ${aluno.matricula}"/></p>
-
+    <c:when test="${dao.alunoByMatriculaSenha(aluno.nome, aluno.matricula)== null}">
+      <p><c:out value="Não existe esse aluno!"/></p>
     </c:when>
+    <c:otherwise> 
+        <p><c:out value="${aluno.nome}"/></p>
+        <p><c:out value="${aluno.matricula}"/></p>
+    </c:otherwise>
 </c:choose>
 
 
-      
 
 
 <%--
@@ -49,14 +36,19 @@
      * utilizando Beans, linguagem de expressão e
      * JSTL. 
      */
-    Aluno aluno = new Aluno();
-    
+    String nome = request.getParameter("nome");
+    String matricula = request.getParameter("matricula");
     AlunoDAO dao = new AlunoDAO();
+    
+    Aluno aluno = new Aluno();   
 
-    if (dao.alunoByMatriculaSenha("Luan Medeiros Macena","20142148000001") == null) { 
+    if (dao.alunoByMatriculaSenha(nome, matricula) == null) { 
         out.println ("Aluno não Existe!"); 
     } else {
          out.print(aluno.getNome());
          out.print(aluno.getMatricula());
+         out.print(aluno.getCurso());
+         out.print(aluno.getTurma());
+         
     }
 --%>
