@@ -34,7 +34,7 @@ public class teste { //Classe para testar métodos
         ResultSet consulta = null;
         GeralDAO geralDAO = new GeralDAO();
         try {
-            consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), 2);
+            consulta = geralDAO.executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), 2);
         } catch (SQLException ex) {
             Logger.getLogger(teste.class.getName()).log(Level.SEVERE, null, ex);
         }
