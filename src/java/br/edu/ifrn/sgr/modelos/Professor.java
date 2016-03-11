@@ -14,7 +14,7 @@ import java.util.Date;
 public class Professor extends Pessoa{
     private Permissao permissao;
 
-    public Professor(Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
+    public Professor(Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento) {
         super(matricula, nome, email, telefone, celular, dataNascimento);
         this.permissao = permissao;
     }
