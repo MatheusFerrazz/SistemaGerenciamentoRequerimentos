@@ -111,17 +111,7 @@ public class AlunoDAO extends GeralDAO {
         java.sql.Date dataDiretorSQL = consultaDiretor.getDate("pes_data_nascimento");
         java.util.Date dataDiretor = new java.util.Date(dataDiretorSQL.getTime());
         diretor.setDataNascimento(dataDiretor);
-        
-        
-       /* disciplina.setId(resultado.getInt("idDisciplina"));
-        disciplina.setNome(resultado.getString("nomeDisciplina"));
-        disciplina.setAtiva(resultado.getBoolean("disciplinaAtiva"));*/
-        
-        
-        /*   NÃO SERÁ NECESSÁRIO.
-        ifrn.setIfrnID(resultado.getInt("idIfrn"));
-        ifrn.setRazaoSocial(resultado.getString("ifrnRazaoSocial"));*/
-        
+                      
        
         modalidadeCurso.setModalidadeID(resultado.getInt("mod_cur_id"));
         modalidadeCurso.setNivel(resultado.getString("mod_cur_nivel"));
@@ -148,9 +138,7 @@ public class AlunoDAO extends GeralDAO {
         aluno.setTurma(turma);
         aluno.setPermissao(permissao);      
         
-        //Preenchendo os array dos objetos
-        ResultSet consulta;
-        GeralDAO geralDAO = new GeralDAO();
+
         
         //Inserindo todas as disciplinas no curso.
         ResultSet consultaDisciplinas = executarConsulta(EnuConsultasCurso.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), resultado.getString("cur_id_FK"));
@@ -184,7 +172,6 @@ public class AlunoDAO extends GeralDAO {
             }            
         }
 
-        
         return aluno;
     }
 }
