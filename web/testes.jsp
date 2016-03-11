@@ -33,7 +33,7 @@
 </c:if>--%>
 
 <c:choose>
-    <c:when test="${dao.alunoByMatriculaSenha(aluno.nome, aluno.matricula)= null}">
+    <c:when test="${dao.alunoByMatriculaSenha(aluno.nome, aluno.matricula   )= null}">
         <p><c:out value="Nome: ${aluno.nome}"/></p>
         <p><c:out value="Matricula: ${aluno.matricula}"/></p>
 
