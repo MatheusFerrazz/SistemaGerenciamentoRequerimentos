@@ -5,13 +5,14 @@
  */
 package br.edu.ifrn.sgr.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author CH
  */
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa implements Serializable{
   private Curso curso;
   private Turma turma;
   private Permissao permissao;

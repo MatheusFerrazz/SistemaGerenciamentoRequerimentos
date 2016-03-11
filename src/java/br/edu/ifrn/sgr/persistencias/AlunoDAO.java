@@ -13,7 +13,6 @@ import br.edu.ifrn.sgr.modelos.Disciplina;
 import br.edu.ifrn.sgr.modelos.Ifrn;
 import br.edu.ifrn.sgr.modelos.ModalidadeCurso;
 import br.edu.ifrn.sgr.modelos.Permissao;
-import br.edu.ifrn.sgr.modelos.Professor;
 import br.edu.ifrn.sgr.modelos.Turma;
 import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.ResultSet;
@@ -32,10 +31,10 @@ public class AlunoDAO extends GeralDAO {
 
     private final String SELECT_ALUNOS = "select * from aluno;";
     
-    public Aluno getAlunoByMatriculaSenha(String matricula, String senha) throws SQLException, ClassNotFoundException{
-        ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),matricula,senha);
+    public Aluno alunoByMatriculaSenha(String nome, String matricula) throws SQLException, ClassNotFoundException{
+        ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),nome,matricula);
         if (resultado.next())
-            return popularAluno(resultado);
+            return popularAluno(resultado); 
         else
             return null;
     }
@@ -49,7 +48,7 @@ public class AlunoDAO extends GeralDAO {
 //        return alunos;
 //    }
     
-    public Aluno popularAluno(ResultSet resultado) throws SQLException{
+    public Aluno popularAluno(ResultSet resultado) throws SQLException, ClassNotFoundException{
         
         
         Aluno aluno = new Aluno();
@@ -66,24 +65,24 @@ public class AlunoDAO extends GeralDAO {
         
         
         
-        aluno.setNome(resultado.getString("nomeAluno"));
-        aluno.setMatricula(resultado.getString("matriculaAluno"));
-        aluno.setEmail(resultado.getString("emailAluno"));
-        aluno.setTelefone(resultado.getString("telefonealuno"));
-        aluno.setCelular(resultado.getString("celularAluno"));
-        java.sql.Date dataAlunoSQL = resultado.getDate("datanascimentoAluno");
+        aluno.setNome(resultado.getString("pes_nome"));
+        aluno.setMatricula(resultado.getString("pes_matricula"));
+        aluno.setEmail(resultado.getString("pes_email"));
+        aluno.setTelefone(resultado.getString("pes_telefone"));
+        aluno.setCelular(resultado.getString("pes_celular"));
+        java.sql.Date dataAlunoSQL = resultado.getDate("pes_data_nascimento");
         java.util.Date data = new java.util.Date(dataAlunoSQL.getTime());
         aluno.setDataNascimento(data);
         
         
         
-        campus.setCampusID(resultado.getInt("idCampus"));
-        campus.setNome(resultado.getString("nomeCampus"));
-        campus.setEndereco(resultado.getString("campusEndereco"));
-        campus.setBairro(resultado.getString("campusBairro"));
-        campus.setEstado(resultado.getString("campusEstado"));
-        campus.setCep(resultado.getString("campusCep"));
-        campus.setTelefone(resultado.getString("campusTelefone"));
+        campus.setCampusID(resultado.getInt("cam_id"));
+        campus.setNome(resultado.getString("cam_nome"));
+        campus.setEndereco(resultado.getString("cam_endereco"));
+        campus.setBairro(resultado.getString("cam_bairro"));
+        campus.setEstado(resultado.getString("cam_estado"));
+        campus.setCep(resultado.getString("cam_cep"));
+        campus.setTelefone(resultado.getString("cam_telefone"));
         
         
         coordenador.setNome(resultado.getString("nomeCoordenador"));
