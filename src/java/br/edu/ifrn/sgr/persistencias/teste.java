@@ -33,14 +33,20 @@ public class teste { //Classe para testar métodos
         
         ResultSet consulta = null;
         GeralDAO geralDAO = new GeralDAO();
+        AlunoDAO alunoDAO = new AlunoDAO();
+        Aluno alu = null;
         try {
-            consulta = geralDAO.executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), 2);
+            consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(), "20142148000001");
+            alu = alunoDAO.popularAluno(consulta);
         } catch (SQLException ex) {
             Logger.getLogger(teste.class.getName()).log(Level.SEVERE, null, ex);
         }
-        while(consulta.next())
-        {
-            System.out.println(consulta.getString("pes_nome"));
-        }
+
+            //System.out.println(consulta.getString("pes_nome"));
+            for(Disciplina disci : alu.getCurso().getDisciplinas())
+            {
+                System.out.println("DICIPLINA: "+disci.getNome());
+            }
+       
     }
 }
