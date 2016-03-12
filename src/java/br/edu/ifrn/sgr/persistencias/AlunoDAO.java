@@ -164,23 +164,18 @@ public class AlunoDAO extends GeralDAO {
         
         //ESSE QUE ESTÀ COMENTADO ESTÀ DANDO ERRO NA LINHA 180 - TENTANDO CORRIGIR
         //Inserindo os professores das disciplinas em cada disciplina
-       /* for(Disciplina disci : curso.getDisciplinas())
+        for(Disciplina disci : curso.getDisciplinas())
         {
             ResultSet consultaProfessoresDisciplina = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DA_DISCIPLINA.toString(), disci.getId(), disci.getCurso().getCursoID());
             while(consultaProfessoresDisciplina.next())
-            {
-                ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
-                Permissao novaPermissao = null;
+            {                
+                Permissao novaPermissao = new Permissao();
                 java.sql.Date dataProfessorSQL = consultaProfessoresDisciplina.getDate("pes_data_nascimento");
-                java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
-                while(consultaPermissao.next())
-                {
-                    novaPermissao = new Permissao(consultaPermissao.getInt("per_id"),consultaPermissao.getString("per_nome"));
-                }
-                disci.getProfessores().add(new Professor(novaPermissao, consultaProfessoresDisciplina.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
-                
+                java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());               
+                novaPermissao = new Permissao(consultaProfessoresDisciplina.getInt("per_id"), consultaProfessoresDisciplina.getString("per_nome"));                
+                disci.getProfessores().add(new Professor(novaPermissao, consultaProfessoresDisciplina.getString("pro_id_PK"),consultaProfessoresDisciplina.getString("pes_nome"),consultaProfessoresDisciplina.getString("pes_email"),consultaProfessoresDisciplina.getString("pes_telefone"),consultaProfessoresDisciplina.getString("pes_celular"),dataProfessor));                
             }            
-        } */
+        } 
 
         return aluno;
     }

@@ -36,6 +36,12 @@ public class Professor extends Pessoa{
         this.permissao = permissao;
     }
 
+    @Override
+    public String toString() {
+        return "Professor: " + this.getNome() + " - ";
+    }
+
+    
     
         
 }

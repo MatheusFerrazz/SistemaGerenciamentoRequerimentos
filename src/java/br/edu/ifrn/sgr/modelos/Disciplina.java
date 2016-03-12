@@ -16,7 +16,7 @@ public class Disciplina {
     private Curso curso;
     private boolean ativa;
     private String nome;
-    private ArrayList<Professor> professores;
+    private ArrayList<Professor> professores = new ArrayList<>();
 
     public Disciplina(int id, Curso curso, boolean ativa, String nome) {
         this.id = id;

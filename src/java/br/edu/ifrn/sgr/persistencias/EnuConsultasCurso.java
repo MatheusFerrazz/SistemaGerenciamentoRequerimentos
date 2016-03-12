@@ -26,10 +26,11 @@ public enum EnuConsultasCurso
         SELECT_TODAS_DISCIPLINAS_CURSO("SELECT DISTINCT disciplina.* FROM disciplina WHERE disciplina.\"cur_id_FK\"=? AND disciplina.dis_ativo=true ORDER BY disciplina.dis_nome;"),
         
         /*Seleciona todos os professores de uma disciplina expecífica, basta passar o ID da disciplina e o ID do curso */
-        SELECT_TODOS_PROFESSORES_DA_DISCIPLINA("SELECT DISTINCT professor.*, pessoa.* FROM disciplina"+                 
+        SELECT_TODOS_PROFESSORES_DA_DISCIPLINA("SELECT DISTINCT professor.*, pessoa.*, permissao.* FROM disciplina"+                 
                 " JOIN relacao_disciplina_professor ON disciplina.dis_id=relacao_disciplina_professor.\"dis_id_FK\""+
                 " JOIN professor ON relacao_disciplina_professor.\"pro_id_FK\" = professor.\"pro_id_PK\""+
                 " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=professor.\"pro_id_PK\""+
+                " JOIN permissao ON professor.\"per_id_FK\"=permissao.per_id"+
                 " WHERE disciplina.dis_id=? AND disciplina.\"cur_id_FK\"=? AND disciplina.dis_ativo=true AND relacao_disciplina_professor.relacao_ativa=true"+
                 " ORDER BY pessoa.pes_nome;"),
 
