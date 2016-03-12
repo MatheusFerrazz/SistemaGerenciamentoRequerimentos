@@ -65,9 +65,9 @@ public class AlunoDAO extends GeralDAO {
         Turno turno = new Turno();
         
         
-        
+        while(resultado.next()){
         aluno.setNome(resultado.getString("pes_nome"));
-        aluno.setMatricula(resultado.getString("pes_matricula"));
+        aluno.setMatricula(resultado.getString("pes_matricula_PK"));
         aluno.setEmail(resultado.getString("pes_email"));
         aluno.setTelefone(resultado.getString("pes_telefone"));
         aluno.setCelular(resultado.getString("pes_celular"));
@@ -86,15 +86,17 @@ public class AlunoDAO extends GeralDAO {
         campus.setTelefone(resultado.getString("cam_telefone"));
         
         ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMAÇÕES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
-        coordenador.setNome(consultaCoordenador.getString("pes_nome"));
-        coordenador.setMatricula(consultaCoordenador.getString("pes_matricula"));
-        coordenador.setEmail(consultaCoordenador.getString("pes_email"));
-        coordenador.setTelefone(consultaCoordenador.getString("pes_telefone"));
-        coordenador.setCelular(consultaCoordenador.getString("pes_celular"));
-        java.sql.Date dataCoordenadorSQL = consultaCoordenador.getDate("pes_data_nascimento");
-        java.util.Date dataCoordenador = new java.util.Date(dataCoordenadorSQL.getTime());
-        coordenador.setDataNascimento(dataCoordenador);
-        
+        while(consultaCoordenador.next())
+        {
+            coordenador.setNome(consultaCoordenador.getString("pes_nome"));
+            coordenador.setMatricula(consultaCoordenador.getString("pes_matricula_PK"));
+            coordenador.setEmail(consultaCoordenador.getString("pes_email"));
+            coordenador.setTelefone(consultaCoordenador.getString("pes_telefone"));
+            coordenador.setCelular(consultaCoordenador.getString("pes_celular"));
+            java.sql.Date dataCoordenadorSQL = consultaCoordenador.getDate("pes_data_nascimento");
+            java.util.Date dataCoordenador = new java.util.Date(dataCoordenadorSQL.getTime());
+            coordenador.setDataNascimento(dataCoordenador);
+        }
       
         curso.setCursoID(resultado.getInt("cur_id"));
         curso.setAnos(resultado.getInt("cur_anos"));
@@ -103,15 +105,17 @@ public class AlunoDAO extends GeralDAO {
         curso.setCursoAtivo(resultado.getBoolean("cur_ativo"));
         
         ResultSet consultaDiretor = executarConsulta(EnuConsultasDiretor.SELECT_INFORMAÇÕES_DIRETOR.toString(), resultado.getString("dir_id_PK"));
-        diretor.setNome(consultaDiretor.getString("pes_nome"));
-        diretor.setMatricula(consultaDiretor.getString("pes_matricula"));
-        diretor.setEmail(consultaDiretor.getString("pes_email"));
-        diretor.setTelefone(consultaDiretor.getString("pes_telefone"));
-        diretor.setCelular(consultaDiretor.getString("pes_celular"));
-        java.sql.Date dataDiretorSQL = consultaDiretor.getDate("pes_data_nascimento");
-        java.util.Date dataDiretor = new java.util.Date(dataDiretorSQL.getTime());
-        diretor.setDataNascimento(dataDiretor);
-                      
+        while(consultaDiretor.next())
+        {        
+            diretor.setNome(consultaDiretor.getString("pes_nome"));
+            diretor.setMatricula(consultaDiretor.getString("pes_matricula_PK"));
+            diretor.setEmail(consultaDiretor.getString("pes_email"));
+            diretor.setTelefone(consultaDiretor.getString("pes_telefone"));
+            diretor.setCelular(consultaDiretor.getString("pes_celular"));
+            java.sql.Date dataDiretorSQL = consultaDiretor.getDate("pes_data_nascimento");
+            java.util.Date dataDiretor = new java.util.Date(dataDiretorSQL.getTime());
+            diretor.setDataNascimento(dataDiretor);
+        }               
        
         modalidadeCurso.setModalidadeID(resultado.getInt("mod_cur_id"));
         modalidadeCurso.setNivel(resultado.getString("mod_cur_nivel"));
@@ -126,7 +130,7 @@ public class AlunoDAO extends GeralDAO {
        
         turno.setId(resultado.getInt("trn_id"));
         turno.setNome(resultado.getString("trn_nome"));
-        
+        }
         //Encapuslando objetos
         campus.setDiretor(diretor);
         curso.setTurno(turno);
@@ -141,36 +145,42 @@ public class AlunoDAO extends GeralDAO {
 
         
         //Inserindo todas as disciplinas no curso.
-        ResultSet consultaDisciplinas = executarConsulta(EnuConsultasCurso.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), resultado.getString("cur_id_FK"));
+        ResultSet consultaDisciplinas = executarConsulta(EnuConsultasCurso.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), aluno.getCurso().getCursoID());
         while(consultaDisciplinas.next())
         {
             curso.getDisciplinas().add(new Disciplina(consultaDisciplinas.getInt("dis_id"), curso, consultaDisciplinas.getBoolean("dis_ativo"), consultaDisciplinas.getString("dis_nome")));
         }
 
         //Inserindo todos os professores do curso.
-        ResultSet consultaProfessores = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), resultado.getString("cur_id_FK"));
+        ResultSet consultaProfessores = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
         while(consultaDisciplinas.next())
         {
-            ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), resultado.getString("cur_id_FK"));
+            ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
             java.sql.Date dataProfessorSQL = consultaProfessores.getDate("pes_data_nascimento");
             java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
             Permissao novaPermissao = new Permissao(consultaPermissao.getInt("per_id"),consultaPermissao.getString("per_nome"));
             curso.getProfessores().add(new Professor(novaPermissao, consultaProfessores.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
         }
         
-        for(Disciplina disci : curso.getDisciplinas())
+        //ESSE QUE ESTÀ COMENTADO ESTÀ DANDO ERRO NA LINHA 180 - TENTANDO CORRIGIR
+        //Inserindo os professores das disciplinas em cada disciplina
+       /* for(Disciplina disci : curso.getDisciplinas())
         {
             ResultSet consultaProfessoresDisciplina = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DA_DISCIPLINA.toString(), disci.getId(), disci.getCurso().getCursoID());
             while(consultaProfessoresDisciplina.next())
             {
-                ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), resultado.getString("cur_id_FK"));
-                java.sql.Date dataProfessorSQL = consultaProfessores.getDate("pes_data_nascimento");
+                ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
+                Permissao novaPermissao = null;
+                java.sql.Date dataProfessorSQL = consultaProfessoresDisciplina.getDate("pes_data_nascimento");
                 java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
-                Permissao novaPermissao = new Permissao(consultaPermissao.getInt("per_id"),consultaPermissao.getString("per_nome"));
-                disci.getProfessores().add(new Professor(novaPermissao, consultaProfessores.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
+                while(consultaPermissao.next())
+                {
+                    novaPermissao = new Permissao(consultaPermissao.getInt("per_id"),consultaPermissao.getString("per_nome"));
+                }
+                disci.getProfessores().add(new Professor(novaPermissao, consultaProfessoresDisciplina.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
                 
             }            
-        }
+        } */
 
         return aluno;
     }
