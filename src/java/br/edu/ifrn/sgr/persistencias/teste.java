@@ -36,16 +36,16 @@ public class teste { //Classe para testar métodos
         AlunoDAO alunoDAO = new AlunoDAO();
         Aluno alu = null;
         try {
-            consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(), "20142148000005");
+            consulta = geralDAO.executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(), "20142148000007");
             alu = alunoDAO.popularAluno(consulta);
         } catch (SQLException ex) {
             Logger.getLogger(teste.class.getName()).log(Level.SEVERE, null, ex);
         }
 
             //System.out.println(consulta.getString("pes_nome"));
-            for(Disciplina disci : alu.getCurso().getDisciplinas())
+            for(Curso curso : alu.getCurso().getCursosTranferencia())
             {
-                System.out.println("DICIPLINA: "+disci.getNome()+" PROFESSORES: "+disci.getProfessores().toString());
+                System.out.println(curso.getNome()+" no "+curso.getCampus().getNome());
             }
        
     }

@@ -21,10 +21,11 @@ public class Curso {
     private int periodo;
     private int anos;
     private boolean cursoAtivo;
-    private ArrayList<Disciplina> disciplinas = new ArrayList<>();
+    private ArrayList<Disciplina> disciplinasTranferencia = new ArrayList<>();
     private ArrayList<Professor> professores = new ArrayList<>();
-    private ArrayList<Turno> turnos = new ArrayList<>();
-    private ArrayList<Turma> turmas = new ArrayList<>();
+    private ArrayList<Turno> turnosTranferencia = new ArrayList<>();
+    private ArrayList<Turma> turmasTranferencia = new ArrayList<>();
+    private ArrayList<Curso> cursosTranferencia = new ArrayList<>();
 
     public Curso(ModalidadeCurso modalidade, Campus campus, Turno turno, Coordenador coordenador, int cursoID, String nome, int periodo, int anos, boolean cursoAtivo) {
         this.modalidade = modalidade;
@@ -167,20 +168,6 @@ public class Curso {
     public void setCursoAtivo(boolean cursoAtivo) {
         this.cursoAtivo = cursoAtivo;
     }
-
-    /**
-     * @return the disciplinas
-     */
-    public ArrayList<Disciplina> getDisciplinas() {
-        return disciplinas;
-    }
-
-    /**
-     * @param disciplinas the disciplinas to set
-     */
-    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
-    }
     
     /**
      * @return the professores
@@ -197,52 +184,61 @@ public class Curso {
     }
 
     /**
-     * @return the turnos
+     * @return the disciplinasTranferencia
      */
-    public ArrayList<Turno> getTurnos() {
-        return turnos;
+    public ArrayList<Disciplina> getDisciplinasTranferencia() {
+        return disciplinasTranferencia;
     }
 
     /**
-     * @param turnos the turnos to set
+     * @param disciplinasTranferencia the disciplinasTranferencia to set
      */
-    public void setTurnos(ArrayList<Turno> turnos) {
-        this.turnos = turnos;
+    public void setDisciplinasTranferencia(ArrayList<Disciplina> disciplinasTranferencia) {
+        this.disciplinasTranferencia = disciplinasTranferencia;
     }
 
     /**
-     * @return the turmas
+     * @return the turnosTranferencia
      */
-    public ArrayList<Turma> getTurmas() {
-        return turmas;
+    public ArrayList<Turno> getTurnosTranferencia() {
+        return turnosTranferencia;
     }
 
     /**
-     * @param turmas the turmas to set
+     * @param turnosTranferencia the turnosTranferencia to set
      */
-    public void setTurmas(ArrayList<Turma> turmas) {
-        this.turmas = turmas;
+    public void setTurnosTranferencia(ArrayList<Turno> turnosTranferencia) {
+        this.turnosTranferencia = turnosTranferencia;
     }
-    
-    
-    public void inserirProfessor(Professor professor)
-    {
-        professores.add(professor);
+
+    /**
+     * @return the turmasTranferencia
+     */
+    public ArrayList<Turma> getTurmasTranferencia() {
+        return turmasTranferencia;
     }
-    
-    public void inserirDisciplina(Disciplina disciplina)
-    {
-        disciplinas.add(disciplina);
+
+    /**
+     * @param turmasTranferencia the turmasTranferencia to set
+     */
+    public void setTurmasTranferencia(ArrayList<Turma> turmasTranferencia) {
+        this.turmasTranferencia = turmasTranferencia;
     }
-    
-    public void inserirTurma(Turma turma)
-    {
-        turmas.add(turma);
+
+    /**
+     * @return the cursosTranferencia
+     */
+    public ArrayList<Curso> getCursosTranferencia() {
+        return cursosTranferencia;
     }
-    
-    public void inserirTurno(Turno turno)
-    {
-        turnos.add(turno);
-    }    
+
+    /**
+     * @param cursosTranferencia the cursosTranferencia to set
+     */
+    public void setCursosTranferencia(ArrayList<Curso> cursosTranferencia) {
+        this.cursosTranferencia = cursosTranferencia;
+    }
+
+
     
 }

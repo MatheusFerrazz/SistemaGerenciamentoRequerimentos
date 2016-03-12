@@ -148,7 +148,7 @@ public class AlunoDAO extends GeralDAO {
         ResultSet consultaDisciplinas = executarConsulta(EnuConsultasCurso.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), aluno.getCurso().getCursoID());
         while(consultaDisciplinas.next())
         {
-            curso.getDisciplinas().add(new Disciplina(consultaDisciplinas.getInt("dis_id"), curso, consultaDisciplinas.getBoolean("dis_ativo"), consultaDisciplinas.getString("dis_nome")));
+            curso.getDisciplinasTranferencia().add(new Disciplina(consultaDisciplinas.getInt("dis_id"), curso, consultaDisciplinas.getBoolean("dis_ativo"), consultaDisciplinas.getString("dis_nome")));
         }
 
         //Inserindo todos os professores do curso.
@@ -162,9 +162,9 @@ public class AlunoDAO extends GeralDAO {
             curso.getProfessores().add(new Professor(novaPermissao, consultaProfessores.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
         }
         
-        //ESSE QUE ESTÀ COMENTADO ESTÀ DANDO ERRO NA LINHA 180 - TENTANDO CORRIGIR
-        //Inserindo os professores das disciplinas em cada disciplina
-        for(Disciplina disci : curso.getDisciplinas())
+
+        //Inserindo os professores das disciplinas em cada disciplina. o array encontrade na clase curso.
+        for(Disciplina disci : curso.getDisciplinasTranferencia())
         {
             ResultSet consultaProfessoresDisciplina = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DA_DISCIPLINA.toString(), disci.getId(), disci.getCurso().getCursoID());
             while(consultaProfessoresDisciplina.next())
@@ -175,7 +175,40 @@ public class AlunoDAO extends GeralDAO {
                 novaPermissao = new Permissao(consultaProfessoresDisciplina.getInt("per_id"), consultaProfessoresDisciplina.getString("per_nome"));                
                 disci.getProfessores().add(new Professor(novaPermissao, consultaProfessoresDisciplina.getString("pro_id_PK"),consultaProfessoresDisciplina.getString("pes_nome"),consultaProfessoresDisciplina.getString("pes_email"),consultaProfessoresDisciplina.getString("pes_telefone"),consultaProfessoresDisciplina.getString("pes_celular"),dataProfessor));                
             }            
-        } 
+        }
+        
+        //Inserindo no arraylist de cursos possíveis para transferência, o array encontra-se na classe Aluno.
+        ResultSet consultaCursosTranferencia = executarConsulta(EnuConsultasCurso.SELECT_CURSOS_POSSIVEIS_TRANSFERÊNCIA.toString(), curso.getModalidade().getModalidadeID(), curso.getCursoID());
+        while(consultaCursosTranferencia.next())
+        {           
+            Campus campusCursoTransferencia = new Campus();            
+            Curso cursoTransferencia = new Curso();
+            
+            campusCursoTransferencia.setCampusID(consultaCursosTranferencia.getInt("cam_id_FK"));
+            campusCursoTransferencia.setNome("Campus "+consultaCursosTranferencia.getString("cam_nome"));
+            
+            cursoTransferencia.setCampus(campusCursoTransferencia);
+            cursoTransferencia.setNome(consultaCursosTranferencia.getString("cur_nome"));
+            cursoTransferencia.setCursoID(consultaCursosTranferencia.getInt("cur_id"));            
+            
+            curso.getCursosTranferencia().add(cursoTransferencia);
+        }
+        
+        //Inserindo no arraylist de turmas possíveis para transferência, o array encontra-se na classe Aluno.
+        ResultSet consultaTurmasTranferencia = executarConsulta(EnuConsultasCurso.SELECT_TURMAS_POSSIVEIS_MUDANCA.toString(), aluno.getTurma().getCodigo(), curso.getCursoID());
+        while(consultaCursosTranferencia.next())
+        {
+            curso.getTurmasTranferencia().add(new Turma(consultaTurmasTranferencia.getInt("trm_codigo"), curso));
+            
+        }
+
+        //Inserindo no arraylist de turnos possíveis para transferência, o array encontra-se na classe Aluno.
+        ResultSet consultaTurnosTranferencia = executarConsulta(EnuConsultasCurso.SELECT_TURNOS_POSSIVEIS_MUDANCA.toString(), curso.getTurno().getId(), curso.getCampus().getCampusID(), curso.getModalidade().getModalidadeID());
+        while(consultaCursosTranferencia.next())
+        {
+            curso.getTurnosTranferencia().add(new Turno(consultaTurnosTranferencia.getInt("trn_id"), consultaTurnosTranferencia.getString("trn_nome")));
+        }        
+        
 
         return aluno;
     }

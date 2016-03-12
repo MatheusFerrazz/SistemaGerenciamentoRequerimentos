@@ -6,6 +6,7 @@
 package br.edu.ifrn.sgr.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -16,6 +17,7 @@ public class Aluno extends Pessoa implements Serializable{
   private Curso curso;
   private Turma turma;
   private Permissao permissao;
+  ArrayList<Curso> cursosTranferência = new ArrayList<>();
 
 
     public Aluno(Curso curso, Turma turma, Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {
