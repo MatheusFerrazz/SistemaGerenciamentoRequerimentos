@@ -4,65 +4,69 @@
  * and open the template in the editor.
  */
 package br.edu.ifrn.sgr.modelos;
+
+import java.util.ArrayList;
 import java.util.Date;
+
 /**
  *
- * @author CH
+ * @author Luan Medeiros
  */
-public class Requerimento {
-    private Aluno aluno;    
-    private String disciplinaCursada = "";
+public class RequerimentoPopuladoString {
+    private String alunoNome = "";    
+    private String disciplinaCursada;
     private String observacoes = "";        
     private String encaminhamentos = "";   
     private String mudancaDe = "";
     private String mudancaPara = "";
-    private Date dataRealizacaoCertificacao;
-    private Date dataFaltasDe;
-    private Date dataFaltasAte;
-    private Date dataFaltasDia;
-    private Date dataSolicitacaoRequerimento;
-    private Date dataAtividade;
+    private String dataRealizacaoCertificacao;
+    private String dataFaltasDe;
+    private String dataFaltasAte;
+    private String dataFaltasDia;
+    private String dataSolicitacaoRequerimento;
+    private String dataAtividade;
     private int periodoTancamento;
+    private ArrayList<String> documentosApresentados = new ArrayList<>();
     private String outros = "";
     private String justificativa = "";
     private String obersavacoesAnaliseAproveitamento = "";
     private String obervacoesDocumentosApresentados = "";
-    private boolean resultado;
-    private boolean diasDescritosAnexo;
-    private Professor professorResponsavelAnalise;
-    private Professor professorAtividade;
-    private TecnicoAdministrativo tecnicoAdministrativoResponsavel;
-    private Disciplina disciplinaCursoAtual;
-    private TipoRequerimento tipoRequerimento;
+    private String resultado = "EM ANDAMENTO";
+    private String diasDescritosAnexo;
+    private String professorResponsavelAnalise;
+    private String professorAtividade;
+    private String tecnicoAdministrativoResponsavel;
+    private String disciplinaCursoAtual;
+    private int tipoRquerimento;
     private String tipoAtividade;
-    private Curso cursoOrigem;
-    private Curso cursoDestino;
-    private Turma turmaOrigem;
-    private Turma turmaDestino;
-    private Turno turnoOrigem;
-    private Turno turnoDestino;
+    private String cursoOrigem;
+    private String cursoDestino;
+    private String turmaOrigem;
+    private String turmaDestino;
+    private String turnoOrigem;
+    private String turnoDestino;
     private String tranferenciaCursoOrigem;
     private String tranferenciaCursoDestino;
     private String tranferenciaEscolaOrigem;
     private String tranferenciaEscolaDestino;
-    
-    public Requerimento()
+
+    public RequerimentoPopuladoString()
     {
         
     }
 
     /**
-     * @return the aluno
+     * @return the alunoNome
      */
-    public Aluno getAluno() {
-        return aluno;
+    public String getAlunoNome() {
+        return alunoNome;
     }
 
     /**
-     * @param aluno the aluno to set
+     * @param alunoNome the alunoNome to set
      */
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAlunoNome(String alunoNome) {
+        this.alunoNome = alunoNome;
     }
 
     /**
@@ -138,84 +142,84 @@ public class Requerimento {
     /**
      * @return the dataRealizacaoCertificacao
      */
-    public Date getDataRealizacaoCertificacao() {
+    public String getDataRealizacaoCertificacao() {
         return dataRealizacaoCertificacao;
     }
 
     /**
      * @param dataRealizacaoCertificacao the dataRealizacaoCertificacao to set
      */
-    public void setDataRealizacaoCertificacao(Date dataRealizacaoCertificacao) {
+    public void setDataRealizacaoCertificacao(String dataRealizacaoCertificacao) {
         this.dataRealizacaoCertificacao = dataRealizacaoCertificacao;
     }
 
     /**
      * @return the dataFaltasDe
      */
-    public Date getDataFaltasDe() {
+    public String getDataFaltasDe() {
         return dataFaltasDe;
     }
 
     /**
      * @param dataFaltasDe the dataFaltasDe to set
      */
-    public void setDataFaltasDe(Date dataFaltasDe) {
+    public void setDataFaltasDe(String dataFaltasDe) {
         this.dataFaltasDe = dataFaltasDe;
     }
 
     /**
      * @return the dataFaltasAte
      */
-    public Date getDataFaltasAte() {
+    public String getDataFaltasAte() {
         return dataFaltasAte;
     }
 
     /**
      * @param dataFaltasAte the dataFaltasAte to set
      */
-    public void setDataFaltasAte(Date dataFaltasAte) {
+    public void setDataFaltasAte(String dataFaltasAte) {
         this.dataFaltasAte = dataFaltasAte;
     }
 
     /**
      * @return the dataFaltasDia
      */
-    public Date getDataFaltasDia() {
+    public String getDataFaltasDia() {
         return dataFaltasDia;
     }
 
     /**
      * @param dataFaltasDia the dataFaltasDia to set
      */
-    public void setDataFaltasDia(Date dataFaltasDia) {
+    public void setDataFaltasDia(String dataFaltasDia) {
         this.dataFaltasDia = dataFaltasDia;
     }
 
     /**
      * @return the dataSolicitacaoRequerimento
      */
-    public Date getDataSolicitacaoRequerimento() {
+    public String getDataSolicitacaoRequerimento() {
         return dataSolicitacaoRequerimento;
     }
 
     /**
      * @param dataSolicitacaoRequerimento the dataSolicitacaoRequerimento to set
      */
-    public void setDataSolicitacaoRequerimento(Date dataSolicitacaoRequerimento) {
+    public void setDataSolicitacaoRequerimento(String dataSolicitacaoRequerimento) {
         this.dataSolicitacaoRequerimento = dataSolicitacaoRequerimento;
     }
 
     /**
      * @return the dataAtividade
      */
-    public Date getDataAtividade() {
+    public String getDataAtividade() {
         return dataAtividade;
     }
 
     /**
      * @param dataAtividade the dataAtividade to set
      */
-    public void setDataAtividade(Date dataAtividade) {
+    public void setDataAtividade(String dataAtividade) {
         this.dataAtividade = dataAtividade;
     }
 
@@ -231,6 +235,20 @@ public class Requerimento {
      */
     public void setPeriodoTancamento(int periodoTancamento) {
         this.periodoTancamento = periodoTancamento;
+    }
+
+    /**
+     * @return the documentosApresentados
+     */
+    public ArrayList<String> getDocumentosApresentados() {
+        return documentosApresentados;
+    }
+
+    /**
+     * @param documentosApresentados the documentosApresentados to set
+     */
+    public void setDocumentosApresentados(ArrayList<String> documentosApresentados) {
+        this.documentosApresentados = documentosApresentados;
     }
 
     /**
@@ -292,99 +310,99 @@ public class Requerimento {
     /**
      * @return the resultado
      */
-    public boolean isResultado() {
+    public String getResultado() {
         return resultado;
     }
 
     /**
      * @param resultado the resultado to set
      */
-    public void setResultado(boolean resultado) {
+    public void setResultado(String resultado) {
         this.resultado = resultado;
     }
 
     /**
      * @return the diasDescritosAnexo
      */
-    public boolean isDiasDescritosAnexo() {
+    public String getDiasDescritosAnexo() {
         return diasDescritosAnexo;
     }
 
     /**
      * @param diasDescritosAnexo the diasDescritosAnexo to set
      */
-    public void setDiasDescritosAnexo(boolean diasDescritosAnexo) {
+    public void setDiasDescritosAnexo(String diasDescritosAnexo) {
         this.diasDescritosAnexo = diasDescritosAnexo;
     }
 
     /**
      * @return the professorResponsavelAnalise
      */
-    public Professor getProfessorResponsavelAnalise() {
+    public String getProfessorResponsavelAnalise() {
         return professorResponsavelAnalise;
     }
 
     /**
      * @param professorResponsavelAnalise the professorResponsavelAnalise to set
      */
-    public void setProfessorResponsavelAnalise(Professor professorResponsavelAnalise) {
+    public void setProfessorResponsavelAnalise(String professorResponsavelAnalise) {
         this.professorResponsavelAnalise = professorResponsavelAnalise;
     }
 
     /**
      * @return the professorAtividade
      */
-    public Professor getProfessorAtividade() {
+    public String getProfessorAtividade() {
         return professorAtividade;
     }
 
     /**
      * @param professorAtividade the professorAtividade to set
      */
-    public void setProfessorAtividade(Professor professorAtividade) {
+    public void setProfessorAtividade(String professorAtividade) {
         this.professorAtividade = professorAtividade;
     }
 
     /**
      * @return the tecnicoAdministrativoResponsavel
      */
-    public TecnicoAdministrativo getTecnicoAdministrativoResponsavel() {
+    public String getTecnicoAdministrativoResponsavel() {
         return tecnicoAdministrativoResponsavel;
     }
 
     /**
      * @param tecnicoAdministrativoResponsavel the tecnicoAdministrativoResponsavel to set
      */
-    public void setTecnicoAdministrativoResponsavel(TecnicoAdministrativo tecnicoAdministrativoResponsavel) {
+    public void setTecnicoAdministrativoResponsavel(String tecnicoAdministrativoResponsavel) {
         this.tecnicoAdministrativoResponsavel = tecnicoAdministrativoResponsavel;
     }
 
     /**
      * @return the disciplinaCursoAtual
      */
-    public Disciplina getDisciplinaCursoAtual() {
+    public String getDisciplinaCursoAtual() {
         return disciplinaCursoAtual;
     }
 
     /**
      * @param disciplinaCursoAtual the disciplinaCursoAtual to set
      */
-    public void setDisciplinaCursoAtual(Disciplina disciplinaCursoAtual) {
+    public void setDisciplinaCursoAtual(String disciplinaCursoAtual) {
         this.disciplinaCursoAtual = disciplinaCursoAtual;
     }
 
     /**
      * @return the tipoRquerimento
      */
-    public TipoRequerimento getTipoRquerimento() {
-        return tipoRequerimento;
+    public int getTipoRquerimento() {
+        return tipoRquerimento;
     }
 
     /**
      * @param tipoRquerimento the tipoRquerimento to set
      */
-    public void setTipoRquerimento(TipoRequerimento tipoRquerimento) {
-        this.tipoRequerimento = tipoRquerimento;
+    public void setTipoRquerimento(int tipoRquerimento) {
+        this.tipoRquerimento = tipoRquerimento;
     }
 
     /**
@@ -404,84 +422,84 @@ public class Requerimento {
     /**
      * @return the cursoOrigem
      */
-    public Curso getCursoOrigem() {
+    public String getCursoOrigem() {
         return cursoOrigem;
     }
 
     /**
      * @param cursoOrigem the cursoOrigem to set
      */
-    public void setCursoOrigem(Curso cursoOrigem) {
+    public void setCursoOrigem(String cursoOrigem) {
         this.cursoOrigem = cursoOrigem;
     }
 
     /**
      * @return the cursoDestino
      */
-    public Curso getCursoDestino() {
+    public String getCursoDestino() {
         return cursoDestino;
     }
 
     /**
      * @param cursoDestino the cursoDestino to set
      */
-    public void setCursoDestino(Curso cursoDestino) {
+    public void setCursoDestino(String cursoDestino) {
         this.cursoDestino = cursoDestino;
     }
 
     /**
      * @return the turmaOrigem
      */
-    public Turma getTurmaOrigem() {
+    public String getTurmaOrigem() {
         return turmaOrigem;
     }
 
     /**
      * @param turmaOrigem the turmaOrigem to set
      */
-    public void setTurmaOrigem(Turma turmaOrigem) {
+    public void setTurmaOrigem(String turmaOrigem) {
         this.turmaOrigem = turmaOrigem;
     }
 
     /**
      * @return the turmaDestino
      */
-    public Turma getTurmaDestino() {
+    public String getTurmaDestino() {
         return turmaDestino;
     }
 
     /**
      * @param turmaDestino the turmaDestino to set
      */
-    public void setTurmaDestino(Turma turmaDestino) {
+    public void setTurmaDestino(String turmaDestino) {
         this.turmaDestino = turmaDestino;
     }
 
     /**
      * @return the turnoOrigem
      */
-    public Turno getTurnoOrigem() {
+    public String getTurnoOrigem() {
         return turnoOrigem;
     }
 
     /**
      * @param turnoOrigem the turnoOrigem to set
      */
-    public void setTurnoOrigem(Turno turnoOrigem) {
+    public void setTurnoOrigem(String turnoOrigem) {
         this.turnoOrigem = turnoOrigem;
     }
 
     /**
      * @return the turnoDestino
      */
-    public Turno getTurnoDestino() {
+    public String getTurnoDestino() {
         return turnoDestino;
     }
 
     /**
      * @param turnoDestino the turnoDestino to set
      */
-    public void setTurnoDestino(Turno turnoDestino) {
+    public void setTurnoDestino(String turnoDestino) {
         this.turnoDestino = turnoDestino;
     }
 
@@ -540,8 +558,6 @@ public class Requerimento {
     public void setTranferenciaEscolaDestino(String tranferenciaEscolaDestino) {
         this.tranferenciaEscolaDestino = tranferenciaEscolaDestino;
     }
-    
-    
     
     
 

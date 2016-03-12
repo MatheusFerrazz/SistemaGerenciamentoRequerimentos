@@ -9,8 +9,10 @@ import java.util.List;
 import br.edu.ifrn.sgr.modelos.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -43,10 +45,9 @@ public class teste { //Classe para testar métodos
         }
 
             //System.out.println(consulta.getString("pes_nome"));
-            for(Curso curso : alu.getCurso().getCursosTranferencia())
-            {
-                System.out.println(curso.getNome()+" no "+curso.getCampus().getNome());
-            }
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");             
+            System.out.println(sdf.format(alu.getDataNascimento()));
+            
        
     }
 }
