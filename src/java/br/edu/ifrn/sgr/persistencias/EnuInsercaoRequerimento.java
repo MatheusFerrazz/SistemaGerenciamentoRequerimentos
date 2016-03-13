@@ -10,5 +10,17 @@ package br.edu.ifrn.sgr.persistencias;
  * @author Luan Medeiros
  */
 public enum EnuInsercaoRequerimento {
+        
+        INSERT_APROVEITAMENTO_DE_ESTUDOS("SELECT permissao.* FROM permissao WHERE permissao.per_id=?;");
+                
     
+        private String consulta; 
+        private EnuInsercaoRequerimento(String consulta) { 
+            this.consulta = consulta; 
+        } 
+        
+        @Override 
+        public String toString(){ 
+            return consulta; 
+        } 
 }

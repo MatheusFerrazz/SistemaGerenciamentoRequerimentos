@@ -32,7 +32,7 @@ public class AlunoDAO extends GeralDAO {
 
     private final String SELECT_ALUNOS = "select * from aluno;";
     
-    public Aluno alunoByMatriculaSenha(String nome, String matricula) throws SQLException, ClassNotFoundException{
+    public Aluno getAlunoByMatriculaSenha(String nome, String matricula) throws SQLException, ClassNotFoundException{
         ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),nome,matricula);
         if (resultado.next())
             return popularAluno(resultado); 
@@ -148,7 +148,7 @@ public class AlunoDAO extends GeralDAO {
         ResultSet consultaDisciplinas = executarConsulta(EnuConsultasCurso.SELECT_TODAS_DISCIPLINAS_CURSO.toString(), aluno.getCurso().getCursoID());
         while(consultaDisciplinas.next())
         {
-            curso.getDisciplinasTranferencia().add(new Disciplina(consultaDisciplinas.getInt("dis_id"), curso, consultaDisciplinas.getBoolean("dis_ativo"), consultaDisciplinas.getString("dis_nome")));
+            curso.getDisciplinasDoCurso().add(new Disciplina(consultaDisciplinas.getInt("dis_id"), curso, consultaDisciplinas.getBoolean("dis_ativo"), consultaDisciplinas.getString("dis_nome")));
         }
 
         //Inserindo todos os professores do curso.
@@ -164,7 +164,7 @@ public class AlunoDAO extends GeralDAO {
         
 
         //Inserindo os professores das disciplinas em cada disciplina. o array encontrade na clase curso.
-        for(Disciplina disci : curso.getDisciplinasTranferencia())
+        for(Disciplina disci : curso.getDisciplinasDoCurso())
         {
             ResultSet consultaProfessoresDisciplina = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DA_DISCIPLINA.toString(), disci.getId(), disci.getCurso().getCursoID());
             while(consultaProfessoresDisciplina.next())

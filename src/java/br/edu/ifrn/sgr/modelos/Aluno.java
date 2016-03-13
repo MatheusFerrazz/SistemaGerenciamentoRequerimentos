@@ -17,7 +17,6 @@ public class Aluno extends Pessoa implements Serializable{
   private Curso curso;
   private Turma turma;
   private Permissao permissao;
-  ArrayList<Curso> cursosTranferência = new ArrayList<>();
 
 
     public Aluno(Curso curso, Turma turma, Permissao permissao, String matricula, String nome, String email, String telefone, String celular, Date dataNascimento, String senha) {

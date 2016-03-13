@@ -16,17 +16,17 @@ import java.util.List;
  *
  * @author Luan Medeiros
  */
-public class TiposRequeriemtoDAO extends GeralDAO {
+public class DocumentoDAO extends GeralDAO {
     
-    public List<TipoRequerimento> getTiposRequerimento() throws SQLException, ClassNotFoundException{ //Feito por Luan
-        List<TipoRequerimento> tiposRequerimentos =  new java.util.ArrayList<TipoRequerimento>();
+    public List<Documento> getDocumentos() throws SQLException, ClassNotFoundException{ //Feito por Luan
+        List<Documento> documentos =  new java.util.ArrayList<Documento>();
         Connection con = FabricaConexao.getConexao();
-        PreparedStatement comando = con.prepareStatement(EnuConsultaTipoRequerimento.SELECT_TIPOS_REQUERIMENTO.toString());
+        PreparedStatement comando = con.prepareStatement(EnuConsultasDocumento.SELECT_TODOS_DOCUMENTOS.toString());
         ResultSet resultado = comando.executeQuery();                
         while (resultado.next()){
-            tiposRequerimentos.add(new TipoRequerimento(resultado.getInt("tip_req_id"), resultado.getString("tip_req_nome")));
+            documentos.add(new Documento(resultado.getString("doc_apr_nome"), resultado.getInt("doc_apr_id_PK")));            
         }
         FabricaConexao.fecharConexao(con);
-        return tiposRequerimentos;
+        return documentos;
     }
 }

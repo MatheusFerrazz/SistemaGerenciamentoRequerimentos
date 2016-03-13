@@ -21,7 +21,7 @@ public class Curso {
     private int periodo;
     private int anos;
     private boolean cursoAtivo;
-    private ArrayList<Disciplina> disciplinasTranferencia = new ArrayList<>();
+    private ArrayList<Disciplina> disciplinasDoCurso = new ArrayList<>();
     private ArrayList<Professor> professores = new ArrayList<>();
     private ArrayList<Turno> turnosTranferencia = new ArrayList<>();
     private ArrayList<Turma> turmasTranferencia = new ArrayList<>();
@@ -184,20 +184,6 @@ public class Curso {
     }
 
     /**
-     * @return the disciplinasTranferencia
-     */
-    public ArrayList<Disciplina> getDisciplinasTranferencia() {
-        return disciplinasTranferencia;
-    }
-
-    /**
-     * @param disciplinasTranferencia the disciplinasTranferencia to set
-     */
-    public void setDisciplinasTranferencia(ArrayList<Disciplina> disciplinasTranferencia) {
-        this.disciplinasTranferencia = disciplinasTranferencia;
-    }
-
-    /**
      * @return the turnosTranferencia
      */
     public ArrayList<Turno> getTurnosTranferencia() {
@@ -237,6 +223,20 @@ public class Curso {
      */
     public void setCursosTranferencia(ArrayList<Curso> cursosTranferencia) {
         this.cursosTranferencia = cursosTranferencia;
+    }
+
+    /**
+     * @return the disciplinasDoCurso
+     */
+    public ArrayList<Disciplina> getDisciplinasDoCurso() {
+        return disciplinasDoCurso;
+    }
+
+    /**
+     * @param disciplinasDoCurso the disciplinasDoCurso to set
+     */
+    public void setDisciplinasDoCurso(ArrayList<Disciplina> disciplinasDoCurso) {
+        this.disciplinasDoCurso = disciplinasDoCurso;
     }
 
 

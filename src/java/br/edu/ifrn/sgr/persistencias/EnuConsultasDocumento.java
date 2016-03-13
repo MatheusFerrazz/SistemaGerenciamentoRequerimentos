@@ -16,7 +16,7 @@ public enum EnuConsultasDocumento
         /*
         Seleciona qual a permissao de acordo com o ID da permissão, basta passar o ID.
         */        
-        SELECT_PERMISSAO_POR_ID("SELECT documento.* FROM documento ORDER BY documento.doc_apr_nome;");
+        SELECT_TODOS_DOCUMENTOS("SELECT documento.* FROM documento ORDER BY documento.doc_apr_nome;");
                 
     
         private String consulta; 

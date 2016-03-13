@@ -25,7 +25,11 @@ public enum EnuConsultasAluno
                 " JOIN coordenador ON curso.\"coo_id_FK\"=coordenador.\"coo_id_PK\""+  
                 " JOIN campus ON campus.cam_id=curso.\"cam_id_FK\""+  
                 " JOIN diretor ON diretor.\"dir_id_PK\"=campus.\"dir_id_FK\""+        
-                " WHERE aluno.\"alu_id_PK\"=?;");
+                " WHERE aluno.\"alu_id_PK\"=?;"),
+        
+        SELECT_ALUNO_LOGIN("select aluno.\"alu_id_PK\" FROM aluno"
+                + " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=aluno.\"alu_id_PK\""
+                + " WHERE aluno.\"alu_id_PK\"='20142148000001' AND pessoa.pes_senha='123456';");
         
 
     

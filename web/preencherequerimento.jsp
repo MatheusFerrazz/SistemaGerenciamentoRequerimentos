@@ -4,6 +4,8 @@
     Author     : Luan Medeiros
 --%>
 
+<%@page import="br.edu.ifrn.sgr.modelos.Disciplina"%>
+<%@page import="br.edu.ifrn.sgr.modelos.Documento"%>
 <%@page import="br.edu.ifrn.sgr.modelos.TipoRequerimento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Aluno"%>
@@ -15,64 +17,195 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"
       prefix="c" %>
 
-<jsp:useBean id="aluno" class="br.edu.ifrn.sgr.modelos.Aluno" scope="request"/>
-<jsp:useBean id="dao" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
+<jsp:useBean id="alunoDAO" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
 <jsp:useBean id="tiporequerimento" class="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO" scope="request"/>
+<jsp:useBean id="documento" class="br.edu.ifrn.sgr.persistencias.DocumentoDAO" scope="request"/>
 <jsp:setProperty name="aluno" property="*"></jsp:setProperty>
 <jsp:setProperty name="dao" property="*"></jsp:setProperty>
 <jsp:setProperty name="tiporequerimento" property="*"></jsp:setProperty>
 
+<%
+
+ %>
+
 <style>
-.div{display:none;}
+.divRequerimentoConsultado{display:none;}
+.acao{display:none;}
+.divRequerimentoSolicitado{display:none;}
+
 </style>
 
 <script src="jquery.js"></script>
  
+<script src="jquery.js"></script>
+ 
 <script>
-$(document).ready(function() {
-$('#select').change(function() {
-$('.div').hide();
-$('.div').each(function() {
-if($(this).index() <= $('#select option:selected').val()) {
-$('#d'+$(this).index()).show();
-}
-});
-});
-});
+$(function() {
+        $('#selectRequerimento').change(function(){
+            $('.divRequerimento').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+
+//Escolhe entre listar requerimentos e fazer requerimentos
+$(function() {
+        $('#acao').change(function(){
+            $('.divRequerimento').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+
+//Mostra a div de preencheencimento do requerimento solicitado
+$(function() {
+        $('#selectSolicitaRequerimento').change(function(){
+            $('.divRequerimentoSolicitado').hide();
+            $('#' + $(this).val()).show();
+        });
+    });    
+    
+//Mostra a div de consulta solicitada   
+$(function() {
+        $('#selectConsultaRequerimento').change(function(){
+            $('.divRequerimentoConsultado').hide();
+            $('#' + $(this).val()).show();
+        });
+    });      
 </script>
 
 
- <select id="select">
+ <select id="acao">
+   <option value=""></option>
+  <option value="solicitacao">Solicitação de Requerimento</option>
+  <option value="consulta">Solicitação de Requerimento</option>
+</select> 
+
+
+
+<div id="solicitacao" class="acao">
+ <select id="selectSolicitaRequerimento">
+   <option value=""></option>
 <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
   <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
  <%} %>
 </select> 
  
- 
-<div id="d1" class="div" style="display: none;">APROVEITAMENTO DE ESTUDOS</div>
-<div id="d2" class="div" style="display: none;">CERTIFICAÇÃO DE CONHECIMENTOS</div>
-<div id="d3" class="div" style="display: none;">REPOSIÇÃO DE ATIVIDADES</div>
-<div id="d4" class="div" style="display: none;">MUDANÇA DE CURSO</div>
-<div id="d5" class="div" style="display: none;">MUDANÇA DE TURMA</div>
-<div id="d6" class="div" style="display: none;">MUDANÇA DE TURNO</div>
-<div id="d7" class="div" style="display: none;">TRANSFERÊNCIA</div>
-<div id="d8" class="div" style="display: none;">LANÇAMENTO OU REVISÃO DE FALTAS/NOTAS/SITUAÇÃO</div>
-<div id="d9" class="div" style="display: none;">RENOVAÇÃO MATRÍCULA</div>
-<div id="d10" class="div" style="display: none;">REABERTURA MATRÍCULA</div>
-<div id="d11" class="div" style="display: none;">JUSTIFICATIVA DE FALTAS (EM ANEXO)</div>
-<div id="d12" class="div" style="display: none;">JUSTIFICATIVA DE FALTA - DIA ESPECÍFICO</div>
-<div id="d13" class="div" style="display: none;">JUSTIFICATIVA DE FALTA POR PERÍODO</div>
-<div id="d14" class="div" style="display: none;">TRANCAMENTO DE MATRÍCULA - PERÍODO</div>
-<div id="d15" class="div" style="display: none;">TRANCAMENTO DE MATRÍCULA - PERÍODO</div>
-<div id="d16" class="div" style="display: none;">TRANCAMENTO DE MATRÍCULA - COMPULSÓRIO</div>
-<div id="d17" class="div" style="display: none;">CANCELAMENTO DE MATRÍCULA</div>
-<div id="d18" class="div" style="display: none;">ATENDIMENTO DOMICILIAR</div>
-<div id="d19" class="div" style="display: none;">OUTROS</div>
-<div id="d20" class="div" style="display: none;">DISPENSA DE ATIVIDADES</div>
-<div id="d21" class="div" style="display: none;">ADEQUAÇÃO DE HORÁRIOS</div>
-<div id="d22" class="div" style="display: none;">ESTUDO INDIVIDUALIZADO</div>
-<div id="d23" class="div" style="display: none;">REMOÇÃO DE DISCIPLINAS</div>
+ <% 
+    //Resgatando o objeto aluno pela session
+    Aluno aluno = (Aluno) session.getAttribute("aluno");
+    
+    //Preenchendo as divis com os formulários e as informações do objeto aluno já preecarregados.
+    for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
+    <div id="<%= tipo.getId() %>" class="divRequerimentoSolicitado"><%= tipo.getNome() %>
+        <form action="gravarequerimento.jsp" method="post" id="<%= "form"+tipo.getId() %>">
+        <h2><b>Senhor(a) Diretor Acadêmico: </b><h2> <%= aluno.getCurso().getCampus().getDiretor().getNome() %> 
+        <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
+        Eu, <input type='text' value="<%= aluno.getNome() %>" readonly="readonly" >,       
+        matrícula <input type='text' value="<%= aluno.getMatricula() %>" readonly="readonly" >,         
+        aluno(a) do curso <input type='text' value="<%= aluno.getCurso().getModalidade().getNome() %>" readonly="readonly" >
+        de nível <input type='text' value="<%= aluno.getCurso().getModalidade().getNivel() %>" readonly="readonly" >
+        em <input type='text' value="<%= aluno.getCurso().getNome() %>" readonly="readonly" >,
+        turma <input type='text' value="<%= aluno.getTurma().getCodigo() %>" readonly="readonly" >,
+        telefone(s) <input type='text' value="<%= aluno.getTelefone() %>" readonly="readonly" > / <input type='text' value="<%= aluno.getCelular() %>" readonly="readonly" >, 
+        , email <input type='text' value="<%= aluno.getEmail() %>" readonly="readonly" >, venho requerer a V. Sa.:
+        
+       <%
+        //Preenchendo os formulários de acordo com o tipo do requerimento
+        switch (tipo.getId()) {
+            //Aproveitamento de estudo
+            case 1:%>
+                Disciplina cursada:  <input type='text' name="disciplinaCursada" value="">
+                Disciplina curso atual: 
+                <select name="disciplinaCursoAtual">
+                <% for(Disciplina disci : aluno.getCurso().getDisciplinasDoCurso()){%>
+                  <option value="<%= disci.getId() %>"><%= disci.getNome() %></option>
+                 <%} %>
+                </select>                 
+                <textarea rows="4" cols="50" name="observacao" form="<%= "form"+tipo.getId() %>">Observações...</textarea>                
+                Documentos apresentados: 
+                <%for(Documento doc : documento.getDocumentos()){%>
+                    <input type="checkbox" name="documento" value="<%= doc.getId() %>"><%= doc.getNome() %> <br>
+                <%} %>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+            case 2:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+            case 3:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+            case 4:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+            case 5:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+            case 6:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 7:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 8:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 9:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 10:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 11:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 12:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;                
+             case 13:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 14:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 15:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 16:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 17:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 18:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 19:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 20:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 21:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 22:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;
+             case 23:%>
+                <input type="submit" value="SOLICITAR">
+                <%break;               
+             default:%>
+                 testando
+         <%}%>
+       </form>
+    </div>
+ <%}%>
+</div>
 
+
+<div id="consulta" class="acao">
+    <h1> Consultas de Requerimento </h1>
+
+<div>    
 
 <%--<c:choose>
     <c:when test="${dao.alunoByMatriculaSenha(aluno.nome, aluno.matricula)== null}">
@@ -83,28 +216,3 @@ $('#d'+$(this).index()).show();
         <p><c:out value="${aluno.matricula}"/></p>
     </c:otherwise>
 </c:choose>--%>
-
-
-
-
-<%--
-    /** FAZER - modificar o código para XML, 
-     * utilizando Beans, linguagem de expressão e
-     * JSTL. 
-     */
-    String nome = request.getParameter("nome");
-    String matricula = request.getParameter("matricula");
-    AlunoDAO dao = new AlunoDAO();
-    
-    Aluno aluno = new Aluno();   
-
-    if (dao.alunoByMatriculaSenha(nome, matricula) == null) { 
-        out.println ("Aluno não Existe!"); 
-    } else {
-         out.print(aluno.getNome());
-         out.print(aluno.getMatricula());
-         out.print(aluno.getCurso());
-         out.print(aluno.getTurma());
-         
-    }
---%>
