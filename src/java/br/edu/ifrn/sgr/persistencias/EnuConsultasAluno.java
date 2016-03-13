@@ -29,7 +29,7 @@ public enum EnuConsultasAluno
         
         SELECT_ALUNO_LOGIN("select aluno.\"alu_id_PK\" FROM aluno"
                 + " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=aluno.\"alu_id_PK\""
-                + " WHERE aluno.\"alu_id_PK\"='20142148000001' AND pessoa.pes_senha='123456';");
+                + " WHERE aluno.\"alu_id_PK\"=? AND pessoa.pes_senha=?;");
         
 
     

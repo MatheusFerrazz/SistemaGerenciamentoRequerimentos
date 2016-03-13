@@ -40,17 +40,11 @@
 <script src="jquery.js"></script>
  
 <script>
-$(function() {
-        $('#selectRequerimento').change(function(){
-            $('.divRequerimento').hide();
-            $('#' + $(this).val()).show();
-        });
-    });
 
 //Escolhe entre listar requerimentos e fazer requerimentos
 $(function() {
         $('#acao').change(function(){
-            $('.divRequerimento').hide();
+            $('.acao').hide();
             $('#' + $(this).val()).show();
         });
     });
@@ -82,12 +76,12 @@ $(function() {
 
 
 <div id="solicitacao" class="acao">
- <select id="selectSolicitaRequerimento">
-   <option value=""></option>
-<% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
-  <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
- <%} %>
-</select> 
+    <select id="selectSolicitaRequerimento">
+      <option value=""></option>
+    <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
+     <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
+    <%} %>
+    </select> 
  
  <% 
     //Resgatando o objeto aluno pela session
@@ -95,107 +89,75 @@ $(function() {
     
     //Preenchendo as divis com os formulários e as informações do objeto aluno já preecarregados.
     for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
-    <div id="<%= tipo.getId() %>" class="divRequerimentoSolicitado"><%= tipo.getNome() %>
+    <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado">
         <form action="gravarequerimento.jsp" method="post" id="<%= "form"+tipo.getId() %>">
-        <h2><b>Senhor(a) Diretor Acadêmico: </b><h2> <%= aluno.getCurso().getCampus().getDiretor().getNome() %> 
+        Senhor(a) Diretor Acadêmico: <%= aluno.getCurso().getCampus().getDiretor().getNome() %> <br>
         <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
-        Eu, <input type='text' value="<%= aluno.getNome() %>" readonly="readonly" >,       
-        matrícula <input type='text' value="<%= aluno.getMatricula() %>" readonly="readonly" >,         
-        aluno(a) do curso <input type='text' value="<%= aluno.getCurso().getModalidade().getNome() %>" readonly="readonly" >
-        de nível <input type='text' value="<%= aluno.getCurso().getModalidade().getNivel() %>" readonly="readonly" >
-        em <input type='text' value="<%= aluno.getCurso().getNome() %>" readonly="readonly" >,
-        turma <input type='text' value="<%= aluno.getTurma().getCodigo() %>" readonly="readonly" >,
-        telefone(s) <input type='text' value="<%= aluno.getTelefone() %>" readonly="readonly" > / <input type='text' value="<%= aluno.getCelular() %>" readonly="readonly" >, 
-        , email <input type='text' value="<%= aluno.getEmail() %>" readonly="readonly" >, venho requerer a V. Sa.:
-        
+        Eu, <%= aluno.getNome() %>", matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
+        turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:        
        <%
-        //Preenchendo os formulários de acordo com o tipo do requerimento
-        switch (tipo.getId()) {
+            //Preenchendo os formulários de acordo com o tipo do requerimento
+            int tipoReq = tipo.getId();
             //Aproveitamento de estudo
-            case 1:%>
-                Disciplina cursada:  <input type='text' name="disciplinaCursada" value="">
-                Disciplina curso atual: 
+            if(tipoReq==1){%>
+                <br>Disciplina cursada:  <input type='text' name="disciplinaCursada" value="">
+                <br>Disciplina curso atual: 
                 <select name="disciplinaCursoAtual">
                 <% for(Disciplina disci : aluno.getCurso().getDisciplinasDoCurso()){%>
                   <option value="<%= disci.getId() %>"><%= disci.getNome() %></option>
                  <%} %>
-                </select>                 
-                <textarea rows="4" cols="50" name="observacao" form="<%= "form"+tipo.getId() %>">Observações...</textarea>                
-                Documentos apresentados: 
+                </select>
+                <br><textarea rows="4" cols="50" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea><br>                
+                <br>Documentos apresentados:
                 <%for(Documento doc : documento.getDocumentos()){%>
-                    <input type="checkbox" name="documento" value="<%= doc.getId() %>"><%= doc.getNome() %> <br>
+                     <br><input type="checkbox" name="documento" value="<%= doc.getId() %>">&nbsp; <%= doc.getNome() %>
                 <%} %>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-            case 2:%>
+            <%}else if(tipoReq==2){%>
+                <input type="submit" value="SOLICITAR">            
+            <%}else if(tipoReq==3){%>
+                <input type="submit" value="SOLICITAR">                
+            <%}else if(tipoReq==4){%>
+                <input type="submit" value="SOLICITAR">                
+            <%}else if(tipoReq==5){%>
+                <input type="submit" value="SOLICITAR">                
+            <%}else if(tipoReq==6){%>
+                <input type="submit" value="SOLICITAR">                
+            <%}else if(tipoReq==7){%>
+                <input type="submit" value="SOLICITAR">                
+             <%}else if(tipoReq==8){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-            case 3:%>
+            <%}else if(tipoReq==9){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-            case 4:%>
+            <%}else if(tipoReq==10){%>             
                 <input type="submit" value="SOLICITAR">
-                <%break;
-            case 5:%>
+            <%}else if(tipoReq==11){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-            case 6:%>
+            <%}else if(tipoReq==12){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 7:%>
+            <%}else if(tipoReq==13){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 8:%>
+            <%}else if(tipoReq==14){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 9:%>
+            <%}else if(tipoReq==15){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 10:%>
+            <%}else if(tipoReq==16){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 11:%>
+            <%}else if(tipoReq==17){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 12:%>
+            <%}else if(tipoReq==18){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;                
-             case 13:%>
+            <%}else if(tipoReq==19){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 14:%>
+            <%}else if(tipoReq==20){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 15:%>
+            <%}else if(tipoReq==21){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 16:%>
+            <%}else if(tipoReq==22){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 17:%>
+            <%}else if(tipoReq==23){%>
                 <input type="submit" value="SOLICITAR">
-                <%break;
-             case 18:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;
-             case 19:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;
-             case 20:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;
-             case 21:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;
-             case 22:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;
-             case 23:%>
-                <input type="submit" value="SOLICITAR">
-                <%break;               
-             default:%>
-                 testando
-         <%}%>
+            <%}%>
        </form>
     </div>
  <%}%>

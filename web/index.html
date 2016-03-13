@@ -13,7 +13,7 @@ and open the template in the editor.
     </head>
     <body>
         
-        <form action="testes.jsp" method="post" class="form-horizontal">
+        <form action="login.jsp" method="post" class="form-horizontal">
             <fieldset>
 
                 <!-- Form Name -->
@@ -23,8 +23,7 @@ and open the template in the editor.
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="textinput">Matricula</label>  
                   <div class="col-md-4">
-                  <input id="nome" name="matricula" type="text" placeholder="Matrícula" class="form-control input-md" required="">
-
+                  <input id="nome" name="matricula" type="text" placeholder="Matrícula" class="form-control input-md" required="">                 
                   </div>
                 </div>
 
@@ -36,14 +35,20 @@ and open the template in the editor.
 
                   </div>
                 </div>
-                
+                  Selecione o tipo de logon:<br>
+                  Aluno&nbsp; <input type="radio" name="tipoLogon" value="aluno" required>
+                  Coordenador&nbsp; <input type="radio" name="tipoLogon" value="coordenador" required>
+                  Diretor &nbsp;<input type="radio" name="tipoLogon" value="diretor" required>
+                  Professor&nbsp; <input type="radio" name="tipoLogon" value="professor" required>                  
+                  Técnico Administrativo&nbsp; <input type="radio" name="tipoLogon" value="tecnicoAdministrativo" required>                  
                 <!-- Botão Cadastrar -->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="singlebutton"></label>
                   <div class="col-md-4">
                         <button value="Logar" type="submit" class="btn btn-primary">Logar</button>
                   </div>
-                </div>                   
+                </div> 
+              
             </fieldset>
         </form>
     </body>

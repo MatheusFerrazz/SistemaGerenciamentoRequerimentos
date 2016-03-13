@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author João
+ * @author Luan Medeiros
  */
 public class AlunoDAO extends GeralDAO {
 
@@ -33,9 +33,13 @@ public class AlunoDAO extends GeralDAO {
     private final String SELECT_ALUNOS = "select * from aluno;";
     
     public Aluno getAlunoByMatriculaSenha(String nome, String matricula) throws SQLException, ClassNotFoundException{
-        ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(),nome,matricula);
+        ResultSet resultado = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_LOGIN.toString(),nome,matricula);
+        ResultSet resultadoPopular = null;
         if (resultado.next())
-            return popularAluno(resultado); 
+        {
+            resultadoPopular = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(), resultado.getString("alu_id_PK"));
+            return popularAluno(resultadoPopular);
+        }
         else
             return null;
     }
