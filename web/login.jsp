@@ -43,7 +43,7 @@
             {
                 session.setAttribute("aluno", aluno);
                 session.setMaxInactiveInterval(600);
-                response.sendRedirect("preencherequerimento.jsp");                
+                response.sendRedirect("preencherequerimento.jsp");                                
             }                
         }       
 %>

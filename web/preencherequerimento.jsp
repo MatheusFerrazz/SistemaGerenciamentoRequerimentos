@@ -163,9 +163,14 @@
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>               
                                                     <br><label>Documentos apresentados:</label>
                                                     <%for(Documento doc : documento.getDocumentos()){%>
-                                                        <input type="checkbox" name="documento" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                        <input type="checkbox" name="documentoApresentado" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                                     <%}%>
-                                                        <br><button type="submit" class="btn btn-primary">SOLICITAR</button>								
+                                                    <div class="form-group">
+
+                                                    <label for="exampleInputFile">
+                                                            Anexar arquivo <input type="file" id="exampleInputFile">
+                                                    </label>
+                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>								
                                                 <%//Certificação de conhecimentos
                                                 }else if(tipoReq==2){%>
 
