@@ -19,8 +19,10 @@ import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import br.edu.ifrn.sgr.persistencias.EnuConsultasAluno;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.MaskFormatter;
 /**
  *
  * @author Luan Medeiros
@@ -86,11 +88,12 @@ public class AlunoDAO extends GeralDAO {
         campus.setEndereco(resultado.getString("cam_endereco"));
         campus.setBairro(resultado.getString("cam_bairro"));
         campus.setEstado(resultado.getString("cam_estado"));
-        campus.setCep(resultado.getString("cam_cep"));
-        campus.setTelefone(resultado.getString("cam_telefone"));
         campus.setNumero(resultado.getInt("cam_numero"));
         campus.setCidade(resultado.getString("cam_cidade"));
-        
+        String CEP = formatString(resultado.getString("cam_cep"),"#####-###");
+        String TEL = formatString(resultado.getString("cam_telefone"),"(##) ####-####");
+        campus.setCep(CEP);
+        campus.setTelefone(TEL);
         ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMAÇÕES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
         while(consultaCoordenador.next())
         {
@@ -217,5 +220,15 @@ public class AlunoDAO extends GeralDAO {
         
 
         return aluno;
+    }
+    private String formatString(String value, String pattern) {
+        MaskFormatter mf;
+        try {
+            mf = new MaskFormatter(pattern);
+            mf.setValueContainsLiteralCharacters(false);
+            return mf.valueToString(value);
+        } catch (ParseException ex) {
+            return value;
+        }
     }
 }

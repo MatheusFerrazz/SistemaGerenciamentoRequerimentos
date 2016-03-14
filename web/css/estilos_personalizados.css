@@ -10,14 +10,14 @@ body
 {
 
 }
-
+*/
 #divColunaFigura
 {
-	width: 15%;
+	width: 16%;
 
 
 }
-*/
+
 /*#divColunaCabecalho
 {
 	 text-align: left;
@@ -48,25 +48,26 @@ body
 }*/
 
 /*Personalizando o select*/
-.div-select {
+/*.div-select {
+
    	width: 100%;
-    overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */
-}
+    overflow:hidden;
+}*/
  
-.div-select select {
-      background:  #337AB7;  /* Imagem de fundo (Seta) */
-      background-position: 205px center;  /*Posição da imagem do background*/
-      width: 270px; /* Tamanho do select, maior que o tamanho da div "div-select" */
-      height:30px; /* altura do select, importante para que tenha a mesma altura em todo os navegadores */
-      font-family:Arial, Helvetica, sans-serif; /* Fonte do Select */
-      font-size:16px; /* Tamanho da Fonte */
-      padding:13px 20px 13px 16px; /* Configurações de padding para posicionar o texto no campo */
-      color:#fff; /* Cor da Fonte */
-      text-indent: 0.01px; /* Remove seta padrão do FireFox */
-      text-overflow: "";  /* Remove seta padrão do FireFox */      
-      select::-ms-expand {display: none;} /* Remove seta padrão do IE*/
+/*.div-select select {
+      background:  #337AB7;  
+      background-position: 205px center;  
+      width: 270px; 
+      height:30px; 
+      font-family:Arial, Helvetica, sans-serif; 
+      font-size:16px; 
+      padding:13px 20px 13px 16px; 
+      color:#fff; 
+      text-indent: 0.01px; 
+      text-overflow: "";  
+      select::-ms-expand {display: none;} 
  
-}
+} */
 
 /*Personalizando o tamanho do campo input*/
 input[type="text"]
@@ -84,7 +85,7 @@ div#laembaixo {
  display: table-cell;
  }
 
- label, textarea
+ label, textarea, button, input[type="checkbox"]
  {
  	margin-bottom: 8px;
  }
@@ -98,4 +99,26 @@ div#laembaixo {
 #cabecalho:before
 {
 	height: 21px;
+}
+
+#divRequerimentoSolicitado
+{
+	
+	border-size:2px;
+	border-style:solid;
+	border-color:black;
+	margin-right: 5px;
+}
+
+.divRequerimentoSolicitado
+{
+	margin-top: 60px; 
+	border: thin solid black;
+	margin-left: 2px;
+}
+
+/*Ajustando tamanho dos selects*/
+#acao
+{
+	
 }

@@ -38,6 +38,7 @@ public class RequerimentoPopuladoString {
     private String tecnicoAdministrativoResponsavel;
     private String disciplinaCursoAtual;
     private int tipoRquerimento;
+    private int idRquerimento;
     private String tipoAtividade;
     private String cursoOrigem;
     private String cursoDestino;
@@ -49,6 +50,8 @@ public class RequerimentoPopuladoString {
     private String tranferenciaCursoDestino;
     private String tranferenciaEscolaOrigem;
     private String tranferenciaEscolaDestino;
+    private String disciplinaCertificacao;
+    
 
     public RequerimentoPopuladoString()
     {
@@ -557,6 +560,34 @@ public class RequerimentoPopuladoString {
      */
     public void setTranferenciaEscolaDestino(String tranferenciaEscolaDestino) {
         this.tranferenciaEscolaDestino = tranferenciaEscolaDestino;
+    }
+
+    /**
+     * @return the disciplinaCertificacao
+     */
+    public String getDisciplinaCertificacao() {
+        return disciplinaCertificacao;
+    }
+
+    /**
+     * @param disciplinaCertificacao the disciplinaCertificacao to set
+     */
+    public void setDisciplinaCertificacao(String disciplinaCertificacao) {
+        this.disciplinaCertificacao = disciplinaCertificacao;
+    }
+
+    /**
+     * @return the idRquerimento
+     */
+    public int getIdRquerimento() {
+        return idRquerimento;
+    }
+
+    /**
+     * @param idRquerimento the idRquerimento to set
+     */
+    public void setIdRquerimento(int idRquerimento) {
+        this.idRquerimento = idRquerimento;
     }
     
     
