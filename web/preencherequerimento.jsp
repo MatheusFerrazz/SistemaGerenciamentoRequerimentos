@@ -55,9 +55,9 @@
 
     <!--Ocultando as divs-->
 	<style>
-	.divRequerimentoConsultado{display:none;}
+	.divRequerimentoConsultado{display:none;padding-left:15px;;}
 	.acao{display:none;}
-	.divRequerimentoSolicitado{display:none;}
+	.divRequerimentoSolicitado{display:none;padding-left:15px;;}
 	</style>
 
 	<!--Carregando arquivo jquery-->
@@ -104,17 +104,18 @@
 				<div class="col-md-3" style="width:19%" id="divColunaFigura">
 					<img alt="Bootstrap Image Preview" src="imagens/LogoIF.png" class="img-circle">
 				</div>
-				<div class="col-md-7" style="width:38%"id="divColunaCabecalho">
+				<div class="col-md-6" id="divColunaCabecalho">
 					 
-					<address>
+					<address style="margin-bottom:-33;">
 						 <strong>Campus <%= aluno.getCurso().getCampus().getNome() %> - Diretoria Acadêmica</strong><br> <%= aluno.getCurso().getCampus().getEndereco() %>, <%= aluno.getCurso().getCampus().getNumero() %><br> <%= aluno.getCurso().getCampus().getCidade()+" - "+aluno.getCurso().getCampus().getBairro() %>, <%= aluno.getCurso().getCampus().getCep() %><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone() %>
 					</address>
+                                        <br><h3 class="text-left" id="cabecalho">Bem vindo,<br> <%= aluno.getNome() %></h3>
 				</div>
-				<div class="col-md-2" style="width:36%"id="divColunaBoasVindas">
+<!--				<div class="col-md-2" style="width:36%"id="divColunaBoasVindas">
 					<h3 class="text-center" id="h3TextoBoasVindas">
                                             Bem vindo,<br> <%= aluno.getNome() %>
 					</h3>
-				</div>
+				</div>-->
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -148,56 +149,77 @@
                                         {%>
                                         <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row">                                            
                                             <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">
-                                                <div class="row col-md-12" >
+                                                <div class="row col-md-12 form-group" >
                                                         <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
                                                         <h2>Senhor(a) Diretor Acadêmico: <%= aluno.getCurso().getCampus().getDiretor().getNome() %></h2>
-                                                        <p>Eu, <%= aluno.getNome() %>", matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
-                                                        turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:</p>
-                                                        <p><a class="btn btn-primary btn-large" href="#">Learn more</a></p>
+                                                        <p>Eu, <%= aluno.getNome() %>, matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
+                                                        turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:</p>                                                        
+                                                        <%  //Preenchendo os formulários de acordo com o tipo de requerimento
+                                                            int tipoReq = tipo.getId();
+                                                            //Aproveitamento de estudo
+                                                            if(tipoReq==1){%>
+                                                            <br><label>Disciplina cursada:  <input type='text' name="disciplinaCursada" value=""></label>
+                                                                <br><label> Disciplina curso atual: 
+                                                                <select name="disciplinaCursoAtual">
+                                                                <% for(Disciplina disci : aluno.getCurso().getDisciplinasDoCurso()){%>
+                                                                  <option value="<%= disci.getId() %>"><%= disci.getNome() %></option>
+                                                                 <%} %>
+                                                                </select> </label>
+                                                                <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea><br>                
+                                                                <br>Documentos apresentados:
+                                                                <%for(Documento doc : documento.getDocumentos()){%>
+                                                                     <br><input type="checkbox" name="documento" value="<%= doc.getId() %>">&nbsp; <%= doc.getNome() %>
+                                                                <%}%>
+                                                                <br><button type="submit" class="btn btn-default">SOLICITAR</button>								
+                                                            <%}else if(tipoReq==2){%>
+                                                                <br><input type="submit" value="SOLICITAR">            
+                                                            <%}else if(tipoReq==3){%>
+                                                                <br><input type="submit" value="SOLICITAR">                
+                                                            <%}else if(tipoReq==4){%>
+                                                                <br><input type="submit" value="SOLICITAR">                
+                                                            <%}else if(tipoReq==5){%>
+                                                                <br><input type="submit" value="SOLICITAR">                
+                                                            <%}else if(tipoReq==6){%>
+                                                                <br><input type="submit" value="SOLICITAR">                
+                                                            <%}else if(tipoReq==7){%>
+                                                                <br><input type="submit" value="SOLICITAR">                
+                                                             <%}else if(tipoReq==8){%>
+                                                                <br><input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==9){%>
+                                                                <br><input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==10){%>             
+                                                                <br><input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==11){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==12){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==13){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==14){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==15){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==16){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==17){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==18){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==19){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==20){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==21){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==22){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}else if(tipoReq==23){%>
+                                                                <input type="submit" value="SOLICITAR">
+                                                            <%}%>                                                                                                                                                                                                                                                                                                                                                                                                          
                                                 </div>                                                 
                                             </form>
                                         </div>
                                         <%}%>					
-						<div class="col-md-12">
-							<form role="form">
-								<div class="form-group">
-									 
-									<label for="exampleInputEmail1">
-										Email address
-									</label>
-									<input type="text" class="form-control" id="exampleInputEmail1">
-								</div>
-								<div class="form-group">
-									 
-									<label for="exampleInputPassword1">
-										Password
-									</label>
-									<input type="text" class="form-control" id="exampleInputPassword1">
-								</div>
-								<div class="form-group">
-									 
-									<label for="exampleInputFile">
-										File input
-									</label>
-									<input type="file" id="exampleInputFile">
-									<p class="help-block">
-										Example block-level help text here.
-									</p>
-								</div>
-								<div class="checkbox">
-									 
-									<label>
-										<input type="checkbox"> Check me out
-									</label>
-								</div> 
-								<button type="submit" class="btn btn-default">
-									Submit
-								</button>
-							</form> 
-							<button type="button" class="btn btn-primary">
-								SOLICITAR
-							</button>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -205,7 +227,7 @@
                                             
                     <!--Div para as consultas-->
 			<div id="consulta" class="row acao">
-				<div class="col-md-12">
+                            <div class="col-md-12" style="padding-left:28px">
 					<h3 class="text-danger">
 						Requerimentos - Consultas
 					</h3>
