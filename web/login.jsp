@@ -34,7 +34,11 @@
         {
             Aluno aluno = null;
             aluno = alunoDAO.getAlunoByMatriculaSenha(login.getMatricula(), login.getSenha());
-            if(aluno == null) response.sendRedirect("index.html");
+            if(aluno == null) 
+            {
+                request.getSession().invalidate();
+                response.sendRedirect("index.html");
+            }
             else
             {
                 session.setAttribute("aluno", aluno);

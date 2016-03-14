@@ -88,6 +88,8 @@ public class AlunoDAO extends GeralDAO {
         campus.setEstado(resultado.getString("cam_estado"));
         campus.setCep(resultado.getString("cam_cep"));
         campus.setTelefone(resultado.getString("cam_telefone"));
+        campus.setNumero(resultado.getInt("cam_numero"));
+        campus.setCidade(resultado.getString("cam_cidade"));
         
         ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMAÇÕES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
         while(consultaCoordenador.next())

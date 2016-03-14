@@ -7,12 +7,15 @@ package br.edu.ifrn.sgr.persistencias;
 
 import java.util.List;
 import br.edu.ifrn.sgr.modelos.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+
 
 /**
  *
@@ -48,6 +51,41 @@ public class teste { //Classe para testar métodos
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");             
             System.out.println(sdf.format(alu.getDataNascimento()));
             
-       
+
+
+    String senha1 = "";
+    String senha2 = "";
+    MessageDigest mDigest = null;
+        try {
+            mDigest = MessageDigest.getInstance("SHA1");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(teste.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    byte[] result = mDigest.digest("123456".getBytes());
+    StringBuffer sb = new StringBuffer();
+    for (int i = 0; i < result.length; i++) {
+        sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
     }
+        senha1= sb.toString();
+        System.out.println("SENH: "+sb.toString());
+       
+    
+    
+    MessageDigest mDigest2 = null;
+        try {
+            mDigest2 = MessageDigest.getInstance("SHA1");
+        } catch (NoSuchAlgorithmException ex2) {
+            Logger.getLogger(teste.class.getName()).log(Level.SEVERE, null, ex2);
+        }    
+    byte[] result2 = mDigest2.digest("123456".getBytes());
+    StringBuffer sb2 = new StringBuffer();
+    for (int j = 0; j < result.length; j++) {
+        sb2.append(Integer.toString((result2[j] & 0xff) + 0x100, 16).substring(1));
+    }
+        senha2 = sb2.toString();
+        System.out.println("SENH: "+sb.toString());       
+    
+      if(senha1.equals(senha2)) System.out.println("SÃO IGUAIS");
+    
+    }         
 }

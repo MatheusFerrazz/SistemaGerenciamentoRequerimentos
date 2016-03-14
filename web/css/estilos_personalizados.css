@@ -1,0 +1,85 @@
+body
+{
+	padding-top: 51px;
+	margin-right: 90px;
+	margin-left: 90px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+/*#divPrincipal
+{
+
+}
+
+#divColunaFigura
+{
+	width: 15%;
+
+
+}
+*/
+#divColunaCabecalho
+{
+	 text-align: left;
+	 width: 341px;
+	 height: 100px;
+	 vertical-align: bottom;
+	 display: table-cell;
+}
+
+/*
+#divColunaBoasVindas
+{
+	margin-top: 5%;
+	align-items: center;
+	width: 40%;
+
+
+}
+*/
+#h3TextoBoasVindas
+{
+	 text-align: left;
+	 width: 200px;
+	 height: 150px;
+	 vertical-align: bottom;
+	 display: table-cell;
+
+}
+
+/*Personalizando o select*/
+.div-select {
+   	width: 100%;
+    overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */
+}
+ 
+.div-select select {
+      background:  #337AB7;  /* Imagem de fundo (Seta) */
+      background-position: 205px center;  /*Posição da imagem do background*/
+      width: 270px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+      height:30px; /* altura do select, importante para que tenha a mesma altura em todo os navegadores */
+      font-family:Arial, Helvetica, sans-serif; /* Fonte do Select */
+      font-size:16px; /* Tamanho da Fonte */
+      padding:13px 20px 13px 12px; /* Configurações de padding para posicionar o texto no campo */
+      color:#fff; /* Cor da Fonte */
+      text-indent: 0.01px; /* Remove seta padrão do FireFox */
+      text-overflow: "";  /* Remove seta padrão do FireFox */      
+      select::-ms-expand {display: none;} /* Remove seta padrão do IE*/
+ 
+}
+
+/*Personalizando o tamanho do campo input*/
+input[type="text"]
+{
+	width: 40%;
+}
+
+
+div#laembaixo {
+ width: 200px;
+ height: 150px;
+ border: 1px solid #c30;
+ background: #ffe;
+ vertical-align: middle;
+ display: table-cell;
+ }

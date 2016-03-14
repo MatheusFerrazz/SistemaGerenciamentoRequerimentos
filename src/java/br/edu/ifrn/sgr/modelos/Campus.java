@@ -17,10 +17,12 @@ public class Campus {
     private String endereco;
     private String bairro;
     private String telefone;
+    private String cidade;
     private String estado;
     private String cep;
+    private int numero;
 
-    public Campus(int campusID, Ifrn ifrn, Diretor diretor, String nome, String endereco, String bairro, String telefone, String estado, String cep) {
+    public Campus(int campusID, Ifrn ifrn, Diretor diretor, String nome, String endereco, String bairro, String telefone, String estado, String cep, int numero, String cidade) {
         this.campusID = campusID;
         this.ifrn = ifrn;
         this.diretor = diretor;
@@ -30,6 +32,8 @@ public class Campus {
         this.telefone = telefone;
         this.estado = estado;
         this.cep = cep;
+        this.numero = numero;
+        this.cidade = cidade;
     }
 
     public Campus() {
@@ -161,6 +165,33 @@ public class Campus {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-    
+
+    /**
+     * @return the numero
+     */
+    public int getNumero() {
+        return numero;
+    }
+
+    /**
+     * @param numero the numero to set
+     */
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * @return the cidade
+     */
+    public String getCidade() {
+        return cidade;
+    }
+
+    /**
+     * @param cidade the cidade to set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+          
 }

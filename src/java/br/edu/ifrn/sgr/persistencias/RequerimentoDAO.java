@@ -223,4 +223,10 @@ public class RequerimentoDAO extends GeralDAO {
         return requerimentoPopuladoString;
     }  
         
+        public int toInt(String num)
+        {
+            return Integer.parseInt(num);
+        }          
+    // Daqui para baixo vão os insertes de requeriment
+      
 }

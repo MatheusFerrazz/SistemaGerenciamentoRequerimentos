@@ -101,16 +101,16 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-3" id="divColunaFigura">
+				<div class="col-md-3" style="width:19%" id="divColunaFigura">
 					<img alt="Bootstrap Image Preview" src="imagens/LogoIF.png" class="img-circle">
 				</div>
-				<div class="col-md-7" id="divColunaCabecalho">
+				<div class="col-md-7" style="width:38%"id="divColunaCabecalho">
 					 
 					<address>
 						 <strong>Campus <%= aluno.getCurso().getCampus().getNome() %> - Diretoria Acadêmica</strong><br> <%= aluno.getCurso().getCampus().getEndereco() %>, <%= aluno.getCurso().getCampus().getNumero() %><br> <%= aluno.getCurso().getCampus().getCidade()+" - "+aluno.getCurso().getCampus().getBairro() %>, <%= aluno.getCurso().getCampus().getCep() %><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone() %>
 					</address>
 				</div>
-				<div class="col-md-2" id="divColunaBoasVindas">
+				<div class="col-md-2" style="width:36%"id="divColunaBoasVindas">
 					<h3 class="text-center" id="h3TextoBoasVindas">
                                             Bem vindo,<br> <%= aluno.getNome() %>
 					</h3>
@@ -143,8 +143,21 @@
                                             <%} %>
                                             </select>
 					</div>
-                                
-					<div class="row">
+                                        <% //Preenchendo as divis com os formulários e as informações do objeto aluno já preecarregados.
+                                        for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento())
+                                        {%>
+                                        <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row">                                            
+                                            <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">
+                                                <div class="row col-md-12" >
+                                                        <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
+                                                        <h2>Senhor(a) Diretor Acadêmico: <%= aluno.getCurso().getCampus().getDiretor().getNome() %></h2>
+                                                        <p>Eu, <%= aluno.getNome() %>", matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
+                                                        turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:</p>
+                                                        <p><a class="btn btn-primary btn-large" href="#">Learn more</a></p>
+                                                </div>                                                 
+                                            </form>
+                                        </div>
+                                        <%}%>					
 						<div class="col-md-12">
 							<form role="form">
 								<div class="form-group">
