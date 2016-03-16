@@ -14,8 +14,7 @@
 <%@page import="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO"%>
 <%@page import="br.edu.ifrn.sgr.persistencias.GeralDAO"%>
 <%@page import="java.sql.*"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core"
-      prefix="c" %>
+
 
 <jsp:useBean id="alunoDAO" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
 <jsp:useBean id="tiporequerimento" class="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO" scope="request"/>
@@ -143,16 +142,16 @@
                                         for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento())
                                         {%>
                                         <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row">                                            
-                                            <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">
                                             <div class="row col-md-12 form-group" >
+                                            <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">                                            
                                                 <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
                                                 <h2>Senhor(a) Diretor Acadêmico: <%= aluno.getCurso().getCampus().getDiretor().getNome() %></h2>
                                                 <h3><p>&emsp;Eu, <%= aluno.getNome() %>, matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
                                                  turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:</p></h3>                                                        
                                                 <%//Preenchendo os formulários de acordo com o tipo de requerimento
-                                                int tipoReq = tipo.getId();
+                                                //int tipoReq = tipo.getId();
                                                 //Aproveitamento de estudo
-                                                if(tipoReq==1){%>
+                                                if(tipo.getId()==1){%>
                                                     <br><label>Disciplina cursada:  <input type='text' name="disciplinaCursada" value=""></label>
                                                     <br><label> Disciplina curso atual: 
                                                         <select name="disciplinaCursoAtual" class="form-group">
@@ -172,58 +171,58 @@
                                                     </label>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>								
                                                 <%//Certificação de conhecimentos
-                                                }else if(tipoReq==2){%>
+                                                }else if(tipo.getId()==2){%>
 
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==3){%>
+                                                <%}else if(tipo.getId()==3){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipoReq==4){%>
+                                                <%}else if(tipo.getId()==4){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipoReq==5){%>
+                                                <%}else if(tipo.getId()==5){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipoReq==6){%>
+                                                <%}else if(tipo.getId()==6){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipoReq==7){%>
+                                                <%}else if(tipo.getId()==7){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                 <%}else if(tipoReq==8){%>
+                                                 <%}else if(tipo.getId()==8){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipoReq==9){%>
+                                                <%}else if(tipo.getId()==9){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipoReq==10){%>             
+                                                <%}else if(tipo.getId()==10){%>             
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipoReq==11){%>
+                                                <%}else if(tipo.getId()==11){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==12){%>
+                                                <%}else if(tipo.getId()==12){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==13){%>
+                                                <%}else if(tipo.getId()==13){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==14){%>
+                                                <%}else if(tipo.getId()==14){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==15){%>
+                                                <%}else if(tipo.getId()==15){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==16){%>
+                                                <%}else if(tipo.getId()==16){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==17){%>
+                                                <%}else if(tipo.getId()==17){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==18){%>
+                                                <%}else if(tipo.getId()==18){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==19){%>
+                                                <%}else if(tipo.getId()==19){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==20){%>
+                                                <%}else if(tipo.getId()==20){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==21){%>
+                                                <%}else if(tipo.getId()==21){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==22){%>
+                                                <%}else if(tipo.getId()==22){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipoReq==23){%>
+                                                <%}else if(tipo.getId()==23){%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%}%>                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                             </div>                                                 
                                         </form>
+                                    </div>                                    					
                                     </div>
-                                    <%}%>					
-                                    </div>
-				</div>
+                                <%}%>
+                            </div>
 			</div>
                                             
                                             

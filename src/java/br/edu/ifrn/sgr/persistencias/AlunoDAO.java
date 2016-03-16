@@ -56,7 +56,9 @@ public class AlunoDAO extends GeralDAO {
 //    }
     
     public Aluno popularAluno(ResultSet resultado) throws SQLException, ClassNotFoundException{
-        
+        String CEP = "";
+        String TEL = "";
+        String CEL = "";
         
         Aluno aluno = new Aluno();
         Campus campus = new Campus();
@@ -75,6 +77,8 @@ public class AlunoDAO extends GeralDAO {
         aluno.setNome(resultado.getString("pes_nome"));
         aluno.setMatricula(resultado.getString("pes_matricula_PK"));
         aluno.setEmail(resultado.getString("pes_email"));
+        TEL = formatString(resultado.getString("pes_telefone"),"(##) ####-####");
+        CEL = formatString(resultado.getString("pes_celular"),"(##) #####-####");
         aluno.setTelefone(resultado.getString("pes_telefone"));
         aluno.setCelular(resultado.getString("pes_celular"));
         java.sql.Date dataAlunoSQL = resultado.getDate("pes_data_nascimento");
@@ -90,8 +94,8 @@ public class AlunoDAO extends GeralDAO {
         campus.setEstado(resultado.getString("cam_estado"));
         campus.setNumero(resultado.getInt("cam_numero"));
         campus.setCidade(resultado.getString("cam_cidade"));
-        String CEP = formatString(resultado.getString("cam_cep"),"#####-###");
-        String TEL = formatString(resultado.getString("cam_telefone"),"(##) ####-####");
+        CEP = formatString(resultado.getString("cam_cep"),"#####-###");
+        TEL = formatString(resultado.getString("cam_telefone"),"(##) #####-####");
         campus.setCep(CEP);
         campus.setTelefone(TEL);
         ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMAÇÕES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
@@ -100,8 +104,10 @@ public class AlunoDAO extends GeralDAO {
             coordenador.setNome(consultaCoordenador.getString("pes_nome"));
             coordenador.setMatricula(consultaCoordenador.getString("pes_matricula_PK"));
             coordenador.setEmail(consultaCoordenador.getString("pes_email"));
-            coordenador.setTelefone(consultaCoordenador.getString("pes_telefone"));
-            coordenador.setCelular(consultaCoordenador.getString("pes_celular"));
+            TEL = formatString(consultaCoordenador.getString("pes_telefone"),"(##) ####-####");
+            CEL = formatString(consultaCoordenador.getString("pes_celular"),"(##) #####-####");
+            coordenador.setTelefone(TEL);
+            coordenador.setCelular(CEL);
             java.sql.Date dataCoordenadorSQL = consultaCoordenador.getDate("pes_data_nascimento");
             java.util.Date dataCoordenador = new java.util.Date(dataCoordenadorSQL.getTime());
             coordenador.setDataNascimento(dataCoordenador);
@@ -119,8 +125,10 @@ public class AlunoDAO extends GeralDAO {
             diretor.setNome(consultaDiretor.getString("pes_nome"));
             diretor.setMatricula(consultaDiretor.getString("pes_matricula_PK"));
             diretor.setEmail(consultaDiretor.getString("pes_email"));
-            diretor.setTelefone(consultaDiretor.getString("pes_telefone"));
-            diretor.setCelular(consultaDiretor.getString("pes_celular"));
+            TEL = formatString(consultaDiretor.getString("pes_telefone"),"(##) ####-####");
+            CEL = formatString(consultaDiretor.getString("pes_celular"),"(##) #####-####");            
+            diretor.setTelefone(TEL);
+            diretor.setCelular(CEL);
             java.sql.Date dataDiretorSQL = consultaDiretor.getDate("pes_data_nascimento");
             java.util.Date dataDiretor = new java.util.Date(dataDiretorSQL.getTime());
             diretor.setDataNascimento(dataDiretor);
