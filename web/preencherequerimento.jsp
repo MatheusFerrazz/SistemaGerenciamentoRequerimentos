@@ -130,8 +130,8 @@
                                     <h3 class="text-success">
                                             Requerimentos - Solicitações
                                     </h3>
-                                    <div class="row col-md-12 form-group">
-                                        <select id="selectSolicitaRequerimento" class="form-control" style="width:40%;padding-right:0px;">
+                                    <div class="row col-md-12 form-group" style="clear: both">
+                                        <select id="selectSolicitaRequerimento" class="form-control" style="width:40%;padding-right:0px;;">
                                           <option selected disabled style="padding-bottom: 1px; padding-top: 1px">Selecione</option>
                                         <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
                                          <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
@@ -141,7 +141,7 @@
                                         <% //Preenchendo as divis com os formulários e as informações do objeto aluno já preecarregados.
                                         for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento())
                                         {%>
-                                        <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row">                                            
+                                        <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row" style="clear: both;">                                            
                                             <div class="row col-md-12 form-group" >
                                             <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">                                            
                                                 <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
@@ -164,7 +164,7 @@
                                                     <%for(Documento doc : documento.getDocumentos()){%>
                                                         <input type="checkbox" name="documentoApresentado" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                                     <%}%>
-                                                    <div class="form-group">
+                                                <div class="form-group">
 
                                                     <label for="exampleInputFile">
                                                             Anexar arquivo <input type="file" id="exampleInputFile">

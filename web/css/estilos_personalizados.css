@@ -112,13 +112,20 @@ div#laembaixo {
 
 .divRequerimentoSolicitado
 {
-	margin-top: 60px; 
+/*	margin-top: 111px; */
 	border: thin solid black;
 	margin-left: 2px;
+
 }
 
 /*Ajustando tamanho dos selects*/
 #acao
 {
 	
+}
+
+ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
