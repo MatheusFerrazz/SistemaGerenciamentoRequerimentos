@@ -58,9 +58,9 @@ public class ControladorLogin extends HttpServlet {
             session.setMaxInactiveInterval(30*60);
             Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());            
             response.addCookie(cookie);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("preencherequerimento.jsp");
         }else{
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<font color=red>Usuário e senha errado</font>");
