@@ -42,30 +42,26 @@ public class ControladorLogin extends HttpServlet {
             throws ServletException, IOException {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
-        String logon = request.getParameter("tipoLogon");
-        Login login = new Login(matricula,senha,logon);
         AlunoDAO alunoDAO = new AlunoDAO();
         Aluno aluno = null;
-        if(login.getTipoLogin().equalsIgnoreCase("aluno")){
         try {
             aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
-        } catch (Exception ex) {           
+        } catch (Exception ex) {
             Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (aluno != null){
+        if (aluno != null) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("aluno", aluno);            
-            session.setMaxInactiveInterval(30*60);
-            Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());            
+            session.setAttribute("aluno", aluno);
+            session.setMaxInactiveInterval(30 * 60);
+            Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());
             response.addCookie(cookie);
             response.sendRedirect("preencherequerimento.jsp");
-        }else{
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
+        } else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginaluno.html");
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<font color=red>Usuário e senha errado</font>");
             rd.include(request, response);
-              }
         }
     }
 
