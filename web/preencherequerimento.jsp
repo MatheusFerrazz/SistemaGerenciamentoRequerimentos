@@ -144,7 +144,7 @@
                                 </select>
                             </div>
                             <% //Preenchendo as divis com os formulários e as informações do objeto aluno já preecarregados.
-                                            for (TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()) {%>
+                                for (TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()) {%>
                             <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row" style="clear: both;">                                            
                                 <div class="row col-md-12 form-group" >
                                     <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form" + tipo.getId()%>">                                            
@@ -177,7 +177,7 @@
                                         <br><button type="submit" class="btn btn-primary">SOLICITAR</button>                                                    
                                         <!--                                                </div>-->
                                         <%//Certificação de conhecimentos
-                                                } else if (tipo.getId() == 2) {%>
+                                        } else if (tipo.getId() == 2) {%>
                                         <br><label> Disciplina: 
                                             <select name="disciplina_certificacao" class="form-group" required="true">
                                                 <option title="SELECIONE" ></option>
@@ -188,7 +188,7 @@
                                         <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                         <br><button type="submit" class="btn btn-primary">SOLICITAR</button>                                                    
                                         <%//REPOSIÇÃO DE ATIVIDADES
-                                                } else if (tipo.getId() == 3) {%>
+                                        } else if (tipo.getId() == 3) {%>
                                         <br>Tipo de atividade<input type="text" name="tipo_atividade" required="true">
                                         <br><label> Professor: 
                                             <select name="professor_atividade" class="form-group" required="true">
@@ -200,8 +200,8 @@
                                         <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>                                                    
                                         <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                         <%//MUDANÇA DE CURSO
-                                                } else if (tipo.getId() == 4) {
-                                                    if (!aluno.getCurso().getCursosTranferencia().isEmpty()) {%>
+                                        } else if (tipo.getId() == 4) {
+                                            if (!aluno.getCurso().getCursosTranferencia().isEmpty()) {%>
                                         <br><label> Curso desejado: 
                                             <select name="curso_tranfencia" class="form-group" required="true">
                                                 <option title="SELECIONE" ></option>
@@ -226,8 +226,8 @@
                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <% } else {%><br><h2><font color="red">NÃO HÁ TURMAS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
                                                         <%//MUDANÇA DE TURNO
-                                                } else if (tipo.getId() == 6) {
-                                                    if (!aluno.getCurso().getTurnosTranferencia().isEmpty()) {%>
+                                                        } else if (tipo.getId() == 6) {
+                                                            if (!aluno.getCurso().getTurnosTranferencia().isEmpty()) {%>
                                                         <br><label> Turno desejado: 
                                                             <select name="turno_tranferencia" class="form-group" required="true">
                                                                 <option title="SELECIONE" ></option>
@@ -239,7 +239,7 @@
                                                         <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                         <% } else {%><br><h2><font color="red">NÃO HÁ TURNOS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
                                                                 <%//TRANSFERÊNCIA
-                                                } else if (tipo.getId() == 7) {%>
+                                                                } else if (tipo.getId() == 7) {%>
                                                                 <br><label>Escola origem:  <input type='text' name="escola_origem" value="" required="true"></label>
                                                                 <br><label>Curso origem:  <input type='text' name="curso_origem" value="" required="true"></label>
                                                                 <br><label>Escola destino:  <input type='text' name="escola_destino" value="" required="true"></label>
@@ -247,74 +247,74 @@
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                                 <%//LANÇAMENTO OU REVISÃO DE FALTAS/NOTAS/SITUAÇÃO
-                                                } else if (tipo.getId() == 8) {%>
+                                                                } else if (tipo.getId() == 8) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>" required="true"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                                 <%//RENOVAÇÃO MATRÍCULA
-                                                } else if (tipo.getId() == 9) {%>
+                                                                } else if (tipo.getId() == 9) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>" required="true"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                                 <%//REABERTURA MATRÍCULA
-                                                } else if (tipo.getId() == 10) {%>
+                                                                } else if (tipo.getId() == 10) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>" required="true"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                                 <%//JUSTIFICATIVA DE FALTAS (DIAS EM ANEXO)
-                                                } else if (tipo.getId() == 11) {%>
+                                                                } else if (tipo.getId() == 11) {%>
                                                                 <br><label for="exampleInputFile">
                                                                     Anexar arquivo <input type="file" id="exampleInputFile" name="dia_anexo">
                                                                 </label>                                                
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//JUSTIFICATIVA DE FALTA - DIA ESPECÍFICO
-                                                } else if (tipo.getId() == 12) {%>
+                                                                } else if (tipo.getId() == 12) {%>
                                                                 <br><label>Dia :  <input type='date' name="dia_especifico" value="" required="true"></label>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//JUSTIFICATIVA DE FALTA POR PERÍODO
-                                                } else if (tipo.getId() == 13) {%>
+                                                                } else if (tipo.getId() == 13) {%>
                                                                 <br><label>De :  <input type='date' name="dia_de" value="" required="true"></label>
                                                                 <br><label>Até :  <input type='date' name="dia_ate" value="" required="true"></label>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//TRANCAMENTO DE MATRÍCULA - PERÍODO
-                                                } else if (tipo.getId() == 14) {%>
+                                                                } else if (tipo.getId() == 14) {%>
                                                                 <br><label>Período :  <input type='number' name="periodo" value="" required="true"></label>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//TRANCAMENTO DE MATRÍCULA - COMPULSÓRIO
-                                                } else if (tipo.getId() == 15) {%>
+                                                                } else if (tipo.getId() == 15) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//CANCELAMENTO DE MATRÍCULA
-                                                } else if (tipo.getId() == 16) {%>
+                                                                } else if (tipo.getId() == 16) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//ATENDIMENTO DOMICILIAR
-                                                } else if (tipo.getId() == 17) {%>
+                                                                } else if (tipo.getId() == 17) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//OUTROS
-                                                } else if (tipo.getId() == 18) {%>
+                                                                } else if (tipo.getId() == 18) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//DISPENSA DE ATIVIDADES
-                                                } else if (tipo.getId() == 19) {%>
+                                                                } else if (tipo.getId() == 19) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//ADEQUAÇÃO DE HORÁRIOS
-                                                } else if (tipo.getId() == 20) {%>
+                                                                } else if (tipo.getId() == 20) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//ESTUDO INDIVIDUALIZADO
-                                                } else if (tipo.getId() == 21) {%>
+                                                                } else if (tipo.getId() == 21) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//INCLUSÃO DE DISCIPLINAS
-                                                } else if (tipo.getId() == 22) {%>
+                                                                } else if (tipo.getId() == 22) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%//REMOÇÃO DE DISCIPLINAS
-                                                } else if (tipo.getId() == 23) {%>
+                                                                } else if (tipo.getId() == 23) {%>
                                                                 <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form" + tipo.getId()%>"></textarea>
                                                                 <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                                 <%}%>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
