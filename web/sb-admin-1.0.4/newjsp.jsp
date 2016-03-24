@@ -236,18 +236,11 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                <div class="row">
-				<div class="col-md-3"  id="divColunaFigura">
-					<img alt="Bootstrap Image Preview" src="imagens/LogoIF.png" class="img-circle">
-				</div>
-				<div class="col-md-6" id="divColunaCabecalho">
-					 
-					<address>
-						 <strong>Campus <%= aluno.getCurso().getCampus().getNome() %> - Diretoria Acadêmica</strong><br> <%= aluno.getCurso().getCampus().getEndereco() %>, <%= aluno.getCurso().getCampus().getNumero() %><br> <%= aluno.getCurso().getCampus().getCidade()+"/"+aluno.getCurso().getCampus().getEstado()+" - "+aluno.getCurso().getCampus().getBairro() %>, <%= aluno.getCurso().getCampus().getCep() %><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone() %>
-					</address>
-                                        <br><h3 class="text-left" id="cabecalho">Bem vindo,<br> <%= aluno.getNome() %></h3>
-				</div>
-			</div>
+                <address>
+                    <strong>Campus <%= aluno.getCurso().getCampus().getNome() %> - Diretoria Acadêmica</strong><br><%= aluno.getCurso().getCampus().getEndereco() %>, <%= aluno.getCurso().getCampus().getNumero() %><br> <%= aluno.getCurso().getCampus().getCidade()+"/"+aluno.getCurso().getCampus().getEstado()+" - "+aluno.getCurso().getCampus().getBairro() %>, <%= aluno.getCurso().getCampus().getCep() %><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone() %>
+                </address>
+                <br><h3 class="text-left" id="cabecalho">Bem vindo,<br> <%= aluno.getNome() %></h3>
+
             </div>
             <!-- /.container-fluid -->
 
