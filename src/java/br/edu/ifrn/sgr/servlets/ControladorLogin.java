@@ -66,9 +66,74 @@ public class ControladorLogin extends HttpServlet {
             out.println("<font color=red>Usuário e senha errado</font>");
             rd.include(request, response);
                }
-            
         }
-        
+/*        // login como Tec Administrativo
+        else if(login.getTipoLogin().equalsIgnoreCase("aluno")){
+            try {
+            aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (aluno != null) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("aluno", aluno);
+            session.setMaxInactiveInterval(30 * 60);
+            Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());
+            response.addCookie(cookie);
+            response.sendRedirect("preencherequerimento.jsp");
+        } else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginaluno.html");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<font color=red>Usuário e senha errado</font>");
+            rd.include(request, response);
+               }
+        }
+        // login como Professor
+        else if(login.getTipoLogin().equalsIgnoreCase("aluno")){
+            try {
+            aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (aluno != null) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("aluno", aluno);
+            session.setMaxInactiveInterval(30 * 60);
+            Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());
+            response.addCookie(cookie);
+            response.sendRedirect("preencherequerimento.jsp");
+        } else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginaluno.html");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<font color=red>Usuário e senha errado</font>");
+            rd.include(request, response);
+               }
+        }
+        // login como Diretor
+        else{
+            try {
+            aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (aluno != null) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("aluno", aluno);
+            session.setMaxInactiveInterval(30 * 60);
+            Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());
+            response.addCookie(cookie);
+            response.sendRedirect("preencherequerimento.jsp");
+        } else {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginaluno.html");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<font color=red>Usuário e senha errado</font>");
+            rd.include(request, response);
+               }
+            
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
