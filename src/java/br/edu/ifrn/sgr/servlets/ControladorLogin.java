@@ -7,6 +7,7 @@ package br.edu.ifrn.sgr.servlets;
 
 import br.edu.ifrn.sgr.modelos.Aluno;
 import br.edu.ifrn.sgr.persistencias.AlunoDAO;
+import br.edu.ifrn.sgr.persistencias.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -41,8 +42,11 @@ public class ControladorLogin extends HttpServlet {
             throws ServletException, IOException {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
+        String logon = request.getParameter("tipoLogon");
+        Login login = new Login(matricula,senha,logon);
         AlunoDAO alunoDAO = new AlunoDAO();
         Aluno aluno = null;
+        if(login.getTipoLogin().equalsIgnoreCase("aluno")){
         try {
             aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
         } catch (Exception ex) {           
@@ -61,6 +65,7 @@ public class ControladorLogin extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<font color=red>Usuário e senha errado</font>");
             rd.include(request, response);
+              }
         }
     }
 
