@@ -42,9 +42,12 @@ public class ControladorLogin extends HttpServlet {
             throws ServletException, IOException {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
+        String tipoLogin = request.getParameter("tipoLogin");
+        Login login = new Login(matricula,senha,tipoLogin);
         AlunoDAO alunoDAO = new AlunoDAO();
         Aluno aluno = null;
-        try {
+        if(login.getTipoLogin().equalsIgnoreCase("aluno")){
+            try {
             aluno = alunoDAO.getAlunoByMatriculaSenha(matricula, senha);
         } catch (Exception ex) {
             Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,7 +65,10 @@ public class ControladorLogin extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<font color=red>Usuário e senha errado</font>");
             rd.include(request, response);
+               }
+            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
