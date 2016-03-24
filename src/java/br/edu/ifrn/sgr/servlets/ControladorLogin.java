@@ -58,7 +58,7 @@ public class ControladorLogin extends HttpServlet {
             session.setMaxInactiveInterval(30 * 60);
             Cookie cookie = new Cookie("nome", session.getId() + aluno.getNome());
             response.addCookie(cookie);
-            response.sendRedirect("preencherequerimento.jsp");
+            response.sendRedirect("/sb-admin-1.0.4/newjsp.jsp");
         } else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginaluno.html");
             response.setContentType("text/html; charset=UTF-8");
