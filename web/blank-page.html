@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -19,9 +17,6 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -31,31 +26,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<script>
-	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
-	$(function() {
-	        $('#acao').change(function(){
-	            $('.acao').hide();
-	            $('#' + $(this).val()).show();
-	        });
-	    });
 
-	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
-	$(function() {
-	        $('#selectSolicitaRequerimento').change(function(){
-	            $('.divRequerimentoSolicitado').hide();
-	            $('#' + $(this).val()).show();
-	        });
-	    });    
-	    
-	//Mostra a div de consulta solicitada   
-	$(function() {
-	        $('#selectConsultaRequerimento').change(function(){
-	            $('.divRequerimentoConsultado').hide();
-	            $('#' + $(this).val()).show();
-	        });
-	    });      
-    </script>
 </head>
 
 <body>
@@ -86,7 +57,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -101,7 +73,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -116,7 +89,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -178,25 +152,40 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Em Andamento</a>
+                                <a href="#">Dropdown Item</a>
                             </li>
                             <li>
-                                <a href="#">Deferidos</a>
-                            </li>
-                            <li>
-                                <a href="#">Indeferidos</a>
+                                <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="active">
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -206,10 +195,25 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                <address>
-                    <strong>Campus <%= aluno.getCurso().getCampus().getNome() %> - Diretoria Acadêmica</strong><br> <%= aluno.getCurso().getCampus().getEndereco() %>, <%= aluno.getCurso().getCampus().getNumero() %><br> <%= aluno.getCurso().getCampus().getCidade()+"/"+aluno.getCurso().getCampus().getEstado()+" - "+aluno.getCurso().getCampus().getBairro() %>, <%= aluno.getCurso().getCampus().getCep() %><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone() %>
-                </address>
-                <br><h3 class="text-left" id="cabecalho">Bem vindo,<br> <%= aluno.getNome() %></h3>
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Blank Page
+                            <small>Subheading</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Blank Page
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
@@ -225,11 +229,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
 </body>
 
