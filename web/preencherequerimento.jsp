@@ -4,6 +4,10 @@
     Author     : Luan Medeiros
 --%>
 
+<%@page import="br.edu.ifrn.sgr.modelos.Turma"%>
+<%@page import="br.edu.ifrn.sgr.modelos.Turno"%>
+<%@page import="br.edu.ifrn.sgr.modelos.Curso"%>
+<%@page import="br.edu.ifrn.sgr.modelos.Professor"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Disciplina"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Documento"%>
 <%@page import="br.edu.ifrn.sgr.modelos.TipoRequerimento"%>
@@ -132,7 +136,8 @@
                                     </h3>
                                     <div class="row col-md-12 form-group" style="clear: both">
                                         <select id="selectSolicitaRequerimento" class="form-control" style="width:40%;padding-right:0px;;">
-                                          <option selected disabled style="padding-bottom: 1px; padding-top: 1px">Selecione</option>
+<!--                                          <option selected disabled style="padding-bottom: 1px; padding-top: 1px">Selecione</option>-->
+                                         <option title="SELECIONE" ></option>
                                         <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
                                          <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
                                         <%} %>
@@ -144,80 +149,173 @@
                                         <div id="<%= tipo.getId()%>" class="divRequerimentoSolicitado row" style="clear: both;">                                            
                                             <div class="row col-md-12 form-group" >
                                             <form action="gravarequerimento.jsp" role="form" method="post" id="<%= "form"+tipo.getId() %>">                                            
-                                                <input type="hidden" name="tipoRequerimento" value="<%= tipo.getId() %>">
+                                                <input type="hidden" name="tipo_requerimento" value="<%= tipo.getId() %>">
                                                 <h2>Senhor(a) Diretor Acadêmico: <%= aluno.getCurso().getCampus().getDiretor().getNome() %></h2>
                                                 <h3><p>&emsp;Eu, <%= aluno.getNome() %>, matrícula <%= aluno.getMatricula() %>, aluno(a) do curso <%= aluno.getCurso().getModalidade().getNome() %> de nível <%= aluno.getCurso().getModalidade().getNivel() %> em <%= aluno.getCurso().getNome() %>, 
                                                  turma <%= aluno.getTurma().getCodigo() %>, telefone(s) <%= aluno.getTelefone() %> <%= " / "+aluno.getCelular()%>,  email <%= aluno.getEmail() %>, venho requerer a V. Sa.:</p></h3>                                                        
                                                 <%//Preenchendo os formulários de acordo com o tipo de requerimento
                                                 //int tipoReq = tipo.getId();
+
                                                 //Aproveitamento de estudo
                                                 if(tipo.getId()==1){%>
-                                                    <br><label>Disciplina cursada:  <input type='text' name="disciplinaCursada" value=""></label>
+                                                    <br><label>Disciplina cursada:  <input type='text' name="disciplina_cursada" value="" required="true"></label>
                                                     <br><label> Disciplina curso atual: 
-                                                        <select name="disciplinaCursoAtual" class="form-group">
+                                                        <select name="disciplina_cursoAtual" class="form-group" required="true">
+                                                        <option title="SELECIONE" ></option>
                                                         <%for(Disciplina disci : aluno.getCurso().getDisciplinasDoCurso()){%>
                                                             <option value="<%= disci.getId() %>"><%= disci.getNome() %></option>
                                                         <%}%>
-                                                    </select> </label>
+                                                        </select> </label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>               
                                                     <br><label>Documentos apresentados:</label>
                                                     <%for(Documento doc : documento.getDocumentos()){%>
-                                                        <input type="checkbox" name="documentoApresentado" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                        <input type="checkbox" name="documento_apresentado" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                                     <%}%>
-                                                <div class="form-group">
-
-                                                    <label for="exampleInputFile">
+<!--                                                <div class="form-group">                                                    -->
+                                                    <br><label for="exampleInputFile">
                                                             Anexar arquivo <input type="file" id="exampleInputFile">
-                                                    </label>
-                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>								
+                                                        </label>
+                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>                                                    
+<!--                                                </div>-->
                                                 <%//Certificação de conhecimentos
                                                 }else if(tipo.getId()==2){%>
-
+                                                    <br><label> Disciplina: 
+                                                        <select name="disciplina_certificacao" class="form-group" required="true">
+                                                            <option title="SELECIONE" ></option>
+                                                        <%for(Disciplina disci : aluno.getCurso().getDisciplinasDoCurso()){%>
+                                                            <option value="<%= disci.getId() %>"><%= disci.getNome() %></option>
+                                                        <%}%>
+                                                        </select> </label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>                                                    
+                                                <%//REPOSIÇÃO DE ATIVIDADES
+                                                }else if(tipo.getId()==3){%>
+                                                <br>Tipo de atividade<input type="text" name="tipo_atividade" required="true">
+                                                    <br><label> Professor: 
+                                                        <select name="professor_atividade" class="form-group" required="true">
+                                                              <option title="SELECIONE" ></option>
+                                                        <%for(Professor prof : aluno.getCurso().getProfessores()){%>
+                                                            <option value="<%= prof.getMatricula() %>"><%= prof.getNome() %></option>
+                                                        <%}%>
+                                                        </select> </label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                    
+                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
+                                                <%//MUDANÇA DE CURSO
+                                                }else if(tipo.getId()==4){ if(!aluno.getCurso().getCursosTranferencia().isEmpty()){%>
+                                                    <br><label> Curso desejado: 
+                                                        <select name="curso_tranfencia" class="form-group" required="true">
+                                                           <option title="SELECIONE" ></option>
+                                                        <%for(Curso curso : aluno.getCurso().getCursosTranferencia()){%>
+                                                            <option value="<%= curso.getCursoID() %>"><%= curso.getNome()+" - CAMPUS "+curso.getCampus().getNome() %></option>
+                                                        <%}%>
+                                                        </select> </label>                                                
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
+                                                    <% }else{%><br><h2><font color="red">NÃO HÁ CURSOS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
+                                                <%//MUDANÇA DE TURMA
+                                                }else if(tipo.getId()==5){ if(!aluno.getCurso().getTurmasTranferencia().isEmpty()){%>
+                                                    <br><label> Turma desejada: 
+                                                        <select name="turma_tranferencia" class="form-group" required="true">
+                                                            <option title="SELECIONE" ></option>
+                                                        <%for(Turma turma : aluno.getCurso().getTurmasTranferencia()){%>
+                                                            <option value="<%= turma.getCodigo() %>"><%= turma.getCodigo()%></option>
+                                                        <%}%>
+                                                    </select> </label>                                                 
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==3){%>
+                                                    <% }else{%><br><h2><font color="red">NÃO HÁ TURMAS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
+                                                <%//MUDANÇA DE TURNO
+                                                }else if(tipo.getId()==6){ if(!aluno.getCurso().getTurnosTranferencia().isEmpty()){%>
+                                                    <br><label> Turno desejado: 
+                                                        <select name="turno_tranferencia" class="form-group" required="true">
+                                                            <option title="SELECIONE" ></option>
+                                                        <%for(Turno turno : aluno.getCurso().getTurnosTranferencia()){%>
+                                                            <option value="<%= turno.getId() %>"><%= turno.getNome() %></option>
+                                                        <%}%>
+                                                    </select> </label>                                                 
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipo.getId()==4){%>
+                                                    <% }else{%><br><h2><font color="red">NÃO HÁ TURNOS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
+                                                <%//TRANSFERÊNCIA
+                                                }else if(tipo.getId()==7){%>
+                                                    <br><label>Escola origem:  <input type='text' name="escola_origem" value="" required="true"></label>
+                                                    <br><label>Curso origem:  <input type='text' name="curso_origem" value="" required="true"></label>
+                                                    <br><label>Escola destino:  <input type='text' name="escola_destino" value="" required="true"></label>
+                                                    <br><label>Curso destino:  <input type='text' name="curso_destino" value="" required="true"></label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipo.getId()==5){%>
-                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipo.getId()==6){%>
-                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                <%}else if(tipo.getId()==7){%>
-                                                    <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
-                                                 <%}else if(tipo.getId()==8){%>
+                                                <%//LANÇAMENTO OU REVISÃO DE FALTAS/NOTAS/SITUAÇÃO
+                                                }else if(tipo.getId()==8){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipo.getId()==9){%>
+                                                <%//RENOVAÇÃO MATRÍCULA
+                                                }else if(tipo.getId()==9){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipo.getId()==10){%>             
+                                                <%//REABERTURA MATRÍCULA
+                                                }else if(tipo.getId()==10){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
-                                                <%}else if(tipo.getId()==11){%>
+                                                <%//JUSTIFICATIVA DE FALTAS (DIAS EM ANEXO)
+                                                }else if(tipo.getId()==11){%>
+                                                    <br><label for="exampleInputFile">
+                                                            Anexar arquivo <input type="file" id="exampleInputFile" name="dia_anexo">
+                                                        </label>                                                
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==12){%>
+                                                <%//JUSTIFICATIVA DE FALTA - DIA ESPECÍFICO
+                                                }else if(tipo.getId()==12){%>
+                                                    <br><label>Dia :  <input type='date' name="dia_especifico" value="" required="true"></label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==13){%>
+                                                <%//JUSTIFICATIVA DE FALTA POR PERÍODO
+                                                }else if(tipo.getId()==13){%>
+                                                    <br><label>De :  <input type='date' name="dia_de" value="" required="true"></label>
+                                                    <br><label>Até :  <input type='date' name="dia_ate" value="" required="true"></label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==14){%>
+                                                <%//TRANCAMENTO DE MATRÍCULA - PERÍODO
+                                                }else if(tipo.getId()==14){%>
+                                                    <br><label>Período :  <input type='number' name="periodo" value="" required="true"></label>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==15){%>
+                                                <%//TRANCAMENTO DE MATRÍCULA - COMPULSÓRIO
+                                                }else if(tipo.getId()==15){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==16){%>
+                                                <%//CANCELAMENTO DE MATRÍCULA
+                                                }else if(tipo.getId()==16){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==17){%>
+                                                <%//ATENDIMENTO DOMICILIAR
+                                                }else if(tipo.getId()==17){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==18){%>
+                                                <%//OUTROS
+                                                }else if(tipo.getId()==18){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==19){%>
+                                                <%//DISPENSA DE ATIVIDADES
+                                                }else if(tipo.getId()==19){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==20){%>
+                                                <%//ADEQUAÇÃO DE HORÁRIOS
+                                                }else if(tipo.getId()==20){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==21){%>
+                                                <%//ESTUDO INDIVIDUALIZADO
+                                                }else if(tipo.getId()==21){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==22){%>
+                                                <%//INCLUSÃO DE DISCIPLINAS
+                                                }else if(tipo.getId()==22){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}else if(tipo.getId()==23){%>
+                                                <%//REMOÇÃO DE DISCIPLINAS
+                                                }else if(tipo.getId()==23){%>
+                                                    <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
-                                                <%}%>                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                            </div>                                                 
+                                                <%}%>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                                         </form>
                                     </div>                                    					
                                     </div>
