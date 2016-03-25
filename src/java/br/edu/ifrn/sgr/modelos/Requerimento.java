@@ -4,43 +4,45 @@
  * and open the template in the editor.
  */
 package br.edu.ifrn.sgr.modelos;
-import java.util.Date;
+
+import java.sql.Date;
+
 /**
  *
  * @author CH
  */
 public class Requerimento {
-    private Aluno aluno;    
-    private String disciplinaCursada = "";
-    private String observacoes = "";        
-    private String encaminhamentos = "";   
-    private String mudancaDe = "";
-    private String mudancaPara = "";
-    private Date dataRealizacaoCertificacao;
-    private Date dataFaltasDe;
-    private Date dataFaltasAte;
-    private Date dataFaltasDia;
+    private String alunoID;    
+    private String disciplinaCursada;
+    private String observacoes;        
+    private String encaminhamentos;   
+    private String mudancaDe;
+    private String mudancaPara;
+    private String dataRealizacaoCertificacao;
+    private String dataFaltasDe;
+    private String dataFaltasAte;
+    private String dataFaltasDia;
     private Date dataSolicitacaoRequerimento;
-    private Date dataAtividade;
+    private String dataAtividade;
     private int periodoTancamento;
-    private String outros = "";
-    private String justificativa = "";
-    private String obersavacoesAnaliseAproveitamento = "";
-    private String obervacoesDocumentosApresentados = "";
+    private String outros;
+    private String justificativa;
+    private String obersavacoesAnaliseAproveitamento;
+    private String obervacoesDocumentosApresentados;
     private boolean resultado;
     private boolean diasDescritosAnexo;
-    private Professor professorResponsavelAnalise;
-    private Professor professorAtividade;
-    private TecnicoAdministrativo tecnicoAdministrativoResponsavel;
-    private Disciplina disciplinaCursoAtual;
-    private TipoRequerimento tipoRequerimento;
+    private String professorResponsavelAnaliseID;
+    private String professorAtividadeID;
+    private String tecnicoAdministrativoResponsavelID;
+    private int disciplinaCursoAtualID;
+    private int tipoRequerimentoID;
     private String tipoAtividade;
-    private Curso cursoOrigem;
-    private Curso cursoDestino;
-    private Turma turmaOrigem;
-    private Turma turmaDestino;
-    private Turno turnoOrigem;
-    private Turno turnoDestino;
+    private int cursoOrigemID;
+    private int cursoDestinoID;
+    private int turmaOrigemID;
+    private int turmaDestinoID;
+    private int turnoOrigemID;
+    private int turnoDestinoID;
     private String tranferenciaCursoOrigem;
     private String tranferenciaCursoDestino;
     private String tranferenciaEscolaOrigem;
@@ -52,17 +54,17 @@ public class Requerimento {
     }
 
     /**
-     * @return the aluno
+     * @return the alunoID
      */
-    public Aluno getAluno() {
-        return aluno;
+    public String getAlunoID() {
+        return alunoID;
     }
 
     /**
-     * @param aluno the aluno to set
+     * @param alunoID the alunoID to set
      */
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAlunoID(String alunoID) {
+        this.alunoID = alunoID;
     }
 
     /**
@@ -138,56 +140,56 @@ public class Requerimento {
     /**
      * @return the dataRealizacaoCertificacao
      */
-    public Date getDataRealizacaoCertificacao() {
+    public String getDataRealizacaoCertificacao() {
         return dataRealizacaoCertificacao;
     }
 
     /**
      * @param dataRealizacaoCertificacao the dataRealizacaoCertificacao to set
      */
-    public void setDataRealizacaoCertificacao(Date dataRealizacaoCertificacao) {
+    public void setDataRealizacaoCertificacao(String dataRealizacaoCertificacao) {
         this.dataRealizacaoCertificacao = dataRealizacaoCertificacao;
     }
 
     /**
      * @return the dataFaltasDe
      */
-    public Date getDataFaltasDe() {
+    public String getDataFaltasDe() {
         return dataFaltasDe;
     }
 
     /**
      * @param dataFaltasDe the dataFaltasDe to set
      */
-    public void setDataFaltasDe(Date dataFaltasDe) {
+    public void setDataFaltasDe(String dataFaltasDe) {
         this.dataFaltasDe = dataFaltasDe;
     }
 
     /**
      * @return the dataFaltasAte
      */
-    public Date getDataFaltasAte() {
+    public String getDataFaltasAte() {
         return dataFaltasAte;
     }
 
     /**
      * @param dataFaltasAte the dataFaltasAte to set
      */
-    public void setDataFaltasAte(Date dataFaltasAte) {
+    public void setDataFaltasAte(String dataFaltasAte) {
         this.dataFaltasAte = dataFaltasAte;
     }
 
     /**
      * @return the dataFaltasDia
      */
-    public Date getDataFaltasDia() {
+    public String getDataFaltasDia() {
         return dataFaltasDia;
     }
 
     /**
      * @param dataFaltasDia the dataFaltasDia to set
      */
-    public void setDataFaltasDia(Date dataFaltasDia) {
+    public void setDataFaltasDia(String dataFaltasDia) {
         this.dataFaltasDia = dataFaltasDia;
     }
 
@@ -208,14 +210,14 @@ public class Requerimento {
     /**
      * @return the dataAtividade
      */
-    public Date getDataAtividade() {
+    public String getDataAtividade() {
         return dataAtividade;
     }
 
     /**
      * @param dataAtividade the dataAtividade to set
      */
-    public void setDataAtividade(Date dataAtividade) {
+    public void setDataAtividade(String dataAtividade) {
         this.dataAtividade = dataAtividade;
     }
 
@@ -318,73 +320,73 @@ public class Requerimento {
     }
 
     /**
-     * @return the professorResponsavelAnalise
+     * @return the professorResponsavelAnaliseID
      */
-    public Professor getProfessorResponsavelAnalise() {
-        return professorResponsavelAnalise;
+    public String getProfessorResponsavelAnaliseID() {
+        return professorResponsavelAnaliseID;
     }
 
     /**
-     * @param professorResponsavelAnalise the professorResponsavelAnalise to set
+     * @param professorResponsavelAnaliseID the professorResponsavelAnaliseID to set
      */
-    public void setProfessorResponsavelAnalise(Professor professorResponsavelAnalise) {
-        this.professorResponsavelAnalise = professorResponsavelAnalise;
+    public void setProfessorResponsavelAnaliseID(String professorResponsavelAnaliseID) {
+        this.professorResponsavelAnaliseID = professorResponsavelAnaliseID;
     }
 
     /**
-     * @return the professorAtividade
+     * @return the professorAtividadeID
      */
-    public Professor getProfessorAtividade() {
-        return professorAtividade;
+    public String getProfessorAtividadeID() {
+        return professorAtividadeID;
     }
 
     /**
-     * @param professorAtividade the professorAtividade to set
+     * @param professorAtividadeID the professorAtividadeID to set
      */
-    public void setProfessorAtividade(Professor professorAtividade) {
-        this.professorAtividade = professorAtividade;
+    public void setProfessorAtividadeID(String professorAtividadeID) {
+        this.professorAtividadeID = professorAtividadeID;
     }
 
     /**
-     * @return the tecnicoAdministrativoResponsavel
+     * @return the tecnicoAdministrativoResponsavelID
      */
-    public TecnicoAdministrativo getTecnicoAdministrativoResponsavel() {
-        return tecnicoAdministrativoResponsavel;
+    public String getTecnicoAdministrativoResponsavelID() {
+        return tecnicoAdministrativoResponsavelID;
     }
 
     /**
-     * @param tecnicoAdministrativoResponsavel the tecnicoAdministrativoResponsavel to set
+     * @param tecnicoAdministrativoResponsavelID the tecnicoAdministrativoResponsavelID to set
      */
-    public void setTecnicoAdministrativoResponsavel(TecnicoAdministrativo tecnicoAdministrativoResponsavel) {
-        this.tecnicoAdministrativoResponsavel = tecnicoAdministrativoResponsavel;
+    public void setTecnicoAdministrativoResponsavelID(String tecnicoAdministrativoResponsavelID) {
+        this.tecnicoAdministrativoResponsavelID = tecnicoAdministrativoResponsavelID;
     }
 
     /**
-     * @return the disciplinaCursoAtual
+     * @return the disciplinaCursoAtualID
      */
-    public Disciplina getDisciplinaCursoAtual() {
-        return disciplinaCursoAtual;
+    public int getDisciplinaCursoAtualID() {
+        return disciplinaCursoAtualID;
     }
 
     /**
-     * @param disciplinaCursoAtual the disciplinaCursoAtual to set
+     * @param disciplinaCursoAtualID the disciplinaCursoAtualID to set
      */
-    public void setDisciplinaCursoAtual(Disciplina disciplinaCursoAtual) {
-        this.disciplinaCursoAtual = disciplinaCursoAtual;
+    public void setDisciplinaCursoAtualID(int disciplinaCursoAtualID) {
+        this.disciplinaCursoAtualID = disciplinaCursoAtualID;
     }
 
     /**
-     * @return the tipoRquerimento
+     * @return the tipoRequerimentoID
      */
-    public TipoRequerimento getTipoRquerimento() {
-        return tipoRequerimento;
+    public int getTipoRequerimentoID() {
+        return tipoRequerimentoID;
     }
 
     /**
-     * @param tipoRquerimento the tipoRquerimento to set
+     * @param tipoRequerimentoID the tipoRequerimentoID to set
      */
-    public void setTipoRquerimento(TipoRequerimento tipoRquerimento) {
-        this.tipoRequerimento = tipoRquerimento;
+    public void setTipoRequerimentoID(int tipoRequerimentoID) {
+        this.tipoRequerimentoID = tipoRequerimentoID;
     }
 
     /**
@@ -402,87 +404,87 @@ public class Requerimento {
     }
 
     /**
-     * @return the cursoOrigem
+     * @return the cursoOrigemID
      */
-    public Curso getCursoOrigem() {
-        return cursoOrigem;
+    public int getCursoOrigemID() {
+        return cursoOrigemID;
     }
 
     /**
-     * @param cursoOrigem the cursoOrigem to set
+     * @param cursoOrigemID the cursoOrigemID to set
      */
-    public void setCursoOrigem(Curso cursoOrigem) {
-        this.cursoOrigem = cursoOrigem;
+    public void setCursoOrigemID(int cursoOrigemID) {
+        this.cursoOrigemID = cursoOrigemID;
     }
 
     /**
-     * @return the cursoDestino
+     * @return the cursoDestinoID
      */
-    public Curso getCursoDestino() {
-        return cursoDestino;
+    public int getCursoDestinoID() {
+        return cursoDestinoID;
     }
 
     /**
-     * @param cursoDestino the cursoDestino to set
+     * @param cursoDestinoID the cursoDestinoID to set
      */
-    public void setCursoDestino(Curso cursoDestino) {
-        this.cursoDestino = cursoDestino;
+    public void setCursoDestinoID(int cursoDestinoID) {
+        this.cursoDestinoID = cursoDestinoID;
     }
 
     /**
-     * @return the turmaOrigem
+     * @return the turmaOrigemID
      */
-    public Turma getTurmaOrigem() {
-        return turmaOrigem;
+    public int getTurmaOrigemID() {
+        return turmaOrigemID;
     }
 
     /**
-     * @param turmaOrigem the turmaOrigem to set
+     * @param turmaOrigemID the turmaOrigemID to set
      */
-    public void setTurmaOrigem(Turma turmaOrigem) {
-        this.turmaOrigem = turmaOrigem;
+    public void setTurmaOrigemID(int turmaOrigemID) {
+        this.turmaOrigemID = turmaOrigemID;
     }
 
     /**
-     * @return the turmaDestino
+     * @return the turmaDestinoID
      */
-    public Turma getTurmaDestino() {
-        return turmaDestino;
+    public int getTurmaDestinoID() {
+        return turmaDestinoID;
     }
 
     /**
-     * @param turmaDestino the turmaDestino to set
+     * @param turmaDestinoID the turmaDestinoID to set
      */
-    public void setTurmaDestino(Turma turmaDestino) {
-        this.turmaDestino = turmaDestino;
+    public void setTurmaDestinoID(int turmaDestinoID) {
+        this.turmaDestinoID = turmaDestinoID;
     }
 
     /**
-     * @return the turnoOrigem
+     * @return the turnoOrigemID
      */
-    public Turno getTurnoOrigem() {
-        return turnoOrigem;
+    public int getTurnoOrigemID() {
+        return turnoOrigemID;
     }
 
     /**
-     * @param turnoOrigem the turnoOrigem to set
+     * @param turnoOrigemID the turnoOrigemID to set
      */
-    public void setTurnoOrigem(Turno turnoOrigem) {
-        this.turnoOrigem = turnoOrigem;
+    public void setTurnoOrigemID(int turnoOrigemID) {
+        this.turnoOrigemID = turnoOrigemID;
     }
 
     /**
-     * @return the turnoDestino
+     * @return the turnoDestinoID
      */
-    public Turno getTurnoDestino() {
-        return turnoDestino;
+    public int getTurnoDestinoID() {
+        return turnoDestinoID;
     }
 
     /**
-     * @param turnoDestino the turnoDestino to set
+     * @param turnoDestinoID the turnoDestinoID to set
      */
-    public void setTurnoDestino(Turno turnoDestino) {
-        this.turnoDestino = turnoDestino;
+    public void setTurnoDestinoID(int turnoDestinoID) {
+        this.turnoDestinoID = turnoDestinoID;
     }
 
     /**
@@ -540,7 +542,8 @@ public class Requerimento {
     public void setTranferenciaEscolaDestino(String tranferenciaEscolaDestino) {
         this.tranferenciaEscolaDestino = tranferenciaEscolaDestino;
     }
-    
+
+
     
     
     

@@ -21,6 +21,8 @@ import br.edu.ifrn.sgr.modelos.TipoDocumento;
 import br.edu.ifrn.sgr.modelos.TipoRequerimento;
 import br.edu.ifrn.sgr.modelos.Turma;
 import br.edu.ifrn.sgr.modelos.Turno;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
@@ -41,6 +43,26 @@ public class RequerimentoDAO extends GeralDAO {
         else*/
             return null;
     }
+    
+    
+        
+        public int cadastraRequerimentoComRetornoID(String sql,Object...parametros) throws SQLException, ClassNotFoundException{
+            Integer idGerado = null;
+            Connection con = FabricaConexao.getConexao();
+            PreparedStatement comando = con.prepareStatement(sql);
+            for (int i=1;i<=parametros.length;i++){
+                comando.setObject(i, parametros[i-1]);
+            }
+            ResultSet result = comando.executeQuery();
+            FabricaConexao.fecharConexao(con);
+
+            if(result.next())
+            {
+                idGerado = result.getInt("req_id");
+            }
+
+            return idGerado;
+        }
     
 //    public List<Aluno> getAlunos() throws SQLException, ClassNotFoundException{
 //        ResultSet resultado = executarConsulta(SELECT_ALUNOS);
