@@ -59,7 +59,6 @@
         </style>
         
         <!--Carregando arquivo jquery-->
-
         <script src="js/jquery.min.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/bootstrap-select.min.js"></script> 
