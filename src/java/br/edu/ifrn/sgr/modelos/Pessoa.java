@@ -12,7 +12,7 @@ import java.util.Date;
  * @author CH
  */
 public abstract class Pessoa {
-    String matricula;
+    private String matricula = "";
     private String nome = "";
     private String email = "";
     private String telefone = ""; 

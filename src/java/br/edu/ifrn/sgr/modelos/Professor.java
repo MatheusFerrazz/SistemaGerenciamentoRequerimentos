@@ -21,6 +21,11 @@ public class Professor extends Pessoa{
 
     public Professor() {
     }
+    
+    public Professor(String id, String nome) {
+        setMatricula(id);
+        setNome(nome);        
+    }
 
     /**
      * @return the permissao

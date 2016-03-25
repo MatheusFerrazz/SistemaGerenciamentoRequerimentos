@@ -113,7 +113,7 @@ public class AlunoDAO extends GeralDAO {
             coordenador.setDataNascimento(dataCoordenador);
         }
       
-        curso.setCursoID(resultado.getInt("cur_id"));
+        curso.setCursoID(resultado.getInt("cur_id_FK"));
         curso.setAnos(resultado.getInt("cur_anos"));
         curso.setNome(resultado.getString("cur_nome"));
         curso.setPeriodo(resultado.getInt("cur_periodos"));
@@ -170,13 +170,12 @@ public class AlunoDAO extends GeralDAO {
 
         //Inserindo todos os professores do curso.
         ResultSet consultaProfessores = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
-        while(consultaDisciplinas.next())
-        {
-            ResultSet consultaPermissao = executarConsulta(EnuConsultasCurso.SELECT_TODOS_PROFESSORES_DO_CURSO.toString(), aluno.getCurso().getCursoID());
-            java.sql.Date dataProfessorSQL = consultaProfessores.getDate("pes_data_nascimento");
-            java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
-            Permissao novaPermissao = new Permissao(consultaPermissao.getInt("per_id"),consultaPermissao.getString("per_nome"));
-            curso.getProfessores().add(new Professor(novaPermissao, consultaProfessores.getString("pro_id_PK"),consultaProfessores.getString("pes_nome"),consultaProfessores.getString("pro_email"),consultaProfessores.getString("pes_telefone"),consultaProfessores.getString("pes_celular"),dataProfessor));
+        while(consultaProfessores.next())
+        {            
+            //java.sql.Date dataProfessorSQL = consultaProfessores.getDate("pes_data_nascimento");
+            //java.util.Date dataProfessor = new java.util.Date(dataProfessorSQL.getTime());
+            //Permissao novaPermissao = new Permissao(consultaProfessores.getInt("per_id"),consultaProfessores.getString("per_nome"));
+            aluno.getCurso().getProfessores().add(new Professor(consultaProfessores.getString("pro_id_PK"),consultaProfessores.getString("pes_nome")));
         }
         
 

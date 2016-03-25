@@ -49,7 +49,7 @@ public class CadastrarRequerimento extends HttpServlet {
         int tipoRequerimento = toInt(request.getParameter("tipo_requerimento"));
         requerimento.setAlunoID(aluno.getMatricula());
         requerimento.setTipoRequerimentoID(tipoRequerimento);
-        Integer idGerado;
+        Integer idGerado = 0;
                         
         if(tipoRequerimento==1)
         {
@@ -69,92 +69,221 @@ public class CadastrarRequerimento extends HttpServlet {
         {
             requerimento.setDisciplinaCertificacaoID(toInt(request.getParameter("disciplina_certificacao")));            
             requerimento.setObservacoes(request.getParameter("observacao"));
-            daoRequerimento.cadastraRequerimentoSemRetornoID(EnuInsercaoRequerimento.CERTIFICACAO_DE_CONHECIMENTOS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getDisciplinaCertificacaoID(), requerimento.getObservacoes());
-            
+            daoRequerimento.cadastraRequerimentoSemRetornoID(EnuInsercaoRequerimento.CERTIFICACAO_DE_CONHECIMENTOS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getDisciplinaCertificacaoID(), requerimento.getObservacoes());            
         }
         else if(tipoRequerimento==3)
         {
-
+            requerimento.setTipoAtividade(request.getParameter("tipo_atividade"));            
+            requerimento.setObservacoes(request.getParameter("observacao"));
+            requerimento.setProfessorAtividadeID(request.getParameter("professor_atividade"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.REPOSICAO_DE_ATIVIDADES.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(),requerimento.getTipoAtividade(),requerimento.getProfessorAtividadeID());
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            }             
         }
         else if(tipoRequerimento==4)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==5)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==6)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==7)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==8)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==9)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==10)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==11)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==12)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==13)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==14)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==15)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==16)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==17)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==18)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }    
         else if(tipoRequerimento==19)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==20)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==21)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==22)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
         else if(tipoRequerimento==22)
         {
-
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            if (documentos_apresentados != null) 
+            {                    
+                for (String documentos_apresentado : documentos_apresentados) {
+                    daoRequerimento.executarComando(EnuInsercaoRequerimento.DOCUMENTOS_APRESENTADOS.toString(), idGerado, toInt(documentos_apresentado));
+                }
+            } 
         }
     }
 

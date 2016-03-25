@@ -99,7 +99,9 @@
     </script>
   </head>
   <body>
-    
+                                                         
+                                                           
+                                                    
     <div class="container-fluid" id="#divPrincipal">
 	<div class="row">
 		<div class="col-md-12">
@@ -198,6 +200,10 @@
                                                         <%}%>
                                                         </select> </label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                    
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                 <%//MUDANÇA DE CURSO
                                                 }else if(tipo.getId()==4){ if(!aluno.getCurso().getCursosTranferencia().isEmpty()){%>
@@ -209,6 +215,10 @@
                                                         <%}%>
                                                         </select> </label>                                                
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                     <% }else{%><br><h2><font color="red">NÃO HÁ CURSOS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
                                                 <%//MUDANÇA DE TURMA
@@ -221,6 +231,10 @@
                                                         <%}%>
                                                     </select> </label>                                                 
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                     <% }else{%><br><h2><font color="red">NÃO HÁ TURMAS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
                                                 <%//MUDANÇA DE TURNO
@@ -233,6 +247,10 @@
                                                         <%}%>
                                                     </select> </label>                                                 
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                     <% }else{%><br><h2><font color="red">NÃO HÁ TURNOS DISPONÍVEIS PARA MUDANÇA!</font><h2> <% }%>
                                                 <%//TRANSFERÊNCIA
@@ -242,18 +260,34 @@
                                                     <br><label>Escola destino:  <input type='text' name="escola_destino" value="" required="true"></label>
                                                     <br><label>Curso destino:  <input type='text' name="curso_destino" value="" required="true"></label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>              
                                                 <%//LANÇAMENTO OU REVISÃO DE FALTAS/NOTAS/SITUAÇÃO
                                                 }else if(tipo.getId()==8){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                 <%//RENOVAÇÃO MATRÍCULA
                                                 }else if(tipo.getId()==9){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                 <%//REABERTURA MATRÍCULA
                                                 }else if(tipo.getId()==10){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>  
                                                 <%//JUSTIFICATIVA DE FALTAS (DIAS EM ANEXO)
                                                 }else if(tipo.getId()==11){%>
@@ -261,58 +295,110 @@
                                                             Anexar arquivo <input type="file" id="exampleInputFile" name="dia_anexo">
                                                         </label>                                                
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//JUSTIFICATIVA DE FALTA - DIA ESPECÍFICO
                                                 }else if(tipo.getId()==12){%>
                                                     <br><label>Dia :  <input type='date' name="dia_especifico" value="" required="true"></label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//JUSTIFICATIVA DE FALTA POR PERÍODO
                                                 }else if(tipo.getId()==13){%>
                                                     <br><label>De :  <input type='date' name="dia_de" value="" required="true"></label>
                                                     <br><label>Até :  <input type='date' name="dia_ate" value="" required="true"></label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//TRANCAMENTO DE MATRÍCULA - PERÍODO
                                                 }else if(tipo.getId()==14){%>
                                                     <br><label>Período :  <input type='number' name="periodo" value="" required="true"></label>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//TRANCAMENTO DE MATRÍCULA - COMPULSÓRIO
                                                 }else if(tipo.getId()==15){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//CANCELAMENTO DE MATRÍCULA
                                                 }else if(tipo.getId()==16){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//ATENDIMENTO DOMICILIAR
                                                 }else if(tipo.getId()==17){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//OUTROS
                                                 }else if(tipo.getId()==18){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//DISPENSA DE ATIVIDADES
                                                 }else if(tipo.getId()==19){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//ADEQUAÇÃO DE HORÁRIOS
                                                 }else if(tipo.getId()==20){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//ESTUDO INDIVIDUALIZADO
                                                 }else if(tipo.getId()==21){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//INCLUSÃO DE DISCIPLINAS
                                                 }else if(tipo.getId()==22){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//REMOÇÃO DE DISCIPLINAS
                                                 }else if(tipo.getId()==23){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
+                                                    <br><label>Documentos apresentados:</label>
+                                                    <%for(Documento doc : documento.getDocumentos()){%>
+                                                        <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
+                                                    <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%}%>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                                         </form>

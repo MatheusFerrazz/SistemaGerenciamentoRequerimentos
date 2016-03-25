@@ -17,19 +17,19 @@ public enum EnuInsercaoRequerimento {
         
         CERTIFICACAO_DE_CONHECIMENTOS("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,\"req_disciplina_certificacao_FK\", req_observacoes) values (?,?,current_date,?,?);"),
         
-        REPOSICAO_DE_ATIVIDADES("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        REPOSICAO_DE_ATIVIDADES("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_CURSO("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        MUDANCA_DE_CURSO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_TURMA("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        MUDANCA_DE_TURMA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_TURNO("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        MUDANCA_DE_TURNO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        TRANSFERENCIA("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        TRANSFERENCIA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        LANCAMENTO_OU_REVISAO_DE_FALTAS_NOTAS_SITUACAO("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        LANCAMENTO_OU_REVISAO_DE_FALTAS_NOTAS_SITUACAO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        RENOVACAO_MATRICULA("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        RENOVACAO_MATRICULA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
         REABERTURA_MATRICULA("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
         
