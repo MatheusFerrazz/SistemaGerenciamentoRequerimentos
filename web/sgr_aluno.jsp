@@ -31,7 +31,7 @@
     Aluno aluno = (Aluno) session.getAttribute("aluno");
 %>  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
     <head>
 
