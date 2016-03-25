@@ -57,6 +57,13 @@
             .acao{display:none;}
             .divRequerimentoSolicitado{display:none;padding-left:15px;;}
         </style>
+        <!--Carregando arquivo jquery-->
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/bootstrap-select.min.js"></script> 
+        <script src="js/base.js"></script>        
+        <script src="js/jquery.js"></script>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
