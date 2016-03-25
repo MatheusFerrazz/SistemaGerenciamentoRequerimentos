@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author João
  */
-@WebFilter(filterName = "FiltroLogin", urlPatterns = {"/*"})
+/*@WebFilter(filterName = "FiltroLogin", urlPatterns = {"/*"})
 public class FiltroLogin implements Filter {
 
     private FilterConfig filterConfig = null;
@@ -55,20 +55,15 @@ public class FiltroLogin implements Filter {
         }
     }
  
-    /**
-     * Destroy method for this filter
-     */
+
     @Override
     public void destroy() {        
     }
 
-    /**
-     * Init method for this filter
-     * @param filterConfig
-     */
+
     @Override
     public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
     }
 
-}
+}*/
