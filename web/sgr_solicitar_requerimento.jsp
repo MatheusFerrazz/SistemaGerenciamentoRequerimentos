@@ -138,7 +138,7 @@
                 <ul class="nav navbar-right top-nav">
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= aluno.getNome()%><b class="caret"></b></a>
+                        <a style="text-align:right" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= aluno.getNome()%><b class="caret"></b></a>
                         <ul class="dropdown-menu">                                       
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
