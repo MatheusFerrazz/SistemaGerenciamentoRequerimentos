@@ -63,6 +63,17 @@ public class RequerimentoDAO extends GeralDAO {
 
             return idGerado;
         }
+        
+    public void cadastraRequerimentoSemRetornoID(String sql,Object...parametros) throws SQLException, ClassNotFoundException{
+        Connection con = FabricaConexao.getConexao();
+        
+        PreparedStatement comando = con.prepareStatement(sql);         
+        for (int i=1;i<=parametros.length;i++){
+            comando.setObject(i, parametros[i-1]);
+        }
+        comando.executeUpdate();
+        FabricaConexao.fecharConexao(con);
+    }        
     
 //    public List<Aluno> getAlunos() throws SQLException, ClassNotFoundException{
 //        ResultSet resultado = executarConsulta(SELECT_ALUNOS);

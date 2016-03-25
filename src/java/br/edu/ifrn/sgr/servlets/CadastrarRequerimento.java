@@ -67,7 +67,10 @@ public class CadastrarRequerimento extends HttpServlet {
         }                
         else if(tipoRequerimento==2)
         {
-
+            requerimento.setDisciplinaCertificacaoID(toInt(request.getParameter("disciplina_certificacao")));            
+            requerimento.setObservacoes(request.getParameter("observacao"));
+            daoRequerimento.cadastraRequerimentoSemRetornoID(EnuInsercaoRequerimento.CERTIFICACAO_DE_CONHECIMENTOS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getDisciplinaCertificacaoID(), requerimento.getObservacoes());
+            
         }
         else if(tipoRequerimento==3)
         {

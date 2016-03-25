@@ -15,7 +15,7 @@ public enum EnuInsercaoRequerimento {
         
         APROVEITAMENTO_DE_ESTUDOS("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes, \"tip_req_id_FK\", req_data_solicitacao_requerimento) values (?,?,?,?,?,current_date) returning req_id;"),
         
-        CERTIFICACAO_DE_CONHECIMENTOS("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
+        CERTIFICACAO_DE_CONHECIMENTOS("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,\"req_disciplina_certificacao_FK\", req_observacoes) values (?,?,current_date,?,?);"),
         
         REPOSICAO_DE_ATIVIDADES("insert into requerimento (\"alu_id_FK\",req_disciplina_cursada, \"req_disciplina_curso_atual_FK\",req_observacoes) values (?,?,?,?) returning tip_req_id;"),
         

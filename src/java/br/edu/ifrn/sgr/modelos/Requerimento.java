@@ -35,6 +35,7 @@ public class Requerimento {
     private String professorAtividadeID;
     private String tecnicoAdministrativoResponsavelID;
     private int disciplinaCursoAtualID;
+    private int disciplinaCertificacaoID;
     private int tipoRequerimentoID;
     private String tipoAtividade;
     private int cursoOrigemID;
@@ -541,6 +542,20 @@ public class Requerimento {
      */
     public void setTranferenciaEscolaDestino(String tranferenciaEscolaDestino) {
         this.tranferenciaEscolaDestino = tranferenciaEscolaDestino;
+    }
+
+    /**
+     * @return the disciplinaCertificacaoID
+     */
+    public int getDisciplinaCertificacaoID() {
+        return disciplinaCertificacaoID;
+    }
+
+    /**
+     * @param disciplinaCertificacaoID the disciplinaCertificacaoID to set
+     */
+    public void setDisciplinaCertificacaoID(int disciplinaCertificacaoID) {
+        this.disciplinaCertificacaoID = disciplinaCertificacaoID;
     }
 
 
