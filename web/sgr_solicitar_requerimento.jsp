@@ -150,10 +150,10 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
+                            <a href="sgr_aluno.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                         </li>
                         <li class="active">
-                            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
+                            <a href=""><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
                         </li>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
