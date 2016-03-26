@@ -50,7 +50,7 @@ public enum EnuConsultasCurso
         SELECT_TURNOS_POSSIVEIS_MUDANCA("SELECT DISTINCT turno.* FROM curso"+                
                 " JOIN turno ON curso.\"trn_id_FK\"=turno.trn_id"+
                 " JOIN campus ON curso.\"cam_id_FK\"=campus.cam_id"+
-                " WHERE curso.\"trn_id_FK\"!=? AND curso.\"cam_id_FK\"=? AND curso.cur_nome='INFORMÁTICA' AND curso.\"mod_cur_id_FK\"=? AND curso.cur_ativo=true;"),
+                " WHERE curso.\"trn_id_FK\"!=? AND curso.\"cam_id_FK\"=? AND curso.cur_nome=? AND curso.\"mod_cur_id_FK\"=? AND curso.cur_ativo=true;"),
         
         /*
         Seleciona todos as turmas possíveis para mudança.

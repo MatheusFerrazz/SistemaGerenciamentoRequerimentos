@@ -212,15 +212,15 @@ public class AlunoDAO extends GeralDAO {
         
         //Inserindo no arraylist de turmas possíveis para transferência, o array encontra-se na classe Aluno.
         ResultSet consultaTurmasTranferencia = executarConsulta(EnuConsultasCurso.SELECT_TURMAS_POSSIVEIS_MUDANCA.toString(), aluno.getTurma().getCodigo(), curso.getCursoID());
-        while(consultaCursosTranferencia.next())
+        while(consultaTurmasTranferencia.next())
         {
             curso.getTurmasTranferencia().add(new Turma(consultaTurmasTranferencia.getInt("trm_codigo"), curso));
             
         }
 
         //Inserindo no arraylist de turnos possíveis para transferência, o array encontra-se na classe Aluno.
-        ResultSet consultaTurnosTranferencia = executarConsulta(EnuConsultasCurso.SELECT_TURNOS_POSSIVEIS_MUDANCA.toString(), curso.getTurno().getId(), curso.getCampus().getCampusID(), curso.getModalidade().getModalidadeID());
-        while(consultaCursosTranferencia.next())
+        ResultSet consultaTurnosTranferencia = executarConsulta(EnuConsultasCurso.SELECT_TURNOS_POSSIVEIS_MUDANCA.toString(), curso.getTurno().getId(), curso.getCampus().getCampusID(), curso.getNome(),curso.getModalidade().getModalidadeID());
+        while(consultaTurnosTranferencia.next())
         {
             curso.getTurnosTranferencia().add(new Turno(consultaTurnosTranferencia.getInt("trn_id"), consultaTurnosTranferencia.getString("trn_nome")));
         }        

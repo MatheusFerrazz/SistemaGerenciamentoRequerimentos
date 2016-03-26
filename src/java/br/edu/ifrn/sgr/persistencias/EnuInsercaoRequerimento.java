@@ -19,11 +19,11 @@ public enum EnuInsercaoRequerimento {
         
         REPOSICAO_DE_ATIVIDADES("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_CURSO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
+        MUDANCA_DE_CURSO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,\"req_curso_origem_FK\", \"req_curso_destino_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_TURMA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
+        MUDANCA_DE_TURMA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,\"req_turma_origem_FK\", \"req_turma_destino_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        MUDANCA_DE_TURNO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
+        MUDANCA_DE_TURNO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,\"req_turno_origem_FK\", \"req_turno_destino_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
         TRANSFERENCIA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         

@@ -53,9 +53,9 @@ public class CadastrarRequerimento extends HttpServlet {
                         
         if(tipoRequerimento==1)
         {
-            requerimento.setDisciplinaCursada(request.getParameter("disciplina_cursada"));
+            requerimento.setDisciplinaCursada(request.getParameter("disciplina_cursada").trim());
             requerimento.setDisciplinaCursoAtualID(toInt(request.getParameter("disciplina_cursoAtual")));
-            requerimento.setObservacoes(request.getParameter("observacao"));
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
             idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.APROVEITAMENTO_DE_ESTUDOS.toString(), requerimento.getAlunoID(), requerimento.getDisciplinaCursada(), requerimento.getDisciplinaCursoAtualID(), requerimento.getObersavacoesAnaliseAproveitamento(), requerimento.getTipoRequerimentoID());                               
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
@@ -68,13 +68,13 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==2)
         {
             requerimento.setDisciplinaCertificacaoID(toInt(request.getParameter("disciplina_certificacao")));            
-            requerimento.setObservacoes(request.getParameter("observacao"));
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
             daoRequerimento.cadastraRequerimentoSemRetornoID(EnuInsercaoRequerimento.CERTIFICACAO_DE_CONHECIMENTOS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getDisciplinaCertificacaoID(), requerimento.getObservacoes());            
         }
         else if(tipoRequerimento==3)
         {
-            requerimento.setTipoAtividade(request.getParameter("tipo_atividade"));            
-            requerimento.setObservacoes(request.getParameter("observacao"));
+            requerimento.setTipoAtividade(request.getParameter("tipo_atividade").trim());            
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
             requerimento.setProfessorAtividadeID(request.getParameter("professor_atividade"));
             idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.REPOSICAO_DE_ATIVIDADES.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(),requerimento.getTipoAtividade(),requerimento.getProfessorAtividadeID());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
@@ -87,6 +87,10 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==4)
         {
+            requerimento.setCursoOrigemID(aluno.getCurso().getCursoID());
+            requerimento.setCursoDestinoID(toInt(request.getParameter("curso_tranfencia")));
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.MUDANCA_DE_CURSO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(), requerimento.getCursoOrigemID(), requerimento.getCursoDestinoID());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -97,6 +101,10 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==5)
         {
+            requerimento.setTurmaOrigemID(aluno.getTurma().getCodigo());
+            requerimento.setTurmaDestinoID(toInt(request.getParameter("turma_tranferencia")));
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.MUDANCA_DE_TURMA.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(), requerimento.getTurmaOrigemID(), requerimento.getTurmaDestinoID());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -107,6 +115,10 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==6)
         {
+            requerimento.setTurnoOrigemID(aluno.getCurso().getTurno().getId());
+            requerimento.setTurnoDestinoID(toInt(request.getParameter("turno_tranferencia")));
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.MUDANCA_DE_TURNO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(), requerimento.getTurnoOrigemID(), requerimento.getTurnoDestinoID());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -117,6 +129,11 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==7)
         {
+            requerimento.setTranferenciaEscolaOrigem(request.getParameter("escola_origem").trim());
+            requerimento.setTranferenciaCursoOrigem(request.getParameter("curso_origem").trim());
+            requerimento.setTranferenciaEscolaDestino(request.getParameter("escola_destino").trim());
+            requerimento.setTranferenciaCursoDestino(request.getParameter("curso_destino").trim());
+            requerimento.setObservacoes(request.getParameter("observacao").trim());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -127,6 +144,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==8)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -137,6 +155,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==9)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -147,6 +166,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==10)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -157,6 +177,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==11)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -167,6 +188,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==12)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -177,6 +199,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==13)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -187,6 +210,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==14)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -197,6 +221,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==15)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -207,6 +232,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==16)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -217,6 +243,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==17)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -227,6 +254,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==18)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -237,6 +265,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }    
         else if(tipoRequerimento==19)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -247,6 +276,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==20)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -257,6 +287,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==21)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -267,6 +298,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==22)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -277,6 +309,7 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==22)
         {
+            requerimento.setObservacoes(request.getParameter("observacao"));
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    

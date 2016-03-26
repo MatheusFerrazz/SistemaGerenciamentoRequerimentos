@@ -211,7 +211,7 @@
                                                         <select name="curso_tranfencia" class="form-group" required="true">
                                                            <option title="SELECIONE" ></option>
                                                         <%for(Curso curso : aluno.getCurso().getCursosTranferencia()){%>
-                                                            <option value="<%= curso.getCursoID() %>"><%= curso.getNome()+" - CAMPUS "+curso.getCampus().getNome() %></option>
+                                                            <option value="<%= curso.getCursoID() %>"><%= curso.getNome()+" - "+curso.getCampus().getNome() %></option>
                                                         <%}%>
                                                         </select> </label>                                                
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
