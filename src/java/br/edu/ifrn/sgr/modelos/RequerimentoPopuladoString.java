@@ -13,18 +13,20 @@ import java.util.Date;
  * @author Luan Medeiros
  */
 public class RequerimentoPopuladoString {
-    private String alunoNome = "";    
-    private String disciplinaCursada;
+    private int requerimentoID;
+    private String alunoNome = "";
+    private String alunoMatricula = "";    
+    private String disciplinaCursada = "";
     private String observacoes = "";        
     private String encaminhamentos = "";   
     private String mudancaDe = "";
     private String mudancaPara = "";
-    private String dataRealizacaoCertificacao;
-    private String dataFaltasDe;
-    private String dataFaltasAte;
-    private String dataFaltasDia;
-    private String dataSolicitacaoRequerimento;
-    private String dataAtividade;
+    private String dataRealizacaoCertificacao = "";
+    private String dataFaltasDe = "";
+    private String dataFaltasAte = "";
+    private String dataFaltasDia = "";
+    private String dataSolicitacaoRequerimento = "";
+    private String dataAtividade = "";
     private int periodoTancamento;
     private ArrayList<String> documentosApresentados = new ArrayList<>();
     private String outros = "";
@@ -32,25 +34,24 @@ public class RequerimentoPopuladoString {
     private String obersavacoesAnaliseAproveitamento = "";
     private String obervacoesDocumentosApresentados = "";
     private String resultado = "EM ANDAMENTO";
-    private String diasDescritosAnexo;
-    private String professorResponsavelAnalise;
-    private String professorAtividade;
-    private String tecnicoAdministrativoResponsavel;
-    private String disciplinaCursoAtual;
-    private int tipoRquerimento;
-    private int idRquerimento;
-    private String tipoAtividade;
-    private String cursoOrigem;
-    private String cursoDestino;
-    private String turmaOrigem;
-    private String turmaDestino;
-    private String turnoOrigem;
-    private String turnoDestino;
-    private String tranferenciaCursoOrigem;
-    private String tranferenciaCursoDestino;
-    private String tranferenciaEscolaOrigem;
-    private String tranferenciaEscolaDestino;
-    private String disciplinaCertificacao;
+    private String diasDescritosAnexo = "";
+    private String professorResponsavelAnalise = "";
+    private String professorAtividade = "";
+    private String tecnicoAdministrativoResponsavel = "";
+    private String disciplinaCursoAtual = "";
+    private int tipoRequerimento;
+    private String tipoAtividade = "";
+    private String cursoOrigem = "";
+    private String cursoDestino = "";
+    private String turmaOrigem = "";
+    private String turmaDestino = "";
+    private String turnoOrigem = "";
+    private String turnoDestino = "";
+    private String tranferenciaCursoOrigem = "";
+    private String tranferenciaCursoDestino = "";
+    private String tranferenciaEscolaOrigem = "";
+    private String tranferenciaEscolaDestino = "";
+    private String disciplinaCertificacao = "";
     
 
     public RequerimentoPopuladoString()
@@ -397,15 +398,15 @@ public class RequerimentoPopuladoString {
     /**
      * @return the tipoRquerimento
      */
-    public int getTipoRquerimento() {
-        return tipoRquerimento;
+    public int getTipoRequerimento() {
+        return tipoRequerimento;
     }
 
     /**
      * @param tipoRquerimento the tipoRquerimento to set
      */
     public void setTipoRquerimento(int tipoRquerimento) {
-        this.tipoRquerimento = tipoRquerimento;
+        this.tipoRequerimento = tipoRquerimento;
     }
 
     /**
@@ -579,15 +580,28 @@ public class RequerimentoPopuladoString {
     /**
      * @return the idRquerimento
      */
-    public int getIdRquerimento() {
-        return idRquerimento;
+    public int getRequerimentoID() {
+        return requerimentoID;
     }
 
     /**
      * @param idRquerimento the idRquerimento to set
      */
-    public void setIdRquerimento(int idRquerimento) {
-        this.idRquerimento = idRquerimento;
+    public void setRequerimentoID(int idRquerimento) {
+        this.requerimentoID = idRquerimento;
+    }
+
+    public String getAlunoMatricula() {
+        return alunoMatricula;
+    }
+
+    public void setAlunoMatricula(String alunoMatricula) {
+        this.alunoMatricula = alunoMatricula;
+    }
+
+    @Override
+    public String toString() {
+        return "RequerimentoPopuladoString{" + "requerimentoID=" + requerimentoID + ", alunoNome=" + alunoNome + ", alunoMatricula=" + alunoMatricula + ", disciplinaCursada=" + disciplinaCursada + ", observacoes=" + observacoes + ", encaminhamentos=" + encaminhamentos + ", mudancaDe=" + mudancaDe + ", mudancaPara=" + mudancaPara + ", dataRealizacaoCertificacao=" + dataRealizacaoCertificacao + ", dataFaltasDe=" + dataFaltasDe + ", dataFaltasAte=" + dataFaltasAte + ", dataFaltasDia=" + dataFaltasDia + ", dataSolicitacaoRequerimento=" + dataSolicitacaoRequerimento + ", dataAtividade=" + dataAtividade + ", periodoTancamento=" + periodoTancamento + ", documentosApresentados=" + documentosApresentados + ", outros=" + outros + ", justificativa=" + justificativa + ", obersavacoesAnaliseAproveitamento=" + obersavacoesAnaliseAproveitamento + ", obervacoesDocumentosApresentados=" + obervacoesDocumentosApresentados + ", resultado=" + resultado + ", diasDescritosAnexo=" + diasDescritosAnexo + ", professorResponsavelAnalise=" + professorResponsavelAnalise + ", professorAtividade=" + professorAtividade + ", tecnicoAdministrativoResponsavel=" + tecnicoAdministrativoResponsavel + ", disciplinaCursoAtual=" + disciplinaCursoAtual + ", tipoRequerimento=" + tipoRequerimento + ", tipoAtividade=" + tipoAtividade + ", cursoOrigem=" + cursoOrigem + ", cursoDestino=" + cursoDestino + ", turmaOrigem=" + turmaOrigem + ", turmaDestino=" + turmaDestino + ", turnoOrigem=" + turnoOrigem + ", turnoDestino=" + turnoDestino + ", tranferenciaCursoOrigem=" + tranferenciaCursoOrigem + ", tranferenciaCursoDestino=" + tranferenciaCursoDestino + ", tranferenciaEscolaOrigem=" + tranferenciaEscolaOrigem + ", tranferenciaEscolaDestino=" + tranferenciaEscolaDestino + ", disciplinaCertificacao=" + disciplinaCertificacao + "\n";
     }
     
     

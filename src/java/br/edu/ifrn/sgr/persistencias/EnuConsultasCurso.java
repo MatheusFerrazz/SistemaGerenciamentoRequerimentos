@@ -59,7 +59,10 @@ public enum EnuConsultasCurso
         SELECT_TURMAS_POSSIVEIS_MUDANCA("SELECT turma.* FROM turma"
                 +" JOIN curso ON curso.cur_id=turma.\"cur_id_FK\""
                 +" WHERE turma.trm_codigo!=? AND turma.\"cur_id_FK\"=? AND curso.cur_ativo=true"
-                + " ORDER BY turma.trm_codigo;");
+                + " ORDER BY turma.trm_codigo;"),
+        
+        SELECT_CURSO_NOME_E_CAMPUS_NOME("select distinct curso.cur_nome, campus.cam_nome ca from curso"                
+                + " join campus on campus.cam_id=curso.\"cam_id_FK\" where curso.cur_id=?;");
                 
     
         private String consulta; 

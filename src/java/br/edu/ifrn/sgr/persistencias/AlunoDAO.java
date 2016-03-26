@@ -46,6 +46,12 @@ public class AlunoDAO extends GeralDAO {
             return null;
     }
     
+    public Aluno populaAlunoPorMatricula(String matricula) throws SQLException, ClassNotFoundException
+    {
+            ResultSet resultadoPopular = executarConsulta(EnuConsultasAluno.SELECT_ALUNO_COMPLETO.toString(), matricula);
+            return popularAluno(resultadoPopular);
+    }
+    
 //    public List<Aluno> getAlunos() throws SQLException, ClassNotFoundException{
 //        ResultSet resultado = executarConsulta(SELECT_ALUNOS);
 //        List<Aluno> alunos = new java.util.ArrayList();

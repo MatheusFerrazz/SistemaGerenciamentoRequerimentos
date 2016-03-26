@@ -4,6 +4,7 @@
     Author     : Luan Medeiros
 --%>
 
+<%@page import="br.edu.ifrn.sgr.persistencias.EnuConsultasRequerimento"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Turma"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Turno"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Curso"%>
@@ -11,6 +12,7 @@
 <%@page import="br.edu.ifrn.sgr.modelos.Disciplina"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Documento"%>
 <%@page import="br.edu.ifrn.sgr.modelos.TipoRequerimento"%>
+<%@page import="br.edu.ifrn.sgr.modelos.RequerimentoPopuladoString"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.edu.ifrn.sgr.modelos.Aluno"%>
 <%@page import="br.edu.ifrn.sgr.persistencias.AlunoDAO"%>
@@ -22,6 +24,7 @@
 
 <jsp:useBean id="alunoDAO" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
 <jsp:useBean id="tiporequerimento" class="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO" scope="request"/>
+<jsp:useBean id="requerimentos" class="br.edu.ifrn.sgr.persistencias.RequerimentoDAO" scope="request"/>
 <jsp:useBean id="documento" class="br.edu.ifrn.sgr.persistencias.DocumentoDAO" scope="request"/>
 <jsp:setProperty name="dao" property="*"></jsp:setProperty>
 <jsp:setProperty name="tiporequerimento" property="*"></jsp:setProperty>
@@ -73,6 +76,17 @@
         
 	<!--Funções usadas nos selects-->
 	<script>
+        //Script para exibição de detalhes do requerimento solicitado
+        $(document).ready(function() {
+            $("#checkbox1").click(function(){
+                var checked = $(this).is(":checked");
+                if(checked)
+                    $(this).parent().parent().siblings("div[hidden=hidden]").each(function(i, div) {
+                        $(div).removeAttr("hidden").show();
+                    });
+            });
+        });        
+            
 	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
 	$(function() {
 	        $('#acao').change(function(){
@@ -415,6 +429,36 @@
 					<h3 class="text-danger">
 						Requerimentos - Consultas
 					</h3>
+                                    <div class="row col-md-12 form-group" style="clear: both">
+                                        <select id="selectSolicitaRequerimento" class="form-control" style="width:40%;padding-right:0px;;">
+<!--                                          <option selected disabled style="padding-bottom: 1px; padding-top: 1px">Selecione</option>-->
+                                         <option title="SELECIONE" ></option>
+                                        <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
+                                         <option value="<%= tipo.getId() %>"><%= tipo.getNome() %></option>
+                                        <%} %>
+                                        </select>
+                                    </div> 
+
+                            <!--Div requerimentos em andamento-->
+                            <div> REQUERIMENTOS EM ANDAMENTO <br>
+                                
+                                    <div id="aproveitamento_de_estudo">
+                                    <%for (RequerimentoPopuladoString req : requerimentos.populaAproveitaMentoDeEstudo(EnuConsultasRequerimento.SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO_E_IDALUNO.toString(), 1, aluno.getMatricula())) {%>                                    
+                                    <div class="snippet-result" style="width: 100%; border: 1px solid #AAAAAA;">
+                                            <div style="width: 100%; margin: 0px 5px;">
+                                                    <input type="button" value="Mostrar destalhes" style="margin: 1em 0 1em 0.5em; float: none;">
+                                                    <input class="hideResults" type="button" value="Esconder detalhes" style="margin: 1em 0px 1em 0.5em; float: none;">
+                                            </div>
+                                            <div style="position: relative; width: 100%; height: 200px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(170, 170, 170); display: block;"><iframe name="86b702a2-9dab-e8a1-65b8-d4e79f1c5e62" sandbox="allow-modals allow-scripts" class="snippet-box-edit" frameborder="0"></iframe>
+                                                Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>                                                                                                                                                                                               
+                                                
+                                            </div>
+                                    </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                            
+                            
 					<div class="row">
 						<div class="col-md-12">
 							<div class="btn-group dropup">

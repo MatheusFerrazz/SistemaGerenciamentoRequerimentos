@@ -117,13 +117,34 @@ SELECT_TODOS_REQUERIMENTOS_INDEFERIDOS_("SELECT requerimento.*, aluno.*, pessoa.
 + " ORDER BY requerimento.req_data_solicitacao_requerimento;"),        
 
 /*Seleciona todos os requerimentos em andamento*/
-SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO("SELECT requerimento.*, aluno.*, pessoa.*, turma.trm_codigo, curso.*, tipo_requerimento.* FROM requerimento"
+SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO_E_IDALUNO("SELECT requerimento.*, aluno.*, pessoa.*, turma.trm_codigo, curso.*, tipo_requerimento.* FROM requerimento"
 + " JOIN aluno ON aluno.\"alu_id_PK\"=requerimento.\"alu_id_FK\""
 + " JOIN pessoa ON aluno.\"alu_id_PK\"=pessoa.\"pes_matricula_PK\""
 + " JOIN turma ON aluno.\"trm_codigo_FK\"=turma.trm_codigo"
 + " JOIN curso ON curso.cur_id=aluno.\"cur_id_FK\""
 + " JOIN tipo_requerimento ON tipo_requerimento.tip_req_id=requerimento.\"tip_req_id_FK\""
-+ " WHERE requerimento.\"tip_req_id_FK\"=? AND requerimento.req_resultado IS NULL"
++ " WHERE requerimento.\"tip_req_id_FK\"=? AND requerimento.req_resultado IS NULL AND \"alu_id_FK\"=?"
++ " ORDER BY requerimento.req_data_solicitacao_requerimento;"),
+
+/*Seleciona todos os requerimentos em andamento*/
+SELECT_TODOS_REQUERIMENTOS_DEFERIDOS_POR_TIPO_REQUERIMENTO_E_IDALUNO("SELECT requerimento.*, aluno.*, pessoa.*, turma.trm_codigo, curso.*, tipo_requerimento.* FROM requerimento"
++ " JOIN aluno ON aluno.\"alu_id_PK\"=requerimento.\"alu_id_FK\""
++ " JOIN pessoa ON aluno.\"alu_id_PK\"=pessoa.\"pes_matricula_PK\""
++ " JOIN turma ON aluno.\"trm_codigo_FK\"=turma.trm_codigo"
++ " JOIN curso ON curso.cur_id=aluno.\"cur_id_FK\""
++ " JOIN tipo_requerimento ON tipo_requerimento.tip_req_id=requerimento.\"tip_req_id_FK\""
++ " WHERE requerimento.\"tip_req_id_FK\"=? AND requerimento.req_resultado=true AND \"alu_id_FK\"=?"
++ " ORDER BY requerimento.req_data_solicitacao_requerimento;"),
+
+
+/*Seleciona todos os requerimentos em andamento*/
+SELECT_TODOS_REQUERIMENTOS_INDEFERIDOS_POR_TIPO_REQUERIMENTO_E_IDALUNO("SELECT requerimento.*, aluno.*, pessoa.*, turma.trm_codigo, curso.*, tipo_requerimento.* FROM requerimento"
++ " JOIN aluno ON aluno.\"alu_id_PK\"=requerimento.\"alu_id_FK\""
++ " JOIN pessoa ON aluno.\"alu_id_PK\"=pessoa.\"pes_matricula_PK\""
++ " JOIN turma ON aluno.\"trm_codigo_FK\"=turma.trm_codigo"
++ " JOIN curso ON curso.cur_id=aluno.\"cur_id_FK\""
++ " JOIN tipo_requerimento ON tipo_requerimento.tip_req_id=requerimento.\"tip_req_id_FK\""
++ " WHERE requerimento.\"tip_req_id_FK\"=? AND requerimento.req_resultado=false AND \"alu_id_FK\"=?"
 + " ORDER BY requerimento.req_data_solicitacao_requerimento;"),
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,7 +152,7 @@ SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO("SELECT requerimen
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 //Seleciona todos os documentos apresentados do requerimento específico, basta passar o ID do requerimento 
-SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO("SELECT DISTINCT tipo_documento_apresentado.*, documento.* FROM tipo_documento_apresentado"
+SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO("SELECT distinct documento.doc_apr_nome documento FROM tipo_documento_apresentado"
 + " JOIN documento ON documento.\"doc_apr_id_PK\"=tipo_documento_apresentado.\"doc_apr_id_FK\""
 + " WHERE tipo_documento_apresentado.\"req_id_FK\"=?;");
 
