@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/EnuInsercaoRequerimento.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/modelos/Professor.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/modelos/Requerimento.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/controladores/CadastrarAluno.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/servlets/CadastrarRequerimento.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/AlunoDAO.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/RequerimentoDAO.java</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/preencherequerimento.jsp</file>
+            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/EnuConsultasCurso.java</file>
+        </group>
     </open-files>
 </project-private>
