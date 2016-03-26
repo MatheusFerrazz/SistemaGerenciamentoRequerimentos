@@ -25,7 +25,7 @@ public enum EnuInsercaoRequerimento {
         
         MUDANCA_DE_TURNO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,\"req_turno_origem_FK\", \"req_turno_destino_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         
-        TRANSFERENCIA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
+        TRANSFERENCIA("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes, req_tranferencia_curso_origem, req_tranferencia_curso_destino, req_tranferencia_escola_origem, req_tranferencia_escola_destino) values (?,?,current_date,?,?,?,?,?) returning req_id;"),
         
         LANCAMENTO_OU_REVISAO_DE_FALTAS_NOTAS_SITUACAO("insert into requerimento (\"alu_id_FK\",\"tip_req_id_FK\",req_data_solicitacao_requerimento,req_observacoes,req_tipo_atividade,\"req_professor_atividade_FK\") values (?,?,current_date,?,?,?) returning req_id;"),
         

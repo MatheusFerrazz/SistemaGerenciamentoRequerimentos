@@ -134,6 +134,7 @@ public class CadastrarRequerimento extends HttpServlet {
             requerimento.setTranferenciaEscolaDestino(request.getParameter("escola_destino").trim());
             requerimento.setTranferenciaCursoDestino(request.getParameter("curso_destino").trim());
             requerimento.setObservacoes(request.getParameter("observacao").trim());
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.TRANSFERENCIA.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(), requerimento.getTranferenciaCursoOrigem(), requerimento.getTranferenciaCursoDestino(), requerimento.getTranferenciaEscolaOrigem(), requerimento.getTranferenciaEscolaDestino());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
