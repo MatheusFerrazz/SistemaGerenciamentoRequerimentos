@@ -320,14 +320,14 @@
                                                     <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
                                                 <%//TRANCAMENTO DE MATRÍCULA - PERÍODO
-                                                }else if(tipo.getId()==14){%>
-                                                    <br><label>Período :  <input type='number' name="periodo" value="" required="true"></label>
+                                                }else if(tipo.getId()==14){ if(aluno.getCurso().getPeriodo() != 0){%>                                                    
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
                                                     <br><label>Documentos apresentados:</label>
                                                     <%for(Documento doc : documento.getDocumentos()){%>
                                                         <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                                     <%}%>
                                                     <br><button type="submit" class="btn btn-primary">SOLICITAR</button>
+                                                    <% }else{%><br><h2><font color="red">SEU CURSO NÃO DISPÕE DE PERÍODOS PARA TRANCAMENTO!</font><h2> <% }%>
                                                 <%//TRANCAMENTO DE MATRÍCULA - COMPULSÓRIO
                                                 }else if(tipo.getId()==15){%>
                                                     <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>

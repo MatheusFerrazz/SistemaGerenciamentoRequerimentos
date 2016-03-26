@@ -18,7 +18,7 @@ public class Curso {
     private Coordenador coordenador;
     private int cursoID;    
     private String nome;
-    private int periodo;
+    private Integer periodo;
     private int anos;
     private boolean cursoAtivo;
     private ArrayList<Disciplina> disciplinasDoCurso = new ArrayList<>();
@@ -130,14 +130,14 @@ public class Curso {
     /**
      * @return the periodo
      */
-    public int getPeriodo() {
+    public Integer getPeriodo() {
         return periodo;
     }
 
     /**
      * @param periodo the periodo to set
      */
-    public void setPeriodo(int periodo) {
+    public void setPeriodo(Integer periodo) {
         this.periodo = periodo;
     }
 

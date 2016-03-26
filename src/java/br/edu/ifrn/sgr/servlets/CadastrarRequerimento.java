@@ -12,6 +12,8 @@ import br.edu.ifrn.sgr.persistencias.EnuInsercaoRequerimento;
 import br.edu.ifrn.sgr.persistencias.RequerimentoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -146,6 +148,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==8)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.LANCAMENTO_OU_REVISAO_DE_FALTAS_NOTAS_SITUACAO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -157,6 +160,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==9)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.RENOVACAO_MATRICULA.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -167,8 +171,9 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==10)
         {
-            requerimento.setObservacoes(request.getParameter("observacao"));
-            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
+            requerimento.setObservacoes(request.getParameter("observacao"));            
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.REABERTURA_MATRICULA.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
+            String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");            
             if (documentos_apresentados != null) 
             {                    
                 for (String documentos_apresentado : documentos_apresentados) {
@@ -179,6 +184,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==11)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.JUSTIFICATIVA_DE_FALTAS_DIAS_EM_ANEXO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -188,8 +194,12 @@ public class CadastrarRequerimento extends HttpServlet {
             } 
         }
         else if(tipoRequerimento==12)
-        {
+        {  
+            String string = request.getParameter("dia_especifico");
+            Date diaEspecifico = new SimpleDateFormat("yyyy-MM-dd").parse(string);                        
+            requerimento.setDataFaltasDia(new java.sql.Date(diaEspecifico.getTime()));
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.JUSTIFICATIVA_DE_FALTA_DIA_ESPECIFICO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(),requerimento.getDataFaltasDia());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -200,7 +210,14 @@ public class CadastrarRequerimento extends HttpServlet {
         }
         else if(tipoRequerimento==13)
         {
+            String deString = request.getParameter("dia_de");
+            String ateString = request.getParameter("dia_ate");
+            Date de = new SimpleDateFormat("yyyy-MM-dd").parse(deString);            
+            Date ate = new SimpleDateFormat("yyyy-MM-dd").parse(ateString);                         
+            requerimento.setDataFaltasDe(new java.sql.Date(de.getTime()));
+            requerimento.setDataFaltasAte(new java.sql.Date(ate.getTime()));
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.JUSTIFICATIVA_DE_FALTA_POR_PERIODO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes(),requerimento.getDataFaltasDe(),requerimento.getDataFaltasAte());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -212,6 +229,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==14)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.TRANCAMENTO_DE_MATRICULA_PERIODO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -223,6 +241,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==15)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.TRANCAMENTO_DE_MATRICULA_PERIODO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -234,6 +253,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==16)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.CANCELAMENTO_DE_MATRiCULA.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());            
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -245,6 +265,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==17)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.ATENDIMENTO_DOMICILIAR.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -256,6 +277,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==18)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.OUTROS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -267,6 +289,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==19)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.DISPENSA_DE_ATIVIDADES.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -278,6 +301,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==20)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.ADEQUACAO_DE_HORARIOS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -289,6 +313,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==21)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.ESTUDO_INDIVIDUALIZADO.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -300,6 +325,7 @@ public class CadastrarRequerimento extends HttpServlet {
         else if(tipoRequerimento==22)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.INCLUSAO_DE_DISCIPLINAS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    
@@ -308,9 +334,10 @@ public class CadastrarRequerimento extends HttpServlet {
                 }
             } 
         }
-        else if(tipoRequerimento==22)
+        else if(tipoRequerimento==23)
         {
             requerimento.setObservacoes(request.getParameter("observacao"));
+            idGerado = daoRequerimento.cadastraRequerimentoComRetornoID(EnuInsercaoRequerimento.REMOCAO_DE_DISCIPLINAS.toString(), requerimento.getAlunoID(), requerimento.getTipoRequerimentoID(), requerimento.getObservacoes());            
             String[] documentos_apresentados = request.getParameterValues("documentos_apresentados");        
             if (documentos_apresentados != null) 
             {                    

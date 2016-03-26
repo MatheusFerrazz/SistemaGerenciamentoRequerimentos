@@ -19,9 +19,9 @@ public class Requerimento {
     private String mudancaDe;
     private String mudancaPara;
     private String dataRealizacaoCertificacao;
-    private String dataFaltasDe;
-    private String dataFaltasAte;
-    private String dataFaltasDia;
+    private Date dataFaltasDe;
+    private Date dataFaltasAte;
+    private Date dataFaltasDia;
     private Date dataSolicitacaoRequerimento;
     private String dataAtividade;
     private int periodoTancamento;
@@ -155,42 +155,42 @@ public class Requerimento {
     /**
      * @return the dataFaltasDe
      */
-    public String getDataFaltasDe() {
+    public Date getDataFaltasDe() {
         return dataFaltasDe;
     }
 
     /**
      * @param dataFaltasDe the dataFaltasDe to set
      */
-    public void setDataFaltasDe(String dataFaltasDe) {
+    public void setDataFaltasDe(Date dataFaltasDe) {
         this.dataFaltasDe = dataFaltasDe;
     }
 
     /**
      * @return the dataFaltasAte
      */
-    public String getDataFaltasAte() {
+    public Date getDataFaltasAte() {
         return dataFaltasAte;
     }
 
     /**
      * @param dataFaltasAte the dataFaltasAte to set
      */
-    public void setDataFaltasAte(String dataFaltasAte) {
+    public void setDataFaltasAte(Date dataFaltasAte) {
         this.dataFaltasAte = dataFaltasAte;
     }
 
     /**
      * @return the dataFaltasDia
      */
-    public String getDataFaltasDia() {
+    public Date getDataFaltasDia() {
         return dataFaltasDia;
     }
 
     /**
      * @param dataFaltasDia the dataFaltasDia to set
      */
-    public void setDataFaltasDia(String dataFaltasDia) {
+    public void setDataFaltasDia(Date dataFaltasDia) {
         this.dataFaltasDia = dataFaltasDia;
     }
 
