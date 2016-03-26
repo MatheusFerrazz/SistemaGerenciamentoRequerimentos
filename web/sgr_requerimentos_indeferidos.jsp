@@ -9,7 +9,7 @@
                             <a href="sgr_solicitar_requerimento.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
                                     <a href="sgr_requerimentos_andamento.jsp">Em Andamento</a>
@@ -17,7 +17,7 @@
                                 <li>
                                     <a href="sgr_requerimentos_deferidos.jsp">Deferidos</a>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a href="sgr_requerimentos_indeferidos.jsp">Indeferidos</a>
                                 </li>
                             </ul>

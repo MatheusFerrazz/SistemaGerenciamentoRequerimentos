@@ -1,4 +1,4 @@
-<%@include file="arquivo.jsp" %>
+<%@include file="sgr_cabecalho.jsp" %>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
@@ -9,16 +9,16 @@
                             <a href="sgr_solicitar_requerimento.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Consultar Requerimento <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
-                                <li class="active">
+                                <li>
                                     <a href="sgr_requerimentos_andamento.jsp">Em Andamento</a>
                                 </li>
                                 <li>
-                                    <a href="#">Deferidos</a>
+                                    <a href="sgr_requerimentos_deferidos.jsp">Deferidos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Indeferidos</a>
+                                    <a href="sgr_requerimentos_indeferidos.jsp">Indeferidos</a>
                                 </li>
                             </ul>
                         </li>
@@ -38,4 +38,4 @@
             <!-- /#page-wrapper -->
 
         </div>
-<%@include file="arquivo2.jsp" %>
+<%@include file="sgr_rodape.jsp" %>
