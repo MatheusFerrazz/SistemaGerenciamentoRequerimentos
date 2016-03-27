@@ -86,6 +86,48 @@
                 });
             });
         </script>
+                                
+            <script src="js/jquery.min.js"></script>
+            <script>
+                //Script para carregar os requerimentos em andamento
+                $(function()
+                {
+                        $( "#andamento" ).click(function(e)
+                        {
+                          $("#corpo").load("listagem_emandamento.jsp");
+                          e.preventDefault();
+                        });
+                });
+
+                //Script para carregar os requerimentos em indeferidos
+                    $(function()
+                {
+                        $( "#indeferido" ).click(function(e)
+                        {
+                          $("#corpo").load("listagem_indeferidos.jsp");
+                          e.preventDefault();
+                        });
+                });
+                
+                //Script para carregar as solicitações de requerimento
+                $(function()
+                {
+                        $( "#deferido" ).click(function(e)
+                        {
+                          $("#corpo").load("listagem_deferidos.jsp");
+                          e.preventDefault();
+                        });
+                });
+                
+                $(function()
+                {
+                        $( "#solicitar" ).click(function(e)
+                        {
+                          $("#corpo").load("sgr_solicitar_requerimento.jsp");
+                          e.preventDefault();
+                        });
+                });                
+        </script>
     </head>
 
     <body>
