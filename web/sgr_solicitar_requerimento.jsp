@@ -37,7 +37,7 @@
                                     Requerimentos - Solicitações
                             </h3>
                             <div class="row col-md-12 form-group" style="clear: both">
-                                <select id="selectSolicitaRequerimento" class="form-control">
+                                <select id="selectSolicitaRequerimento" class="form-control" style="width: 56%;">
 <!--                                          <option selected disabled style="padding-bottom: 1px; padding-top: 1px">Selecione</option>-->
                                  <option title="SELECIONE" ></option>
                                 <% for(TipoRequerimento tipo : tiporequerimento.getTiposRequerimento()){%>
@@ -68,7 +68,7 @@
                                                 <%}%>
                                                 </select> </label>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>               
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -100,7 +100,7 @@
                                                 <%}%>
                                                 </select> </label>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                    
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -115,7 +115,7 @@
                                                 <%}%>
                                                 </select> </label>                                                
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -131,7 +131,7 @@
                                                 <%}%>
                                             </select> </label>                                                 
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>                                                
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -147,7 +147,7 @@
                                                 <%}%>
                                             </select> </label>                                                 
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -160,7 +160,7 @@
                                             <br><label>Escola destino:  <input type='text' name="escola_destino" value="" required="true"></label>
                                             <br><label>Curso destino:  <input type='text' name="curso_destino" value="" required="true"></label>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -168,7 +168,7 @@
                                         <%//LANÇAMENTO OU REVISÃO DE FALTAS/NOTAS/SITUAÇÃO
                                         }else if(tipo.getId()==8){%>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -176,7 +176,7 @@
                                         <%//RENOVAÇÃO MATRÍCULA
                                         }else if(tipo.getId()==9){%>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -184,7 +184,7 @@
                                         <%//REABERTURA MATRÍCULA
                                         }else if(tipo.getId()==10){%>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>" required="true"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -195,7 +195,7 @@
                                                     Anexar arquivo <input type="file" id="exampleInputFile" name="dia_anexo">
                                                 </label>                                                
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -204,7 +204,7 @@
                                         }else if(tipo.getId()==12){%>
                                             <br><label>Dia :  <input type='date' name="dia_especifico" value="" required="true"></label>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>
@@ -214,7 +214,7 @@
                                             <br><label>De :  <input type='date' name="dia_de" value="" required="true"></label>
                                             <br><label>Até :  <input type='date' name="dia_ate" value="" required="true"></label>
                                             <br><textarea rows="4" cols="79" name="observacao" placeholder="Observações..." form="<%= "form"+tipo.getId() %>"></textarea>
-                                            <br><label>Documentos apresentados:</label>
+                                            <br><label>Documentos apresentados:</label><br>
                                             <%for(Documento doc : documento.getDocumentos()){%>
                                                 <input type="checkbox" name="documentos_apresentados" value="<%= doc.getId() %>"> <%= doc.getNome() %><br>
                                             <%}%>

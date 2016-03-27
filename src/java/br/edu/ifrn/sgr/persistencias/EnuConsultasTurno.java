@@ -15,7 +15,7 @@ public enum EnuConsultasTurno
 
         
         //Consultado o nome da disciplina, basta passar o id da disciplina
-        SELECT_NOME_DISCIPLINA("select disciplina.dis_nome from disciplina where disciplina.dis_id=?;");
+        SELECT_NOME_TURNO("select turno.trn_nome turno from turno where turno.trn_id=?;");
 
         
 

@@ -5,23 +5,8 @@
  */
 package br.edu.ifrn.sgr.persistencias;
 
-import br.edu.ifrn.sgr.modelos.Aluno;
-import br.edu.ifrn.sgr.modelos.Campus;
-import br.edu.ifrn.sgr.modelos.Coordenador;
-import br.edu.ifrn.sgr.modelos.Curso;
-import br.edu.ifrn.sgr.modelos.Diretor;
-import br.edu.ifrn.sgr.modelos.Disciplina;
-import br.edu.ifrn.sgr.modelos.Ifrn;
-import br.edu.ifrn.sgr.modelos.ModalidadeCurso;
-import br.edu.ifrn.sgr.modelos.Permissao;
-import br.edu.ifrn.sgr.modelos.Professor;
-import br.edu.ifrn.sgr.modelos.Requerimento;
+
 import br.edu.ifrn.sgr.modelos.RequerimentoPopuladoString;
-import br.edu.ifrn.sgr.modelos.TecnicoAdministrativo;
-import br.edu.ifrn.sgr.modelos.TipoDocumento;
-import br.edu.ifrn.sgr.modelos.TipoRequerimento;
-import br.edu.ifrn.sgr.modelos.Turma;
-import br.edu.ifrn.sgr.modelos.Turno;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -134,19 +119,13 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
             ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
             if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
-
-            ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
-            while (consultaDocumentosApresentados.next()) {
-                requerimentoPopuladoString.getDocumentosApresentados().add(consultaDocumentosApresentados.getString("documento"));
+                requerimentoPopuladoString.setDisciplinaCertificacao(consultaDisciplina.getString("disciplina"));
             }
 
             //Adicionados objeto ao array de requerimentos já populado
@@ -174,14 +153,14 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setTipoAtividade(resultado.getString("req_tipo_atividade"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
+            ResultSet consultaProfessor = executarConsulta(EnuConsultasProfessor.SELECT_NOME_PROFESSOR.toString(), resultado.getString("req_professor_atividade_FK"));
+            if (consultaProfessor.next()) {
+                requerimentoPopuladoString.setProfessorAtividade(consultaProfessor.getString("nome"));
             }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
@@ -214,14 +193,14 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
+            ResultSet consultaCurso = executarConsulta(EnuConsultasCurso.SELECT_CURSO_NOME_E_CAMPUS_NOME.toString(), resultado.getInt("req_curso_destino_FK"));
+            if (consultaCurso.next()) {                
+                requerimentoPopuladoString.setCursoDestino(consultaCurso.getString("curso")+" - Campus "+consultaCurso.getString("campus"));
             }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
@@ -254,15 +233,10 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setTurmaDestino(resultado.getString("req_turma_destino_FK")+"");
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -294,14 +268,14 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
+            ResultSet consultaTurno = executarConsulta(EnuConsultasTurno.SELECT_NOME_TURNO.toString(), resultado.getInt("req_turno_destino_FK"));
+            if (consultaTurno.next()) {
+                requerimentoPopuladoString.setTurnoDestino(consultaTurno.getString("turno"));
             }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
@@ -334,15 +308,13 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setTranferenciaCursoOrigem(resultado.getString("req_tranferencia_curso_origem"));
+            requerimentoPopuladoString.setTranferenciaCursoDestino(resultado.getString("req_tranferencia_curso_destino"));
+            requerimentoPopuladoString.setTranferenciaEscolaOrigem(resultado.getString("req_tranferencia_escola_origem"));
+            requerimentoPopuladoString.setTranferenciaEscolaDestino(resultado.getString("req_tranferencia_escola_destino"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -374,15 +346,9 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -414,15 +380,9 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -454,16 +414,11 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
-
+            
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
-
+            
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
                 requerimentoPopuladoString.getDocumentosApresentados().add(consultaDocumentosApresentados.getString("documento"));
@@ -493,16 +448,10 @@ public class RequerimentoDAO extends GeralDAO {
             RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
-            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -517,8 +466,8 @@ public class RequerimentoDAO extends GeralDAO {
         return requerimentosPopulados;
     }
 
-    //Popula justificativa de faltas
-    public ArrayList<RequerimentoPopuladoString> populaJustificativaDeFaltas(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
+    //Popula justificativa de faltas em anexo
+    public ArrayList<RequerimentoPopuladoString> populaJustificativaDeFaltasEmAnexo(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
         ArrayList requerimentosPopulados = new ArrayList<>();
         Connection con = FabricaConexao.getConexao();
         PreparedStatement comando = con.prepareStatement(sql);
@@ -534,15 +483,50 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
+
+            ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
+            while (consultaDocumentosApresentados.next()) {
+                requerimentoPopuladoString.getDocumentosApresentados().add(consultaDocumentosApresentados.getString("documento"));
             }
+
+            //Adicionados objeto ao array de requerimentos já populado
+            requerimentosPopulados.add(requerimentoPopuladoString);
+
+        }
+
+        return requerimentosPopulados;
+    }
+    
+    
+    
+    //Popula justificativa de faltas dia específico
+    public ArrayList<RequerimentoPopuladoString> populaJustificativaDeFaltaDiaEspecifico(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
+        ArrayList requerimentosPopulados = new ArrayList<>();
+        Connection con = FabricaConexao.getConexao();
+        PreparedStatement comando = con.prepareStatement(sql);
+        for (int i = 1; i <= parametros.length; i++) {
+            comando.setObject(i, parametros[i - 1]);
+        }
+        ResultSet resultado = comando.executeQuery();
+        FabricaConexao.fecharConexao(con);
+
+        /*Preenchendo os objetos de requerimentos após a consulta e inserido no array*/
+        while (resultado.next()) {
+            RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
+            requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
+            requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
+
+            Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
+            Date faltaDiaEspecifico = resultado.getDate("req_data_falta_dia");
+            requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
+            requerimentoPopuladoString.setDataFaltasDia(formatDataBrasil.format(faltaDiaEspecifico));
+
+
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -557,6 +541,45 @@ public class RequerimentoDAO extends GeralDAO {
         return requerimentosPopulados;
     }
 
+    //Popula justificativa de faltas por período
+    public ArrayList<RequerimentoPopuladoString> populaJustificativaDeFaltasPeriodo(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
+        ArrayList requerimentosPopulados = new ArrayList<>();
+        Connection con = FabricaConexao.getConexao();
+        PreparedStatement comando = con.prepareStatement(sql);
+        for (int i = 1; i <= parametros.length; i++) {
+            comando.setObject(i, parametros[i - 1]);
+        }
+        ResultSet resultado = comando.executeQuery();
+        FabricaConexao.fecharConexao(con);
+
+        /*Preenchendo os objetos de requerimentos após a consulta e inserido no array*/
+        while (resultado.next()) {
+            RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
+            requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
+            requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
+                       
+            Date faltasDe = resultado.getDate("req_data_faltas_de");
+            Date faltasAte = resultado.getDate("req_data_faltas_ate");            
+            Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");            
+            requerimentoPopuladoString.setDataFaltasDe(formatDataBrasil.format(faltasDe));
+            requerimentoPopuladoString.setDataFaltasAte(formatDataBrasil.format(faltasAte));                        
+            requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
+
+            ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
+            while (consultaDocumentosApresentados.next()) {
+                requerimentoPopuladoString.getDocumentosApresentados().add(consultaDocumentosApresentados.getString("documento"));
+            }
+
+            //Adicionados objeto ao array de requerimentos já populado
+            requerimentosPopulados.add(requerimentoPopuladoString);
+
+        }
+
+        return requerimentosPopulados;
+    }
+    
+    
     //Popula trancamento de matricula
     public ArrayList<RequerimentoPopuladoString> populaTrancamentoDeMatricula(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
         ArrayList requerimentosPopulados = new ArrayList<>();
@@ -574,15 +597,9 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -613,16 +630,10 @@ public class RequerimentoDAO extends GeralDAO {
             RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
-            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -653,16 +664,10 @@ public class RequerimentoDAO extends GeralDAO {
             RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
-            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -693,16 +698,11 @@ public class RequerimentoDAO extends GeralDAO {
             RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
-            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));           
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -734,15 +734,10 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
-
+            
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -756,8 +751,8 @@ public class RequerimentoDAO extends GeralDAO {
 
         return requerimentosPopulados;
     }
-    //Popula adequação de horários
 
+    //Popula adequação de horários
     public ArrayList<RequerimentoPopuladoString> populaAdequacaoHorarios(String sql, Object... parametros) throws ClassNotFoundException, SQLException {
         ArrayList requerimentosPopulados = new ArrayList<>();
         Connection con = FabricaConexao.getConexao();
@@ -774,15 +769,10 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -813,16 +803,10 @@ public class RequerimentoDAO extends GeralDAO {
             RequerimentoPopuladoString requerimentoPopuladoString = new RequerimentoPopuladoString();
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
-            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
+            requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));            
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -831,7 +815,6 @@ public class RequerimentoDAO extends GeralDAO {
 
             //Adicionados objeto ao array de requerimentos já populado
             requerimentosPopulados.add(requerimentoPopuladoString);
-
         }
 
         return requerimentosPopulados;
@@ -854,15 +837,9 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
-
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {
@@ -894,15 +871,10 @@ public class RequerimentoDAO extends GeralDAO {
             requerimentoPopuladoString.setRequerimentoID(resultado.getInt("req_id"));
             requerimentoPopuladoString.setAlunoMatricula(resultado.getString("alu_id_FK"));
             requerimentoPopuladoString.setObservacoes(resultado.getString("req_observacoes"));
-            requerimentoPopuladoString.setDisciplinaCursada(resultado.getString("req_disciplina_cursada"));
 
             Date dataSolicitacao = resultado.getDate("req_data_solicitacao_requerimento");
             requerimentoPopuladoString.setDataSolicitacaoRequerimento(formatDataBrasil.format(dataSolicitacao));
 
-            ResultSet consultaDisciplina = executarConsulta(EnuConsultasDisciplinas.SELECT_NOME_DISCIPLINA.toString(), resultado.getInt("req_disciplina_curso_atual_FK"));
-            if (consultaDisciplina.next()) {
-                requerimentoPopuladoString.setDisciplinaCursoAtual(consultaDisciplina.getString("disciplina"));
-            }
 
             ResultSet consultaDocumentosApresentados = executarConsulta(EnuConsultasRequerimento.SELECT_DOCUMENTOS_APRESENTADOS_DO_REQUERIMENTO.toString(), requerimentoPopuladoString.getRequerimentoID());
             while (consultaDocumentosApresentados.next()) {

@@ -15,7 +15,11 @@ public enum EnuConsultasProfessor  //Feito por Luan - Funcionando
 SELECT_INFORMAÇÕES_PROFESSOR("SELECT pessoa.*, professor.*, permissao.* FROM professor"
         + " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=professor.\"pro_id_PK\""
         + " JOIN permissao ON permissao.per_id=professor.\"per_id_FK\""
-        + " WHERE professor.\"pro_id_PK\"=?;");
+        + " WHERE professor.\"pro_id_PK\"=?;"),
+
+        SELECT_NOME_PROFESSOR("select pessoa.pes_nome nome from pessoa"
+        + " join professor on professor.\"pro_id_PK\"=pessoa.\"pes_matricula_PK\""
+        + " where professor.\"pro_id_PK\"=?;");
 
         private String consulta; 
         private  EnuConsultasProfessor(String consulta) { 

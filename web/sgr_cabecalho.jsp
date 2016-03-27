@@ -97,7 +97,7 @@
 	        });
 	    });      
     </script>
-    <!-- ATÉ AQUI ... SCRIPTS QUE ESTAVAM EM SGR_SOLICITAR_REQUERIMENTO.JSP-->s
+    <!-- ATÉ AQUI ... SCRIPTS QUE ESTAVAM EM SGR_SOLICITAR_REQUERIMENTO.JSP-->
         <script>
             //Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
             $(function () {
