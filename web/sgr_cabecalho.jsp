@@ -41,7 +41,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SGR - Sistma de Gerenciamento de Requerimentos</title>
+        <title>SGR - Sistema de Gerenciamento de Requerimentos</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
