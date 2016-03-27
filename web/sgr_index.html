@@ -10,67 +10,80 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="imagens/favicon.ico">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <!-- Custom styles for this template -->
         <link href="css/cover.css" rel="stylesheet">
+        <script>
+            $("#container").fadeIn(2000);
+            $("a.transition").click(function (event) {
+                event.preventDefault();
+                link = this.href;
+                $("body").fadeOut(1000, function () {
+                    window.location = link;
+                });
+            });
+        </script>
     </head>
-    <body >
-        <img align="right" src="imagens/logo partners - SGR F.jpg"/> 
-        <div class="site-wrapper">
+    <body>
 
-            <div class="site-wrapper-inner">
+        <div class="container">    
 
 
-                <div class="masthead clearfix">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Módulo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a  href="sgr_login_aluno.html"/>ALUNO</td>
-                            </tr>
-                            <tr>
-                                <td><a  href="sgr_login_coordenador.html"/>COORDENADOR</td>
-                            </tr>
-                            <tr>
-                                <td><a  href="sgr_login_diretor.html"/>DIRETOR</td>
-                            </tr>
-                            <tr>
-                                <td><a  href="sgr_login_professor.html"/>PROFESSOR</td>
-                            </tr>
-                            <tr>
-                                <td><a  href="sgr_login_administrativo.html"/>TÉC. ADMINISTRATIVO</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="inner cover">
-                        <h1 class="cover-heading">BEM VINDO AO SGR WEB.</h1>
-                        <p class="lead">Informe acima o módulo que deseja acessar. Será necessario sua matrícula e senha para entrar no sistema.</p>
-                        <p class="lead">
-                            <a href="#" class="btn btn-lg btn-default">Saiba mais</a>
-                        </p>
-                    </div>
+            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+                <div class="panel panel-info" >
+                    <img align="rigth" src="imagens/SGR - Logomarca.png"/>
+                    <img align="center" src="imagens/Logotipo - IF.png"/>
 
-                    <div class="mastfoot">
-                        <div class="inner">
-                            <p>Copyright © 2016 by The Partners. <a href="http://portal.ifrn.edu.br"> * Portal IFRN</a> All rights reserved.</p>
+                    <div>
+
+                        <div class="inner cover">
+
+                            <p class="lead">Informe o módulo que deseja acessar. Será necessario sua matrícula e senha para entrar no sistema.</p>
+                            <p>
+                                <a href="#" class="btn btn-block btn-lg btn-info"><span class="glyphicon glyphicon-paperclip"></span> Saiba mais</a>
+                            </p>
                         </div>
+
+
+                    </div>
+                    <div class="panel-heading">
+                        <div class="panel-title">MÓDULOS</div>
+
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <input type="hidden" name="tipoLogin" value="aluno"/>
+
+
+                        <div>
+                            <div class="btn-group btn-group-vertical">
+
+                                <a href="sgr_login_aluno.html" class="btn btn-block btn-lg  btn-primary"><span class="glyphicon glyphicon-education"></span> ALUNO</a>
+                                <a href="sgr_login_coordenador.html" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-user"></span> COORDENADOR</a>
+                                <a href="sgr_login_diretor.html" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-king"></span> DIRETOR</a>
+                                <a href="sgr_login_professor.html" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-heart-empty"></span> PROFESSOR</a>
+                                <a href="sgr_login_administrativo.html" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-briefcase"></span> TÉC. ADMINISTRATIVO</a>
+
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+                <div>
+                    <div class="inner">
+                        <p>Copyright © 2016 by The Partners. <a href="http://portal.ifrn.edu.br"> * Portal IFRN</a> All rights reserved.</p>
                     </div>
                 </div>
             </div>
-
-        </div>                 
+        </div>    
     </body>
 </html>

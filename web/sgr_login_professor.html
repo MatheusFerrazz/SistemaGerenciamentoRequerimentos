@@ -6,68 +6,82 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Login Aluno</title>
+        <title>Login Professor</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="imagens/favicon.ico">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <!-- Custom styles for this template -->
-        <link href="/css/cover.css" rel="stylesheet">
+        <link href="css/cover.css" rel="stylesheet">
+
     </head>
     <body>
-        <img align="right" src="imagens/logo partners - SGR F.jpg"/>
-        <img align="low" src="imagens/Logotipo - IF.png"/>
 
-        <form action="login.jsp" method="post" class="form-horizontal">
-            <input type="hidden" name="tipoLogin" value="professor"/>
-            <fieldset>
+        <div class="container">    
+            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+                <div class="panel panel-info" >
+                    <img align="rigth" src="imagens/SGR - Logomarca.png"/>
+                    <img align="center" src="imagens/Logotipo - IF.png"/>
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
 
-                <div class="inner cover">
-                    <h1 class="cover-heading">BEM VINDO - Opções do Módulo Professor.</h1>
-                    <p class="lead">Informe, por favor, as informações requeridas nos campos abaixo.</p>
-                    <p class="lead">
-                        <a href="#">Esqueceu a senha?</a>
-                    </p>
-                </div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+                        <form action="sgr_solicitar_requerimento.jsp" method="post" class="form-horizontal" id="loginform" role="form">
+                            <input type="hidden" name="tipoLogin" value="aluno"/>
+                            <fieldset>
+
+                                <div class="inner cover">
+                                    <h1 class="cover-heading">BEM VINDO - Opções do Módulo Professor.</h1>
+                                    <p class="lead">Informe, por favor, as informações requeridas nos campos abaixo.</p>
+                                </div>
 
 
-                <!-- Entrada de Texto-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="textinput">Matricula</label>  
-                    <div class="col-md-4">
-                        <input id="matricula" name="matricula" type="text" placeholder="Matrícula" class="form-control input-md" required="">                 
+                                <!-- Entrada de Texto-->
+                                <div class="form-group">
+
+                                    <label class="col-md-4 control-label" for="textinput" >Matricula</label>  
+                                    <div class="col-md-4"><span class="input-group-addon"><i class="glyphicon glyphicon-heart-empty"></i></span>
+
+                                        <input id="matricula" name="matricula" type="text" placeholder="Matrícula" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+
+                                <!-- Entrada de Texto -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Senha</label>
+
+                                    <div class="col-md-4"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>    
+                                        <input id="senha" name="senha" type="password" placeholder="Senha" class="form-control input-md" required="">                                       
+                                    </div>
+                                </div>
+
+                                <!-- Botão Logar -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                                    <div class="col-md-4">
+                                        <button value="Logar" type="submit" class="btn btn-block btn-primary btn-warning"><span class="glyphicon glyphicon-check"></span>Acessar</button>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <a href="#">Esqueceu a senha?</a>
+
+                                </div>
+                            </fieldset>
+                        </form>                    
                     </div>
                 </div>
-
-                <!-- Entrada de Texto -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="textinput">Senha</label>  
-                    <div class="col-md-4">    
-                        <input id="senha" name="senha" type="password" placeholder="Senha" class="form-control input-md" required="">
-
-                    </div>
-
-                    <!-- Botão Logar -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="singlebutton"></label>
-                        <div class="col-md-4">
-                            <button value="Logar" type="submit" class="btn btn-primary">Logar</button>
-                        </div>
-                    </div> 
-
-            </fieldset>
-
-        </form>
-        <div class="mastfoot">
-            <div class="inner">
                 <p>Copyright © 2016 by The Partners. <a href="http://portal.ifrn.edu.br"> * Portal IFRN</a> All rights reserved.</p>
             </div>
         </div>
