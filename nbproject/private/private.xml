@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/EnuInsercaoRequerimento.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/modelos/Professor.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/modelos/Requerimento.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/controladores/CadastrarAluno.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/servlets/CadastrarRequerimento.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/AlunoDAO.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/RequerimentoDAO.java</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/preencherequerimento.jsp</file>
-            <file>file:/C:/Users/Luan%20Medeiros/Google%20Drive/Documentos/NetBeansProjects/SistemaGerenciamentoRequerimentos/src/java/br/edu/ifrn/sgr/persistencias/EnuConsultasCurso.java</file>
+            <file>file:/C:/Users/CH/Documents/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/sgr_solicitar_requerimento.jsp</file>
+            <file>file:/C:/Users/CH/Documents/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/sgr_login_aluno.html</file>
+            <file>file:/C:/Users/CH/Documents/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/sgr_requerimentos_andamento.jsp</file>
+            <file>file:/C:/Users/CH/Documents/NetBeansProjects/SistemaGerenciamentoRequerimentos/web/sgr_aluno.jsp</file>
         </group>
     </open-files>
 </project-private>
