@@ -17,11 +17,14 @@
 <%@page import="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO"%>
 <%@page import="br.edu.ifrn.sgr.persistencias.GeralDAO"%>
 <%@page import="java.sql.*"%>
+<%@page import="br.edu.ifrn.sgr.persistencias.EnuConsultasRequerimento"%>
+<%@page import="br.edu.ifrn.sgr.modelos.RequerimentoPopuladoString"%>
 
 
 <jsp:useBean id="alunoDAO" class="br.edu.ifrn.sgr.persistencias.AlunoDAO" scope="request"/>
 <jsp:useBean id="tiporequerimento" class="br.edu.ifrn.sgr.persistencias.TiposRequeriemtoDAO" scope="request"/>
 <jsp:useBean id="documento" class="br.edu.ifrn.sgr.persistencias.DocumentoDAO" scope="request"/>
+<jsp:useBean id="requerimentos" class="br.edu.ifrn.sgr.persistencias.RequerimentoDAO" scope="request"/>
 <jsp:setProperty name="dao" property="*"></jsp:setProperty>
 <jsp:setProperty name="tiporequerimento" property="*"></jsp:setProperty>
 
@@ -34,6 +37,17 @@
 <html lang="pt-BR">
 
     <head>
+         <!--Ocultando as divs-->
+	<style>
+	.divRequerimentoSolicitado{display:none;padding-left:15px;;}
+	</style>
+        <!--Carregando arquivo jquery-->
+	
+        <script src="js/jquery.min.js"></script>
+        <script src="js/scripts.js"></script>
+	<script src="js/bootstrap-select.min.js"></script> 
+        <script src="js/base.js"></script>        
+        <script src="js/jquery.js"></script>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,6 +75,29 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!-- SCRIPTS QUE ESTAVAM EM SGR_SOLICITAR_REQUERIMENTO.JSP-->
+        <script>
+        //Script para exibição de detalhes do requerimento solicitado
+ 
+
+
+	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
+	$(function() {
+	        $('#selectSolicitaRequerimento').change(function(){
+	            $('.divRequerimentoSolicitado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });    
+	    
+	//Mostra a div de consulta solicitada   
+	$(function() {
+	        $('#selectConsultaRequerimento').change(function(){
+	            $('.divRequerimentoConsultado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });      
+    </script>
+    <!-- ATÉ AQUI ... SCRIPTS QUE ESTAVAM EM SGR_SOLICITAR_REQUERIMENTO.JSP-->s
         <script>
             //Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
             $(function () {
