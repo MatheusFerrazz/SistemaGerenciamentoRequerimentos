@@ -104,7 +104,7 @@ public class AlunoDAO extends GeralDAO {
         TEL = formatString(resultado.getString("cam_telefone"),"(##) #####-####");
         campus.setCep(CEP);
         campus.setTelefone(TEL);
-        ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMAÇÕES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
+        ResultSet consultaCoordenador = executarConsulta(EnuConsultasCoordenador.SELECT_INFORMACOES_COORDENADOR.toString(), resultado.getString("coo_id_PK"));
         while(consultaCoordenador.next())
         {
             coordenador.setNome(consultaCoordenador.getString("pes_nome"));

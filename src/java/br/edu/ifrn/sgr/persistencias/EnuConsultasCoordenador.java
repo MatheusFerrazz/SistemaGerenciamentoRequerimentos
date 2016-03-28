@@ -12,7 +12,7 @@ package br.edu.ifrn.sgr.persistencias;
 public enum EnuConsultasCoordenador  //Feito por Luan - Funcionando
 {       
 //Seleciona todas as informações do diretor, basta passar o ID do diretor.
-SELECT_INFORMAÇÕES_COORDENADOR("SELECT pessoa.*, coordenador.*, permissao.* FROM coordenador"
+SELECT_INFORMACOES_COORDENADOR("SELECT pessoa.*, coordenador.*, permissao.* FROM coordenador"
         + " JOIN pessoa ON pessoa.\"pes_matricula_PK\"=coordenador.\"coo_id_PK\""
         + " JOIN permissao ON permissao.per_id=coordenador.\"per_id_FK\""
         + " WHERE coordenador.\"coo_id_PK\"=?;");
