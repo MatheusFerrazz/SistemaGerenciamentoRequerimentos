@@ -85,8 +85,8 @@ public class AlunoDAO extends GeralDAO {
         aluno.setEmail(resultado.getString("pes_email"));
         TEL = formatString(resultado.getString("pes_telefone"),"(##) ####-####");
         CEL = formatString(resultado.getString("pes_celular"),"(##) #####-####");
-        aluno.setTelefone(resultado.getString("pes_telefone"));
-        aluno.setCelular(resultado.getString("pes_celular"));
+        aluno.setTelefone(TEL);
+        aluno.setCelular(CEL);
         java.sql.Date dataAlunoSQL = resultado.getDate("pes_data_nascimento");
         java.util.Date data = new java.util.Date(dataAlunoSQL.getTime());
         aluno.setDataNascimento(data);
@@ -125,7 +125,7 @@ public class AlunoDAO extends GeralDAO {
         curso.setPeriodo(resultado.getInt("cur_periodos"));
         curso.setCursoAtivo(resultado.getBoolean("cur_ativo"));
         
-        ResultSet consultaDiretor = executarConsulta(EnuConsultasDiretor.SELECT_INFORMAÇÕES_DIRETOR.toString(), resultado.getString("dir_id_PK"));
+        ResultSet consultaDiretor = executarConsulta(EnuConsultasDiretor.SELECT_INFORMACOES_DIRETOR.toString(), resultado.getString("dir_id_PK"));
         while(consultaDiretor.next())
         {        
             diretor.setNome(consultaDiretor.getString("pes_nome"));
