@@ -32,7 +32,7 @@
 
                 <div class="container-fluid" id="corpo">
                     <address>
-                        <strong>Campus <%= aluno.getCurso().getCampus().getNome()%> - Diretoria Acad?mica</strong><br><%= aluno.getCurso().getCampus().getEndereco()%>, <%= aluno.getCurso().getCampus().getNumero()%><br> <%= aluno.getCurso().getCampus().getCidade() + "/" + aluno.getCurso().getCampus().getEstado() + " - " + aluno.getCurso().getCampus().getBairro()%>, <%= aluno.getCurso().getCampus().getCep()%><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone()%>
+                        <strong>Campus <%= aluno.getCurso().getCampus().getNome()%> - Diretoria Acadêmica</strong><br><%= aluno.getCurso().getCampus().getEndereco()%>, <%= aluno.getCurso().getCampus().getNumero()%><br> <%= aluno.getCurso().getCampus().getCidade() + "/" + aluno.getCurso().getCampus().getEstado() + " - " + aluno.getCurso().getCampus().getBairro()%>, <%= aluno.getCurso().getCampus().getCep()%><br> Telefone: <%= aluno.getCurso().getCampus().getTelefone()%>
                     </address>
                     <br><h3 class="text-left" id="cabecalho">Bem vindo,<br> <%= aluno.getNome()%></h3>
 

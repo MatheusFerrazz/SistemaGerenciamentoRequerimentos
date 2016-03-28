@@ -48,20 +48,6 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
-    <!--Importando estilos-->
-<!--    <link href="css/estilos_personalizados.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/highlight.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">    
-    <link href="css/estilos_personalizados.css" rel="stylesheet">-->
-
-    <!--Ocultando as divs-->
-
 
 	<!--Carregando arquivo jquery-->
 	
@@ -124,7 +110,8 @@
             <div id="consulta" class="row acao">
                 <div class="col-md-12" style="padding-left:28px">
                     <!--Div requerimentos em andamento-->
-                    <div id="requerimentos_em_andamento">
+                    <div id="requerimentos_deferidos">
+                        <h1><font color = "#1E90FF">EM ANDAMENTO</font></h1><br>
                         <% listarequerimentos = requerimentos.populaAproveitaMentoDeEstudo(EnuConsultasRequerimento.SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO_E_IDALUNO.toString(), 1, aluno.getMatricula());
                           if(!listarequerimentos.isEmpty()){
                         %>
@@ -137,12 +124,12 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                              <a data-toggle="collapse" data-parent="#accordion" href="#<%= req.getRequerimentoID() %>" aria-expanded="false" style="height: 0px;"><b>++ DETALHES </b> </a>REQUERIMENTO N° <%= req.getRequerimentoID() %>
+                                              <a data-toggle="collapse" data-parent="#accordion" href="#<%= req.getRequerimentoID() %>" ><b>++ DETALHES </b> </a>REQUERIMENTO N° <%= req.getRequerimentoID() %>
                                             </h4>
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>DISCIPLINA CURSADA: </b> <%= req.getDisciplinaCursada() %></p>
@@ -183,7 +170,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
 
                                                <p><b>DISCIPLINA PARA CERTIFICAÇÃO: </b> <%= req.getDisciplinaCertificacao() %><p>
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                                                                                    
@@ -215,7 +202,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
 
                                                       
                                                <p><b>TIPO ATIVIDADE: </b> <%= req.getTipoAtividade() %></p>
@@ -256,7 +243,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                
                                                       
                                                <p><b>CURSO DESEJADO: </b> <%= req.getCursoDestino()%></p>       
@@ -296,7 +283,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                               <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                               <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                         
                                                       
                                                       
@@ -337,7 +324,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
 
@@ -380,7 +367,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                <p><b>CURSO ORIGEM: </b> <%= req.getTranferenciaCursoOrigem() %></p>                                                      
                                                <p><b>CURSO DESTINO: </b> <%= req.getTranferenciaCursoDestino() %></p>                                                      
@@ -422,7 +409,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
        
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -461,7 +448,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                       
@@ -501,7 +488,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                       
@@ -541,7 +528,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                                                                                                                                   
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
                                                <!--DOCUMENTOS APRESENTADO-->
@@ -579,7 +566,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                <p><b>DIA DA FALTA: </b> <%= req.getDataFaltasDia() %></p>                                                      
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -618,7 +605,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                <p><b>DE: </b> <%= req.getDataFaltasDe() %></p>
                                                <p><b>ATE: </b> <%= req.getDataFaltasAte() %></p>                                               
@@ -658,7 +645,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -736,7 +723,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <!--DOCUMENTOS APRESENTADO-->
@@ -776,7 +763,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -815,7 +802,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -854,7 +841,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -893,7 +880,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -932,7 +919,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
                                                <!--DOCUMENTOS APRESENTADO-->
@@ -970,7 +957,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               
@@ -1009,7 +996,7 @@
                                         </div>
                                         <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                                  <p>Requerimento solicitado no dia <%= req.getDataSolicitacaoRequerimento() %><br>
                                                       
                                                       
                                                <p><b>OBSERVAÇÔES: </b> <%= req.getObservacoes() %></p>                                               

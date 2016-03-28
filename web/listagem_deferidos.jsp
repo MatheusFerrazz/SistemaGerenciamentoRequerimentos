@@ -48,21 +48,6 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
-    <!--Importando estilos-->
-<!--    <link href="css/estilos_personalizados.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/highlight.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">    
-    <link href="css/estilos_personalizados.css" rel="stylesheet">-->
-
-    <!--Ocultando as divs-->
-
-
 	<!--Carregando arquivo jquery-->
 	
         <script src="js/jquery.min.js"></script>
@@ -125,10 +110,12 @@
             <div id="consulta" class="row acao">
                 <div class="col-md-12" style="padding-left:28px">
                     <!--Div requerimentos em andamento-->
+                    
                     <div id="requerimentos_em_andamento">
+                        <h1><font color = "#008000">DEFERIDOS</font></h1><br>
                         <% listarequerimentos = requerimentos.populaAproveitaMentoDeEstudo(EnuConsultasRequerimento.SELECT_TODOS_REQUERIMENTOS_DEFERIDOS_POR_TIPO_REQUERIMENTO_E_IDALUNO.toString(), 1, aluno.getMatricula());
                           if(!listarequerimentos.isEmpty()){
-                        %>
+                        %>                        
                         <div id="aproveitamento_de_estudo">
                             <div class="container">
                                 <h3>APROVEITAMENTO DE ESTUDO</h3>  
