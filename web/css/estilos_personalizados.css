@@ -1,4 +1,4 @@
-body
+/*body
 {
 	padding-top: 51px;
 	margin-right: 90px;
@@ -6,11 +6,11 @@ body
 	margin-top: 10px;
 	margin-bottom: 40px;
 }
-/*#divPrincipal
+#divPrincipal
 {
 
 }
-*/
+
 #divColunaFigura
 {
 	width: 16%;
@@ -18,16 +18,16 @@ body
 
 }
 
-/*#divColunaCabecalho
+#divColunaCabecalho
 {
 	 text-align: left;
 	 width: 341px;
 	 height: 100px;
 	 vertical-align: bottom;
 	 display: table-cell;
-} */
+} 
 
-/*
+
 #divColunaBoasVindas
 {
 	margin-top: 5%;
@@ -36,7 +36,7 @@ body
 
 
 }
-*//*
+
 #h3TextoBoasVindas
 {
 	 text-align: left;
@@ -45,16 +45,16 @@ body
 	 vertical-align: bottom;
 	 display: table-cell;
 
-}*/
+}
 
-/*Personalizando o select*/
-/*.div-select {
+
+.div-select {
 
    	width: 100%;
     overflow:hidden;
-}*/
+}
  
-/*.div-select select {
+.div-select select {
       background:  #337AB7;  
       background-position: 205px center;  
       width: 270px; 
@@ -67,16 +67,16 @@ body
       text-overflow: "";  
       select::-ms-expand {display: none;} 
  
-} */
+} 
 
-/*Personalizando o tamanho do campo input*/
+
 input[type="text"]
 {
 	width: 40%;
 }
 
 
-div#laembaixo {
+div #laembaixo {
  width: 200px;
  height: 150px;
  border: 1px solid #c30;
@@ -90,11 +90,7 @@ div#laembaixo {
  	margin-bottom: 8px;
  }
 
- p 
- {
- 	margin-right: 320px;
- 	text-align: justify;
- }
+
 
 #cabecalho:before
 {
@@ -112,13 +108,12 @@ div#laembaixo {
 
 .divRequerimentoSolicitado
 {
-/*	margin-top: 111px; */
+	margin-top: 111px; 
 	border: thin solid black;
 	margin-left: 2px;
 
 }
 
-/*Ajustando tamanho dos selects*/
 #acao
 {
 	
@@ -128,4 +123,11 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
-}
+}*/
+
+
+ p 
+ {
+ 	margin-right: 320px;
+ 	text-align: justify;
+ }
