@@ -24,6 +24,8 @@
 <jsp:setProperty name="tiporequerimento" property="*"></jsp:setProperty>
         <link href="css/estilos_personalizados.css" rel="stylesheet">
         <script src="js/jquery.js"></script>
+           
+        
 <%
     //Resgatando o objeto aluno pela sessão
     Aluno aluno = (Aluno) session.getAttribute("aluno");
