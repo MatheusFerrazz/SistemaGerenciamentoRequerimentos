@@ -30,7 +30,35 @@
             <div id="page-wrapper">
 
                 <div class="container-fluid">
-
+            <div id="consulta" class="row acao">
+                <div class="col-md-12" style="padding-left:28px">
+                    <!--Div requerimentos em andamento-->
+                    <div id="requerimentos_em_andamento">
+                        <div id="aproveitamento_de_estudo">
+                            <div class="container">
+                                <h2>APROVEITAMENTO DE ESTUDO</h2>  
+                                <div class="panel-group" id="accordion">
+                                <%for (RequerimentoPopuladoString req : requerimentos.populaAproveitaMentoDeEstudo(EnuConsultasRequerimento.SELECT_TODOS_REQUERIMENTOS_EM_ANDAMENTO_POR_TIPO_REQUERIMENTO_E_IDALUNO.toString(), 1, aluno.getMatricula())) {%>                    
+                                
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                              <a data-toggle="collapse" data-parent="#accordion" href="#<%= req.getRequerimentoID() %>" aria-expanded="false" style="height: 0px;">++ DETALHES </a>REQUERIMENTO N° <%= req.getRequerimentoID() %>
+                                            </h4>
+                                        </div>
+                                        <div id="<%= req.getRequerimentoID() %>" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                  <p>Requerimento solicitado no dia<%= req.getDataSolicitacaoRequerimento() %><br>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                             
+                                <%}%>
+                                </div>
+                            </div> 
+                        </div>  
+                    </div>        
+                </div>
+            </div>      
                 </div>
                 <!-- /.container-fluid -->
 

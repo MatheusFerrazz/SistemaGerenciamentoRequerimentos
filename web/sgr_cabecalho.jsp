@@ -165,6 +165,154 @@
                         });
                 });                
         </script>
+        <script>
+        //Script para exibição de detalhes do requerimento solicitado
+        $(function () {
+
+            $('.toggle').click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr('href');
+                
+                $(target).toggleClass('hidden show');
+            });
+
+        });   
+            
+	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
+	$(function() {
+	        $('#acao').change(function(){
+	            $('.acao').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });
+
+	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
+	$(function() {
+	        $('#selectSolicitaRequerimento').change(function(){
+	            $('.divRequerimentoSolicitado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });    
+	    
+	//Mostra a div de consulta solicitada   
+	$(function() {
+	        $('#selectConsultaRequerimento').change(function(){
+	            $('.divRequerimentoConsultado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });      
+    </script>
+    <script>
+        //Script para exibição de detalhes do requerimento solicitado
+        $(function () {
+
+            $('.toggle').click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr('href');
+                
+                $(target).toggleClass('hidden show');
+            });
+
+        });   
+            
+	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
+	$(function() {
+	        $('#acao').change(function(){
+	            $('.acao').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });
+
+	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
+	$(function() {
+	        $('#selectSolicitaRequerimento').change(function(){
+	            $('.divRequerimentoSolicitado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });    
+	    
+	//Mostra a div de consulta solicitada   
+	$(function() {
+	        $('#selectConsultaRequerimento').change(function(){
+	            $('.divRequerimentoConsultado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });      
+    </script>
+    <script>
+        //Script para exibição de detalhes do requerimento solicitado
+        $(function () {
+
+            $('.toggle').click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr('href');
+                
+                $(target).toggleClass('hidden show');
+            });
+
+        });   
+            
+	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
+	$(function() {
+	        $('#acao').change(function(){
+	            $('.acao').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });
+
+	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
+	$(function() {
+	        $('#selectSolicitaRequerimento').change(function(){
+	            $('.divRequerimentoSolicitado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });    
+	    
+	//Mostra a div de consulta solicitada   
+	$(function() {
+	        $('#selectConsultaRequerimento').change(function(){
+	            $('.divRequerimentoConsultado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });      
+    </script>
+    <script>
+        //Script para exibição de detalhes do requerimento solicitado
+        $(function () {
+
+            $('.toggle').click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr('href');
+                
+                $(target).toggleClass('hidden show');
+            });
+
+        });   
+            
+	//Funlçao jquery que escolhe entre listar requerimentos e fazer requerimentos
+	$(function() {
+	        $('#acao').change(function(){
+	            $('.acao').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });
+
+	//Função jquery para mostrar a div de preencheencimento do requerimento solicitado
+	$(function() {
+	        $('#selectSolicitaRequerimento').change(function(){
+	            $('.divRequerimentoSolicitado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });    
+	    
+	//Mostra a div de consulta solicitada   
+	$(function() {
+	        $('#selectConsultaRequerimento').change(function(){
+	            $('.divRequerimentoConsultado').hide();
+	            $('#' + $(this).val()).show();
+	        });
+	    });      
+    </script>
     </head>
 
     <body>

@@ -4,7 +4,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
+                            <a href="sgr_aluno.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                         </li>
                         <li>
                             <a href="" id="solicitar"><i class="fa fa-fw fa-bar-chart-o"></i> Solicitar Requerimento</a>
