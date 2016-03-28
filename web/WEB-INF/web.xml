@@ -5,12 +5,15 @@
 	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	 version="3.1">
     <session-config>
-                <session-timeout>  
-                    2  
-                </session-timeout>          
-            <error-page>
-                <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-                <location>/sessaoesgotada.html</location>
-            </error-page>
+        <session-timeout>
+            30
+        </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>sgr_index.html</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/erro.jsp</location>
+    </error-page>
 </web-app>
